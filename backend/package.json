@@ -1,0 +1,18 @@
+{
+  "name": "wasm-actions-backend",
+  "version": "0.0.1",
+  "description": "Backend for WASM Actions project",
+  "main": "src/index.js",
+  "repository": "https://github.com/TheSamsai/wasm-actions",
+  "author": "Sami Lahtinen",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
