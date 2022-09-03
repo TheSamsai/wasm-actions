@@ -1,5 +1,9 @@
 * WASM Actions
-** STRT Set up development environment
+** DONE Set up development environment
 :LOGBOOK:
-CLOCK: [2022-09-03 la 16:00]
+CLOCK: [2022-09-03 la 16:00]--[2022-09-03 la 16:56] =>  0:56
+:END:
+** DONE Define project goals
+:LOGBOOK:
+CLOCK: [2022-09-03 la 16:59]--[2022-09-03 la 17:48] =>  0:49
 :END:
