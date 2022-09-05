@@ -1,4 +1,17 @@
 * WASM Actions
+#+BEGIN: clocktable :scope subtree :maxlevel 2
+#+CAPTION: Clock summary at [2022-09-05 ma 19:32]
+| Headline                             | Time   |      |
+|--------------------------------------+--------+------|
+| *Total time*                         | *2:14* |      |
+|--------------------------------------+--------+------|
+| WASM Actions                         | 2:14   |      |
+| \_  Set up development environment   |        | 0:56 |
+| \_  Define project goals             |        | 0:49 |
+| \_  Set up testing frameworks for... |        | 0:17 |
+| \_  Create initial README            |        | 0:12 |
+#+END:
+
 ** DONE Set up development environment
 :LOGBOOK:
 CLOCK: [2022-09-03 la 16:00]--[2022-09-03 la 16:56] =>  0:56
@@ -11,6 +24,10 @@ CLOCK: [2022-09-03 la 16:59]--[2022-09-03 la 17:48] =>  0:49
 ** DONE Set up testing frameworks for frontend and backend
 :LOGBOOK:
 CLOCK: [2022-09-05 ma 19:00]--[2022-09-05 ma 19:17] =>  0:17
+:END:
+** DONE Create initial README
+:LOGBOOK:
+CLOCK: [2022-09-05 ma 19:20]--[2022-09-05 ma 19:32] =>  0:12
 :END:
 ** TODO Investigate WASM support in Node
 ** TODO Create a test WASM program and run it from the backend

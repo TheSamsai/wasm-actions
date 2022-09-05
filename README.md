@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# WASM Actions - platform for deploying WASM web workloads
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+WASM Actions is a pseudo-serverless platform intended to allow
+developers to develop HTTP endpoint handlers in WebAssembly. WASM
+Actions is being developed as part of a University of Helsinki Full
+Stack Project course.
 
-## Available Scripts
+## How this project is structured
 
-In the project directory, you can run:
+This project consists of two main pieces: the `backend` and the `frontend`.
+Both are located in this repository under their respective directories.
 
-### `npm start`
+The backend is a basic Express.js backend that implements the APIs required
+to perform user authentication, WASM workload management and execution of
+those workloads.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The frontend is a React application which provides an SPA (single-page-application)
+dashboard for managing WASM Actions in the browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Testing
 
-### `npm test`
+TODO!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Try it out
 
-### `npm run build`
+TODO!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Timekeeping and TODO
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The tasks and timekeeping of this project are tracked in the `todo.org` file.
+However, due to GitHub's exceptionally poor org-mode handling, the timekeeping
+reports will be available in Markdown format.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Clock summary at <span class="timestamp-wrapper"><span class="timestamp">[2022-09-05 ma 19:32]</span></span></caption>
 
-### `npm run eject`
+<colgroup>
+<col  class="org-left" />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<col  class="org-right" />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Headline</th>
+<th scope="col" class="org-right">Time</th>
+<th scope="col" class="org-right">&#xa0;</th>
+</tr>
+</thead>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<tbody>
+<tr>
+<td class="org-left"><b>Total time</b></td>
+<td class="org-right"><b>2:14</b></td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<tbody>
+<tr>
+<td class="org-left">WASM Actions</td>
+<td class="org-right">2:14</td>
+<td class="org-right">&#xa0;</td>
+</tr>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<tr>
+<td class="org-left">&ensp;&ensp;Set up development environment</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">0:56</td>
+</tr>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<tr>
+<td class="org-left">&ensp;&ensp;Define project goals</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">0:49</td>
+</tr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<tr>
+<td class="org-left">&ensp;&ensp;Set up testing frameworks for&#x2026;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">0:17</td>
+</tr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+<tr>
+<td class="org-left">&ensp;&ensp;Create initial README</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">0:12</td>
+</tr>
+</tbody>
+</table>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
