@@ -2,4 +2,4 @@
 
 sudo dnf install nodejs yarnpkg
 
-sudo npm install -g typescript-language-server
+sudo npm install -g typescript-language-server typescript
