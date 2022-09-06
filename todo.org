@@ -29,6 +29,16 @@ CLOCK: [2022-09-05 ma 19:00]--[2022-09-05 ma 19:17] =>  0:17
 :LOGBOOK:
 CLOCK: [2022-09-05 ma 19:20]--[2022-09-05 ma 19:32] =>  0:12
 :END:
-** TODO Investigate WASM support in Node
+** STRT Investigate WASM support in Node
+:LOGBOOK:
+CLOCK: [2022-09-06 ti 19:16]--[2022-09-06 ti 20:53] =>  1:37
+:END:
+https://nodejs.dev/en/learn/nodejs-with-webassembly/
+https://nodejs.org/api/wasi.html
+https://medium.com/geekculture/webassembly-for-node-js-13ef6bec0a0
+https://rustwasm.github.io/docs/wasm-bindgen/examples/index.html
+Read --> Programming WebAssembly with Rust
+https://medium.com/@shyamsundarb/wasm-wasi-wagi-web-assembly-modules-in-rust-af7335e80160
+** TODO Set up a CI system that runs frontend and backend tests
 ** TODO Create a test WASM program and run it from the backend
 ** TODO Process a single HTTP request inside a WASM workload and return response
