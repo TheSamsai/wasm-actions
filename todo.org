@@ -39,6 +39,10 @@ https://medium.com/geekculture/webassembly-for-node-js-13ef6bec0a0
 https://rustwasm.github.io/docs/wasm-bindgen/examples/index.html
 Read --> Programming WebAssembly with Rust
 https://medium.com/@shyamsundarb/wasm-wasi-wagi-web-assembly-modules-in-rust-af7335e80160
-** TODO Set up a CI system that runs frontend and backend tests
+** DONE Create a basic WASI application in Rust
+:LOGBOOK:
+CLOCK: [2022-09-07 Wed 14:39]--[2022-09-07 Wed 15:20] =>  0:41
+:END:
 ** TODO Create a test WASM program and run it from the backend
+** TODO Set up a CI system that runs frontend and backend tests
 ** TODO Process a single HTTP request inside a WASM workload and return response
