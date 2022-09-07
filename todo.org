@@ -1,15 +1,17 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-09-05 ma 19:32]
-| Headline                             | Time   |      |
-|--------------------------------------+--------+------|
-| *Total time*                         | *2:14* |      |
-|--------------------------------------+--------+------|
-| WASM Actions                         | 2:14   |      |
-| \_  Set up development environment   |        | 0:56 |
-| \_  Define project goals             |        | 0:49 |
-| \_  Set up testing frameworks for... |        | 0:17 |
-| \_  Create initial README            |        | 0:12 |
+#+CAPTION: Clock summary at [2022-09-07 Wed 15:33]
+| Headline                                    | Time   |      |
+|---------------------------------------------+--------+------|
+| *Total time*                                | *4:32* |      |
+|---------------------------------------------+--------+------|
+| WASM Actions                                | 4:32   |      |
+| \_  Set up development environment          |        | 0:56 |
+| \_  Define project goals                    |        | 0:49 |
+| \_  Set up testing frameworks               |        | 0:17 |
+| \_  Create initial README                   |        | 0:12 |
+| \_  Investigate WASM support in Node        |        | 1:37 |
+| \_  Create a basic WASI application in Rust |        | 0:41 |
 #+END:
 
 ** DONE Set up development environment
@@ -21,7 +23,7 @@ CLOCK: [2022-09-03 la 16:00]--[2022-09-03 la 16:56] =>  0:56
 CLOCK: [2022-09-03 la 16:59]--[2022-09-03 la 17:48] =>  0:49
 :END:
 
-** DONE Set up testing frameworks for frontend and backend
+** DONE Set up testing frameworks
 :LOGBOOK:
 CLOCK: [2022-09-05 ma 19:00]--[2022-09-05 ma 19:17] =>  0:17
 :END:
