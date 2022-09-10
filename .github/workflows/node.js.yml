@@ -28,8 +28,10 @@ jobs:
     - name: Test backend
       run: |
         cd backend
+        yarn
         yarn test
     - name: Test frontend
       run: |
         cd frontend
+        yarn
         yarn test
