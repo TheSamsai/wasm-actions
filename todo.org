@@ -45,7 +45,10 @@ https://medium.com/@shyamsundarb/wasm-wasi-wagi-web-assembly-modules-in-rust-af7
 :LOGBOOK:
 CLOCK: [2022-09-07 Wed 14:39]--[2022-09-07 Wed 15:20] =>  0:41
 :END:
-** TODO Create a test WASM program and run it from the backend
+** DONE Create a test WASM program and run it from the backend
+:LOGBOOK:
+CLOCK: [2022-09-10 la 17:12]--[2022-09-10 la 18:49] =>  1:37
+:END:
 ** DONE Set up a CI system that runs frontend and backend tests
 :LOGBOOK:
 CLOCK: [2022-09-10 la 16:51]--[2022-09-10 la 17:10] =>  0:19
