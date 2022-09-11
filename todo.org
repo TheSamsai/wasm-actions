@@ -1,17 +1,19 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-09-07 Wed 15:33]
-| Headline                                    | Time   |      |
-|---------------------------------------------+--------+------|
-| *Total time*                                | *4:32* |      |
-|---------------------------------------------+--------+------|
-| WASM Actions                                | 4:32   |      |
-| \_  Set up development environment          |        | 0:56 |
-| \_  Define project goals                    |        | 0:49 |
-| \_  Set up testing frameworks               |        | 0:17 |
-| \_  Create initial README                   |        | 0:12 |
-| \_  Investigate WASM support in Node        |        | 1:37 |
-| \_  Create a basic WASI application in Rust |        | 0:41 |
+#+CAPTION: Clock summary at [2022-09-10 la 18:51]
+| Headline                                     | Time   |      |
+|----------------------------------------------+--------+------|
+| *Total time*                                 | *6:28* |      |
+|----------------------------------------------+--------+------|
+| WASM Actions                                 | 6:28   |      |
+| \_  Set up development environment           |        | 0:56 |
+| \_  Define project goals                     |        | 0:49 |
+| \_  Set up testing frameworks                |        | 0:17 |
+| \_  Create initial README                    |        | 0:12 |
+| \_  Investigate WASM support in Node         |        | 1:37 |
+| \_  Create a basic WASI application in Rust  |        | 0:41 |
+| \_  Create a test WASM program and run it... |        | 1:37 |
+| \_  Set up a CI system that runs frontend... |        | 0:19 |
 #+END:
 
 ** DONE Set up development environment
@@ -52,5 +54,9 @@ CLOCK: [2022-09-10 la 17:12]--[2022-09-10 la 18:49] =>  1:37
 ** DONE Set up a CI system that runs frontend and backend tests
 :LOGBOOK:
 CLOCK: [2022-09-10 la 16:51]--[2022-09-10 la 17:10] =>  0:19
+:END:
+** STRT Studied WebAssembly fundamentals
+:LOGBOOK:
+CLOCK: [2022-09-11 su 10:03]--[2022-09-11 su 13:03] =>  3:00
 :END:
 ** TODO Process a single HTTP request inside a WASM workload and return response
