@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-09-11 su 16:34]
+#+CAPTION: Clock summary at [2022-09-11 su 17:02]
 | Headline                                     | Time    |      |
 |----------------------------------------------+---------+------|
-| *Total time*                                 | *10:21* |      |
+| *Total time*                                 | *10:47* |      |
 |----------------------------------------------+---------+------|
-| WASM Actions                                 | 10:21   |      |
+| WASM Actions                                 | 10:47   |      |
 | \_  Set up development environment           |         | 0:56 |
 | \_  Define project goals                     |         | 0:49 |
 | \_  Set up testing frameworks                |         | 0:17 |
@@ -14,7 +14,7 @@
 | \_  Create a basic WASI application in Rust  |         | 0:41 |
 | \_  Create a test WASM program and run it... |         | 1:37 |
 | \_  Set up a CI system that runs frontend... |         | 0:19 |
-| \_  Studied WebAssembly fundamentals         |         | 3:00 |
+| \_  Studied WebAssembly fundamentals         |         | 3:26 |
 | \_  Process a single HTTP request inside...  |         | 0:53 |
 #+END:
 
