@@ -9,7 +9,7 @@ const execSync = require("child_process").spawnSync;
 
 const run_wasi = (file, args) => {
     const result = spawnSync(
-        "node", ["--no-warnings", "--experimental-wasi-unstable-preview1", "./src/wasi-process.mjs"].concat(args.map(v => v.toString())),
+        "node", ["--no-warnings", "--experimental-wasi-unstable-preview1", "./src/wasi-process.mjs", file].concat(args.map(v => v.toString())),
         {
             encoding: "utf8"
         }
