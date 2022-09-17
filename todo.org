@@ -66,3 +66,8 @@ CLOCK: [2022-09-11 su 10:03]--[2022-09-11 su 13:03] =>  3:00
 :LOGBOOK:
 CLOCK: [2022-09-11 su 15:39]--[2022-09-11 su 16:32] =>  0:53
 :END:
+
+** TODO Implement basic JWT authentication
+** TODO Select and set up a database
+** TODO Implement login on frontend
+** TODO Implement uploading a WASM module
