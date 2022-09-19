@@ -72,6 +72,10 @@ CLOCK: [2022-09-11 su 15:39]--[2022-09-11 su 16:32] =>  0:53
 :LOGBOOK:
 CLOCK: [2022-09-17 la 14:51]--[2022-09-17 la 16:19] =>  1:28
 :END:
+** STRT Add endpoints for register and login
+:LOGBOOK:
+CLOCK: [2022-09-19 ma 19:01]--[2022-09-19 ma 19:25] =>  0:24
+:END:
 ** TODO Select and set up a database
 ** TODO Implement login on frontend
 ** TODO Implement uploading a WASM module
