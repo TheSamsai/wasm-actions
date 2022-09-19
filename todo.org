@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-09-17 la 16:19]
+#+CAPTION: Clock summary at [2022-09-19 ma 19:26]
 | Headline                                     | Time    |      |
 |----------------------------------------------+---------+------|
-| *Total time*                                 | *12:15* |      |
+| *Total time*                                 | *12:39* |      |
 |----------------------------------------------+---------+------|
-| WASM Actions                                 | 12:15   |      |
+| WASM Actions                                 | 12:39   |      |
 | \_  Set up development environment           |         | 0:56 |
 | \_  Define project goals                     |         | 0:49 |
 | \_  Set up testing frameworks                |         | 0:17 |
@@ -17,6 +17,7 @@
 | \_  Studied WebAssembly fundamentals         |         | 3:26 |
 | \_  Process a single HTTP request inside...  |         | 0:53 |
 | \_  Implement basic JWT authentication       |         | 1:28 |
+| \_  Add endpoints for register and login     |         | 0:24 |
 #+END:
 
 ** DONE Set up development environment
@@ -72,7 +73,7 @@ CLOCK: [2022-09-11 su 15:39]--[2022-09-11 su 16:32] =>  0:53
 :LOGBOOK:
 CLOCK: [2022-09-17 la 14:51]--[2022-09-17 la 16:19] =>  1:28
 :END:
-** STRT Add endpoints for register and login
+** DONE Add endpoints for register and login
 :LOGBOOK:
 CLOCK: [2022-09-19 ma 19:01]--[2022-09-19 ma 19:25] =>  0:24
 :END:
