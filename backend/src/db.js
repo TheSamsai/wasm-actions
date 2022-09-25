@@ -1,17 +1,44 @@
 
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-const config = require('./config')
+const config = require('./config');
 
-const user_db_stub = {}
+const { MongoClient } = require('mongodb');
 
-const register_user = (username, password) => {
-    user_db_stub[username] = bcrypt.hashSync(password, 8);
+const client = new MongoClient("mongodb://127.0.0.1/");
+
+const db = client.db("wasmActions");
+
+const user_db_stub = {};
+
+const clear_db = async () => {
+    const users = db.collection("users");
+
+    await users.deleteMany({});
 }
 
-const login_user = (username, password) => {
-    const validPassword = bcrypt.compareSync(password, user_db_stub[username]);
+const disconnect_db = () => {
+    client.close();
+}
+
+const register_user = async (username, password) => {
+    const users = db.collection("users");
+    
+    const user = await users.insertOne({
+        username: username,
+        password: bcrypt.hashSync(password, 8)
+    });
+
+    return user;
+}
+
+const login_user = async (username, password) => {
+    const users = db.collection("users");
+
+    const user = await users.findOne({ username: username });
+
+    const validPassword = bcrypt.compareSync(password, user.password);
 
     if (!validPassword) {
         return false;
@@ -35,11 +62,15 @@ const verify_token = (token) => {
     }
 }
 
-const count_users = () => {
-    return Object.keys(user_db_stub).length;
+const count_users = async () => {
+    const users = db.collection("users");
+
+    return users.estimatedDocumentCount();
 }
 
 module.exports = {
+    clear_db,
+    disconnect_db,
     register_user,
     login_user,
     verify_token,
