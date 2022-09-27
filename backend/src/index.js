@@ -54,16 +54,16 @@ app.get('/hidden', verifiedUser, (req, res) => {
     });
 })
 
-app.post('/register', (req, res) => {
-    db.register_user(req.body.username, req.body.password);
+app.post('/register', async (req, res) => {
+    await db.register_user(req.body.username, req.body.password);
 
     res.json({
         "message": `Registered user ${req.body.username}`
     });
 })
 
-app.post('/login', (req, res) => {
-    const token = db.login_user(req.body.username, req.body.password);
+app.post('/login', async (req, res) => {
+    const token = await db.login_user(req.body.username, req.body.password);
 
     res.json({
         "token": token
