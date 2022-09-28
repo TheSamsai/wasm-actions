@@ -92,5 +92,9 @@ CLOCK: [2022-09-25 su 15:55]--[2022-09-25 su 16:00] =>  0:05
 :LOGBOOK:
 CLOCK: [2022-09-27 ti 16:35]--[2022-09-27 ti 18:13] =>  1:38
 :END:
-** TODO Set up a podman-compose file to help deployments
+** DONE Set up a podman-compose file to help deployments
+:LOGBOOK:
+CLOCK: [2022-09-28 ke 16:35]--[2022-09-28 ke 17:42] =>  1:07
+:END:
+** TODO Prototype frontend dashboard
 ** TODO Implement uploading a WASM module

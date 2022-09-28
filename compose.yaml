@@ -1,0 +1,19 @@
+services:
+  frontend:
+    build: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+  backend:
+    build: backend
+    environment:
+      - MONGODB=mongodb://mongodb:27017
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
