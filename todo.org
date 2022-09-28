@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-09-27 ti 18:13]
+#+CAPTION: Clock summary at [2022-09-28 ke 17:43]
 | Headline                                     | Time    |      |
 |----------------------------------------------+---------+------|
-| *Total time*                                 | *16:57* |      |
+| *Total time*                                 | *18:04* |      |
 |----------------------------------------------+---------+------|
-| WASM Actions                                 | 16:57   |      |
+| WASM Actions                                 | 18:04   |      |
 | \_  Set up development environment           |         | 0:56 |
 | \_  Define project goals                     |         | 0:49 |
 | \_  Set up testing frameworks                |         | 0:17 |
@@ -21,6 +21,7 @@
 | \_  Select and set up a database             |         | 2:35 |
 | \_  Find a way to run DB tests in CI         |         | 0:05 |
 | \_  Implement login on frontend              |         | 1:38 |
+| \_  Set up a podman-compose file to help...  |         | 1:07 |
 #+END:
 
 ** DONE Set up development environment
