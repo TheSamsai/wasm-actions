@@ -97,5 +97,9 @@ CLOCK: [2022-09-27 ti 16:35]--[2022-09-27 ti 18:13] =>  1:38
 :LOGBOOK:
 CLOCK: [2022-09-28 ke 16:35]--[2022-09-28 ke 17:42] =>  1:07
 :END:
+** DONE Fix CI
+:LOGBOOK:
+CLOCK: [2022-09-28 ke 17:43]--[2022-09-28 ke 17:53] =>  0:10
+:END:
 ** TODO Prototype frontend dashboard
 ** TODO Implement uploading a WASM module

@@ -6,6 +6,8 @@ const config = require('./config');
 
 const { MongoClient } = require('mongodb');
 
+console.log(config.MONGODB)
+
 const client = new MongoClient(config.MONGODB);
 
 const db = client.db("wasmActions");
