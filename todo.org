@@ -108,6 +108,11 @@ CLOCK: [2022-09-28 ke 17:43]--[2022-09-28 ke 17:53] =>  0:10
 CLOCK: [2022-10-01 la 14:15]--[2022-10-01 la 16:13] =>  1:58
 CLOCK: [2022-10-01 la 09:55]--[2022-10-01 la 12:12] =>  2:17
 :END:
+** STRT Clear frontend tests
+:LOGBOOK:
+CLOCK: [2022-10-01 la 16:15]
+:END:
 ** TODO Fix null issue in backend login check
 ** TODO Development environment and tool maintenance
 ** TODO Implement uploading a WASM module
+** TODO Write frontend tests
