@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-10-01 la 12:12]
+#+CAPTION: Clock summary at [2022-10-01 la 16:13]
 | Headline                                     | Time    |      |
 |----------------------------------------------+---------+------|
-| *Total time*                                 | *20:31* |      |
+| *Total time*                                 | *22:29* |      |
 |----------------------------------------------+---------+------|
-| WASM Actions                                 | 20:31   |      |
+| WASM Actions                                 | 22:29   |      |
 | \_  Set up development environment           |         | 0:56 |
 | \_  Define project goals                     |         | 0:49 |
 | \_  Set up testing frameworks                |         | 0:17 |
@@ -23,7 +23,7 @@
 | \_  Implement login on frontend              |         | 1:38 |
 | \_  Set up a podman-compose file to help...  |         | 1:07 |
 | \_  Fix CI                                   |         | 0:10 |
-| \_  Prototype frontend dashboard             |         | 2:17 |
+| \_  Prototype frontend dashboard             |         | 4:15 |
 #+END:
 
 ** DONE Set up development environment
@@ -103,9 +103,9 @@ CLOCK: [2022-09-28 ke 16:35]--[2022-09-28 ke 17:42] =>  1:07
 :LOGBOOK:
 CLOCK: [2022-09-28 ke 17:43]--[2022-09-28 ke 17:53] =>  0:10
 :END:
-** STRT Prototype frontend dashboard
+** DONE Prototype frontend dashboard
 :LOGBOOK:
-CLOCK: [2022-10-01 la 14:15]
+CLOCK: [2022-10-01 la 14:15]--[2022-10-01 la 16:13] =>  1:58
 CLOCK: [2022-10-01 la 09:55]--[2022-10-01 la 12:12] =>  2:17
 :END:
 ** TODO Fix null issue in backend login check
