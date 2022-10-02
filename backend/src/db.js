@@ -34,6 +34,10 @@ const register_user = async (username, password) => {
 }
 
 const login_user = async (username, password) => {
+    if (!username || !password) {
+        return false;
+    }
+
     const users = db.collection("users");
 
     const user = await users.findOne({ username: username });

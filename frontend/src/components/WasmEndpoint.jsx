@@ -5,8 +5,33 @@ const WasmEndpoint = () => {
     
     const [shown, setShown] = useState(false);
 
+    const [selectedFile, setSelectedFile] = useState(null);
+
     const handleToggleShown = () => {
         setShown(!shown);
+    }
+
+    const onFileChange = (event) => {
+        console.log(event.target.files[0])
+        setSelectedFile(event.target.files[0]);
+    }
+
+    const onFileUpload = async () => {
+        const formData = new FormData();
+        formData.append(
+            "wasmFile",
+            selectedFile,
+            selectedFile.name
+        );
+
+        console.log('Begin upload...');
+
+        await fetch('http://127.0.0.1:3001/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        console.log('Uploaded!');
     }
 
     return (
@@ -19,7 +44,7 @@ const WasmEndpoint = () => {
 
               <div class="capability-options">
                 <label for="wasm-module">Update WASM:</label>
-                <input type="file" id="wasm-module" name="wasm-module"></input> 
+                <input type="file" id="wasmFile" name="wasmFile" onChange={onFileChange}></input> 
               </div>
 
               <div>
@@ -42,7 +67,7 @@ const WasmEndpoint = () => {
 
               <div class="endpoint-management-buttons">
                 <button style={{backgroundColor: "red"}}>Delete</button>
-                <button style={{backgroundColor: "green"}}>Apply</button>
+                <button onClick={onFileUpload} style={{backgroundColor: "green"}}>Apply</button>
               </div>
             </div>
             : <div></div> }

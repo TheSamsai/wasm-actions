@@ -33,6 +33,18 @@ test("DB incorrect password fails login", async () => {
     expect(await db.login_user("username", "not_password")).toBeFalsy();
 });
 
+test("DB null password fails login", async () => {
+    await db.register_user("username", "password");
+
+    expect(await db.login_user("username", null)).toBeFalsy();
+});
+
+test("DB null username fails login", async () => {
+    await db.register_user("username", "password");
+
+    expect(await db.login_user(null, "password")).toBeFalsy();
+});
+
 test("DB can verify a JWT token", async () => {
     await db.register_user("username", "password");
 
