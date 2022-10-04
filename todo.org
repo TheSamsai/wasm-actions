@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-10-02 su 17:02]
+#+CAPTION: Clock summary at [2022-10-04 ti 15:32]
 | Headline                                     | Time      |      |
 |----------------------------------------------+-----------+------|
-| *Total time*                                 | *1d 1:35* |      |
+| *Total time*                                 | *1d 3:37* |      |
 |----------------------------------------------+-----------+------|
-| WASM Actions                                 | 1d 1:35   |      |
+| WASM Actions                                 | 1d 3:37   |      |
 | \_  Set up development environment           |           | 0:56 |
 | \_  Define project goals                     |           | 0:49 |
 | \_  Set up testing frameworks                |           | 0:17 |
@@ -28,6 +28,7 @@
 | \_  Fix null issue in backend login check    |           | 0:28 |
 | \_  Development environment and tool...      |           | 1:13 |
 | \_  Implement uploading a WASM module        |           | 1:23 |
+| \_  Investigate WasmEdge                     |           | 2:02 |
 #+END:
 
 ** DONE Set up development environment
@@ -130,3 +131,8 @@ CLOCK: [2022-10-02 su 09:57]--[2022-10-02 su 11:10] =>  1:13
 CLOCK: [2022-10-02 su 15:39]--[2022-10-02 su 17:02] =>  1:23
 :END:
 ** TODO Write frontend tests
+** DONE Investigate WasmEdge
+:LOGBOOK:
+CLOCK: [2022-10-04 ti 12:30]--[2022-10-04 ti 14:32] =>  2:02
+:END:
+https://wasmedge.org/
