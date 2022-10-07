@@ -1,4 +1,11 @@
-FROM node:18-alpine
+FROM fedora:36
+
+RUN dnf upgrade -y && dnf install nodejs yarnpkg wget -y
+
+RUN cd /tmp/ && \
+    wget https://github.com/WasmEdge/WasmEdge/releases/download/0.11.1/WasmEdge-0.11.1-manylinux2014_x86_64.rpm && \
+    sudo dnf install WasmEdge-0.11.1-manylinux2014_x86_64.rpm -y && \
+    rm WasmEdge-0.11.1-manylinux2014_x86_64.rpm
 
 COPY . /app
 WORKDIR /app

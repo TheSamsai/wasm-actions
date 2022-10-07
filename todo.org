@@ -136,3 +136,8 @@ CLOCK: [2022-10-02 su 15:39]--[2022-10-02 su 17:02] =>  1:23
 CLOCK: [2022-10-04 ti 12:30]--[2022-10-04 ti 14:32] =>  2:02
 :END:
 https://wasmedge.org/
+
+** STRT Replace Node WASI runner with WasmEdge
+:LOGBOOK:
+CLOCK: [2022-10-07 Fri 13:16]
+:END:
