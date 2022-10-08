@@ -31,6 +31,11 @@ jobs:
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
 
+    - name: Install WasmEdge
+      run: |
+        curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash
+        source $HOME/.wasmedge/env
+
     - name: Test backend
       run: |
         cd backend
