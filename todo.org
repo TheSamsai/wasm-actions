@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-10-04 ti 15:32]
+#+CAPTION: Clock summary at [2022-10-08 la 15:57]
 | Headline                                     | Time      |      |
 |----------------------------------------------+-----------+------|
-| *Total time*                                 | *1d 3:37* |      |
+| *Total time*                                 | *1d 8:36* |      |
 |----------------------------------------------+-----------+------|
-| WASM Actions                                 | 1d 3:37   |      |
+| WASM Actions                                 | 1d 8:36   |      |
 | \_  Set up development environment           |           | 0:56 |
 | \_  Define project goals                     |           | 0:49 |
 | \_  Set up testing frameworks                |           | 0:17 |
@@ -29,6 +29,7 @@
 | \_  Development environment and tool...      |           | 1:13 |
 | \_  Implement uploading a WASM module        |           | 1:23 |
 | \_  Investigate WasmEdge                     |           | 2:02 |
+| \_  Replace Node WASI runner with WasmEdge   |           | 4:59 |
 #+END:
 
 ** DONE Set up development environment
@@ -137,7 +138,10 @@ CLOCK: [2022-10-04 ti 12:30]--[2022-10-04 ti 14:32] =>  2:02
 :END:
 https://wasmedge.org/
 
-** STRT Replace Node WASI runner with WasmEdge
+** DONE Replace Node WASI runner with WasmEdge
 :LOGBOOK:
-CLOCK: [2022-10-07 Fri 13:16]
+CLOCK: [2022-10-08 la 13:18]--[2022-10-08 la 15:57] =>  2:39
+CLOCK: [2022-10-07 Fri 13:16]--[2022-10-07 pe 15:36] =>  2:20
 :END:
+
+** TODO Implement ability to select the WASM workload
