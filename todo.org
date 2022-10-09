@@ -1,35 +1,38 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-10-08 la 15:57]
-| Headline                                     | Time      |      |
-|----------------------------------------------+-----------+------|
-| *Total time*                                 | *1d 8:36* |      |
-|----------------------------------------------+-----------+------|
-| WASM Actions                                 | 1d 8:36   |      |
-| \_  Set up development environment           |           | 0:56 |
-| \_  Define project goals                     |           | 0:49 |
-| \_  Set up testing frameworks                |           | 0:17 |
-| \_  Create initial README                    |           | 0:12 |
-| \_  Investigate WASM support in Node         |           | 1:37 |
-| \_  Create a basic WASI application in Rust  |           | 0:41 |
-| \_  Create a test WASM program and run it... |           | 1:37 |
-| \_  Set up a CI system that runs frontend... |           | 0:19 |
-| \_  Studied WebAssembly fundamentals         |           | 3:26 |
-| \_  Process a single HTTP request inside...  |           | 0:53 |
-| \_  Implement basic JWT authentication       |           | 1:28 |
-| \_  Add endpoints for register and login     |           | 0:24 |
-| \_  Select and set up a database             |           | 2:35 |
-| \_  Find a way to run DB tests in CI         |           | 0:05 |
-| \_  Implement login on frontend              |           | 1:38 |
-| \_  Set up a podman-compose file to help...  |           | 1:07 |
-| \_  Fix CI                                   |           | 0:10 |
-| \_  Prototype frontend dashboard             |           | 4:15 |
-| \_  Clear frontend tests                     |           | 0:02 |
-| \_  Fix null issue in backend login check    |           | 0:28 |
-| \_  Development environment and tool...      |           | 1:13 |
-| \_  Implement uploading a WASM module        |           | 1:23 |
-| \_  Investigate WasmEdge                     |           | 2:02 |
-| \_  Replace Node WASI runner with WasmEdge   |           | 4:59 |
+#+CAPTION: Clock summary at [2022-10-09 su 16:39]
+| Headline                                     | Time       |      |
+|----------------------------------------------+------------+------|
+| *Total time*                                 | *1d 12:24* |      |
+|----------------------------------------------+------------+------|
+| WASM Actions                                 | 1d 12:24   |      |
+| \_  Set up development environment           |            | 0:56 |
+| \_  Define project goals                     |            | 0:49 |
+| \_  Set up testing frameworks                |            | 0:17 |
+| \_  Create initial README                    |            | 0:12 |
+| \_  Investigate WASM support in Node         |            | 1:37 |
+| \_  Create a basic WASI application in Rust  |            | 0:41 |
+| \_  Create a test WASM program and run it... |            | 1:37 |
+| \_  Set up a CI system that runs frontend... |            | 0:19 |
+| \_  Studied WebAssembly fundamentals         |            | 3:26 |
+| \_  Process a single HTTP request inside...  |            | 0:53 |
+| \_  Implement basic JWT authentication       |            | 1:28 |
+| \_  Add endpoints for register and login     |            | 0:24 |
+| \_  Select and set up a database             |            | 2:35 |
+| \_  Find a way to run DB tests in CI         |            | 0:05 |
+| \_  Implement login on frontend              |            | 1:38 |
+| \_  Set up a podman-compose file to help...  |            | 1:07 |
+| \_  Fix CI                                   |            | 0:10 |
+| \_  Prototype frontend dashboard             |            | 4:15 |
+| \_  Clear frontend tests                     |            | 0:02 |
+| \_  Fix null issue in backend login check    |            | 0:28 |
+| \_  Development environment and tool...      |            | 1:13 |
+| \_  Implement uploading a WASM module        |            | 1:23 |
+| \_  Investigate WasmEdge                     |            | 2:02 |
+| \_  Replace Node WASI runner with WasmEdge   |            | 4:59 |
+| \_  Fix CI tests                             |            | 0:12 |
+| \_  Implement ability to select the WASM...  |            | 1:17 |
+| \_  Pass all CGI details to the WASM...      |            | 2:19 |
 #+END:
 
 ** DONE Set up development environment
@@ -148,4 +151,15 @@ CLOCK: [2022-10-07 Fri 13:16]--[2022-10-07 pe 15:36] =>  2:20
 :LOGBOOK:
 CLOCK: [2022-10-08 la 16:13]--[2022-10-08 la 16:25] =>  0:12
 :END:
-** TODO Implement ability to select the WASM workload
+** DONE Implement ability to select the WASM workload
+:LOGBOOK:
+CLOCK: [2022-10-09 su 13:03]--[2022-10-09 su 14:20] =>  1:17
+:END:
+** STRT Pass all CGI details to the WASM workload
+:LOGBOOK:
+CLOCK: [2022-10-09 su 14:20]--[2022-10-09 su 16:39] =>  2:19
+:END:
+*** TODO REQUEST_METHOD
+*** TODO PATH_INFO
+*** TODO QUERY_STRING
+*** DONE Request body

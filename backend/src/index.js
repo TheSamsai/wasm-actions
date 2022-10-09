@@ -22,7 +22,20 @@ const wasiRunnerMiddleware = function (req, res, next) {
     console.log(req.path);
 
     if (req.path.startsWith("/wasm/")) {
-        const response = wasi_runner.run_wasi("hello-cgi.wasm", []);
+        const regex = /wasm\/(.*)\.wasm/g;
+
+        const matches = req.path.match(regex);
+
+        if (!matches) {
+            res.socket.end(`HTTP/1.1 404 File Not Found\n$`);
+            return;
+        }
+
+        const workload_name = matches[0].replace("wasm/", "");
+
+        console.log(`Running: ${workload_name}`);
+
+        const response = wasi_runner.run_wasi(workload_name, []);
 
         res.socket.end(`HTTP/1.1 200 OK\n${response}`);
 
