@@ -8,7 +8,16 @@ fn main() {
     let mut response = EmptyResponse::new(200)
         .with_content_type("text/plain");
 
-    write!(&mut response, "Hello, world!");
+    let mut body_string = String::new();
+
+    if let Body::Some(vec) = req.body() {
+        body_string = String::from_utf8(vec.clone()).unwrap();
+    }
+
+    writeln!(&mut response, "METHOD: {:?}", req.var("METHOD"));
+    writeln!(&mut response, "PATH_INFO: {:?}", req.var("PATH_INFO"));
+    writeln!(&mut response, "QUERY_STRING: {:?}", req.var("QUERY_STRING"));
+    writeln!(&mut response, "BODY: {:?}", body_string);
 
     response.respond();
 }

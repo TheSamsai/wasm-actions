@@ -4,7 +4,7 @@
 sudo dnf copr enable robot/rust-analyzer
 
 # System tools required
-sudo dnf install nodejs yarnpkg rust-analyzer
+sudo dnf install nodejs yarnpkg rust-analyzer cargo rust-std-static-wasm32-wasi
 
 # JS dependencies (for LSP)
 sudo npm install -g typescript-language-server typescript
