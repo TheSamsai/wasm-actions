@@ -5,6 +5,8 @@ const cors = require('cors')
 
 const fileUpload = require('express-fileupload');
 
+const querystring = require('node:querystring')
+
 const wasi_runner = require('./wasi-runner');
 
 const db = require('./db')
@@ -35,7 +37,13 @@ const wasiRunnerMiddleware = function (req, res, next) {
 
         console.log(`Running: ${workload_name}`);
 
-        const response = wasi_runner.run_wasi(workload_name, []);
+        const response = wasi_runner.run_wasi(workload_name, {
+            method: req.method,
+            stdin: JSON.stringify(req.body),
+            path_info: req.path,
+            query_string: querystring.stringify(req.query),
+            args: []
+        });
 
         res.socket.end(`HTTP/1.1 200 OK\n${response}`);
 

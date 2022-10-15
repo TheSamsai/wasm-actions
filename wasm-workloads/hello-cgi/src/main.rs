@@ -19,5 +19,11 @@ fn main() {
     writeln!(&mut response, "QUERY_STRING: {:?}", req.var("QUERY_STRING"));
     writeln!(&mut response, "BODY: {:?}", body_string);
 
+    if let Query::Some(map) = req.query() {
+        map.iter().for_each(|(k, v)|  {
+            writeln!(&mut response, "{}: {}", k, v);
+        })
+    }
+
     response.respond();
 }
