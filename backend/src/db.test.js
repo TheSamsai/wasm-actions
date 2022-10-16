@@ -14,51 +14,77 @@ test("DB test suite runs", () => {
     expect(1).toBe(1);
 });
 
+describe("User DB", () => {
+    
+    test("DB can register user", async () => {
+        await db.register_user("username", "password");
 
-test("DB can register user", async () => {
-    await db.register_user("username", "password");
+        expect(await db.count_users()).toBe(1);
+    });
 
-    expect(await db.count_users()).toBe(1);
-});
+    test("DB can login registered user", async () => {
+        await db.register_user("username", "password");
 
-test("DB can login registered user", async () => {
-    await db.register_user("username", "password");
+        expect(await db.login_user("username", "password")).toBeTruthy();
+    });
 
-    expect(await db.login_user("username", "password")).toBeTruthy();
-});
+    test("DB incorrect password fails login", async () => {
+        await db.register_user("username", "password");
 
-test("DB incorrect password fails login", async () => {
-    await db.register_user("username", "password");
+        expect(await db.login_user("username", "not_password")).toBeFalsy();
+    });
 
-    expect(await db.login_user("username", "not_password")).toBeFalsy();
-});
+    test("DB null password fails login", async () => {
+        await db.register_user("username", "password");
 
-test("DB null password fails login", async () => {
-    await db.register_user("username", "password");
+        expect(await db.login_user("username", null)).toBeFalsy();
+    });
 
-    expect(await db.login_user("username", null)).toBeFalsy();
-});
+    test("DB null username fails login", async () => {
+        await db.register_user("username", "password");
 
-test("DB null username fails login", async () => {
-    await db.register_user("username", "password");
+        expect(await db.login_user(null, "password")).toBeFalsy();
+    });
 
-    expect(await db.login_user(null, "password")).toBeFalsy();
-});
+    test("DB can verify a JWT token", async () => {
+        await db.register_user("username", "password");
 
-test("DB can verify a JWT token", async () => {
-    await db.register_user("username", "password");
+        const token = await db.login_user("username", "password");
 
-    const token = await db.login_user("username", "password");
+        expect(db.verify_token(token)).toBeTruthy();
 
-    expect(db.verify_token(token)).toBeTruthy();
+        expect(db.verify_token(token).username).toStrictEqual("username");
+    });
 
-    expect(db.verify_token(token).username).toStrictEqual("username");
-});
+    test("DB invalid token is not verified", async () => {
+        await db.register_user("username", "password");
 
-test("DB invalid token is not verified", async () => {
-    await db.register_user("username", "password");
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF\ _xSJyQQ";
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF\ _xSJyQQ";
+        expect(db.verify_token(token)).toBeFalsy();
+    });
+})
 
-    expect(db.verify_token(token)).toBeFalsy();
-});
+describe("WASM actions DB", () => {
+    beforeAll(async () => {
+        await db.register_user("user", "password");
+    });
+
+    test("DB WASM action can be created", async () => {
+        await db.create_action("user", "hello-cgi.wasm", {});
+
+        const created_actions = await db.get_actions("user");
+
+        expect((await created_actions.toArray()).length).toEqual(1);
+    })
+
+    test("DB action document contains an ID", async () => {
+        await db.create_action("user", "hello-cgi.wasm", {});
+
+        const created_actions = await db.get_actions("user");
+
+        created_actions.forEach(action => {
+            expect(action._id).toBeTruthy();
+        });
+    })
+})

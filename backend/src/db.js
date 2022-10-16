@@ -16,6 +16,10 @@ const clear_db = async () => {
     const users = db.collection("users");
 
     await users.deleteMany({});
+
+    const actions = db.collection("actions");
+
+    await actions.deleteMany({});
 }
 
 const disconnect_db = () => {
@@ -72,11 +76,32 @@ const count_users = async () => {
     return users.estimatedDocumentCount();
 }
 
+const create_action = async (username, filename, params) => {
+    const actions = db.collection("actions");
+
+    const action = await actions.insertOne({
+        owner: username,
+        filename: filename,
+        params
+    });
+
+    return action;
+}
+
+const get_actions = async (username) => {
+    const actions = db.collection("actions");
+
+    return actions.find({ owner: username });
+}
+
 module.exports = {
     clear_db,
     disconnect_db,
     register_user,
     login_user,
     verify_token,
-    count_users
+    count_users,
+
+    create_action,
+    get_actions
 }
