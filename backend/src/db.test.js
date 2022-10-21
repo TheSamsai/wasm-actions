@@ -73,7 +73,7 @@ describe("WASM actions DB", () => {
     test("DB WASM action can be created", async () => {
         await db.create_action("user", "hello-cgi.wasm", {});
 
-        const created_actions = await db.get_actions("user");
+        const created_actions = await db.get_all_actions("user");
 
         expect((await created_actions.toArray()).length).toEqual(1);
     })
@@ -81,10 +81,47 @@ describe("WASM actions DB", () => {
     test("DB action document contains an ID", async () => {
         await db.create_action("user", "hello-cgi.wasm", {});
 
-        const created_actions = await db.get_actions("user");
+        const created_actions = await db.get_all_actions("user");
 
         created_actions.forEach(action => {
             expect(action._id).toBeTruthy();
         });
+    })
+
+    test("DB action can be fetched by ID", async () => {
+        const created_action = await db.create_action("user", "hello-cgi.wasm", {});
+
+        const same_action = await db.get_action(created_action.insertedId);
+
+        expect(same_action).toStrictEqual({
+            _id: created_action.insertedId,
+            filename: "hello-cgi.wasm",
+            owner: "user",
+            params: {}
+        });
+    })
+
+    test("DB action can be updated", async () => {
+        const created_action = await db.create_action("user", "hello-cgi.wasm", {});
+
+        const same_action = await db.get_action(created_action.insertedId);
+
+        same_action.params = { fsPaths: ["/tmp"]};
+
+        await db.update_action(same_action);
+
+        const updated_action = await db.get_action(same_action._id);
+
+        expect(updated_action).toStrictEqual(same_action);
+    })
+
+    test("DB action can be deleted", async () => {
+        const created_action = await db.create_action("user", "hello-cgi.wasm", {});
+
+        await db.delete_action(created_action.insertedId);
+
+        const actions = await db.get_all_actions("user");
+
+        expect((await actions.toArray()).length).toEqual(0);
     })
 })

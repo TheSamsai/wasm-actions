@@ -88,10 +88,30 @@ const create_action = async (username, filename, params) => {
     return action;
 }
 
-const get_actions = async (username) => {
+const get_all_actions = async (username) => {
     const actions = db.collection("actions");
 
     return actions.find({ owner: username });
+}
+
+const get_action = async (id) => {
+    const actions = db.collection("actions");
+
+    return await actions.findOne({ _id: id });
+}
+
+const update_action = async (action) => {
+    const actions = db.collection("actions");
+
+    return await actions.replaceOne({ _id: action._id}, action);
+}
+
+const delete_action = async (id) => {
+    const actions = db.collection("actions");
+
+    await actions.deleteOne({
+        _id: id
+    });
 }
 
 module.exports = {
@@ -103,5 +123,8 @@ module.exports = {
     count_users,
 
     create_action,
-    get_actions
+    get_all_actions,
+    get_action,
+    update_action,
+    delete_action
 }
