@@ -124,6 +124,23 @@ app.post('/login', async (req, res) => {
     });
 })
 
+app.get('/actions', verifiedUser, async (req, res) => {
+    const actions = await (await db.get_all_actions(req.user.username)).toArray();
+
+    console.log(actions);
+
+    res.json(actions);
+})
+
+app.post('/actions', verifiedUser, async (req, res) => {
+    await db.create_action(req.user.username, req.body.filename, req.body.params);
+    
+    const actions = await (await db.get_all_actions(req.user.username)).toArray();
+    console.log(actions);
+
+    res.json(actions);
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })

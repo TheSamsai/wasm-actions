@@ -171,5 +171,10 @@ CLOCK: [2022-10-09 su 14:20]--[2022-10-09 su 16:39] =>  2:19
 CLOCK: [2022-10-21 Fri 12:29]--[2022-10-21 Fri 13:58] =>  1:29
 CLOCK: [2022-10-16 su 15:05]--[2022-10-16 su 17:11] =>  2:06
 :END:
-** TODO Fetch actions on the frontend and implement management interfaces
+** STRT Create endpoints to access Actions
+:LOGBOOK:
+CLOCK: [2022-10-21 Fri 14:05]--[2022-10-21 Fri 14:46] =>  0:41
+:END:
 ** TODO Implement user access control
+*** TODO Disallow recreating an account
+** TODO Better sessions management

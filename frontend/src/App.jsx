@@ -24,7 +24,7 @@ function App() {
               <header className="App-header">
               <Routes>
                 <Route path="/login" element={<Login setUser={setUser} />} />
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home user={user}/>} />
               </Routes>
               </header>
             </Router>

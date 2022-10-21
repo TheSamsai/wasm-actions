@@ -3,13 +3,14 @@ import WasmEndpoint from './WasmEndpoint'
 
 const CreateEndpointForm = (props) => {
     const {
-        closeForm
+        closeForm,
+        user
     } = props;
 
     return (
         <div class="create-endpoint-background">
           <div class="create-endpoint-form">
-            <WasmEndpoint/>
+            <WasmEndpoint user={user}/>
 
             <button onClick={closeForm}>Close</button>
           </div>

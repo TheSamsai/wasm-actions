@@ -1,21 +1,23 @@
 
-import logo from '../logo.svg';
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
-import WasmEndpoint from './WasmEndpoint'
+import { get_actions } from '../services/actions';
 
-import CreateEndpointForm from './CreateEndpointForm'
+import WasmEndpoint from './WasmEndpoint';
+import CreateEndpointForm from './CreateEndpointForm';
 
-const Home = () => {
+const Home = (props) => {
+    const { user } = props;
+
     const text = "Hello, wasmverse!";
 
-    const endpoints = [1,1,1,1,1];
+    const [endpoints, setEndpoints] = useState([]);
 
-    const [createForm, setCreateForm] = useState(null)
+    const [createForm, setCreateForm] = useState(null);
 
     const handleClickCreate = () => {
-        setCreateForm(<CreateEndpointForm closeForm={closeCreateForm}/>)
+        setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm}/>);
     }
 
     const closeCreateForm = () => {
@@ -23,9 +25,37 @@ const Home = () => {
         setCreateForm(null);
     }
 
+    useEffect(() => {
+        const fetchEndpoints = async () => {
+            const newEndpoints = await get_actions(user);
+
+            console.log(newEndpoints);
+
+            setEndpoints(newEndpoints);
+        }
+
+        if (user) {
+            fetchEndpoints();
+        }
+    }, [])
+
+    if (!user) {
+        return (
+            <div>
+              <h1>Please login first</h1>
+            </div>
+        )
+    }
+
+    console.log(user.username);
+
     return (
         <div>
-          <h1>WASM Endpoints</h1>
+          <h1>WASM Actions</h1>
+
+          <p>Welcome, {user.username}!</p>
+
+          <h2>WASM Endpoints</h2>
 
           <button onClick={handleClickCreate}>Create a new endpoint</button>
 
@@ -34,7 +64,7 @@ const Home = () => {
           <ul>
             { endpoints.map(e => {
                 return (
-                    <li><WasmEndpoint/></li>
+                    <li><WasmEndpoint endpoint={e}/></li>
                 )
             })}
           </ul>

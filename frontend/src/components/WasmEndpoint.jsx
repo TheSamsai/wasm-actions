@@ -1,7 +1,10 @@
 
 import { useState } from 'react'
 
-const WasmEndpoint = () => {
+import { create_action } from '../services/actions';
+
+const WasmEndpoint = (props) => {
+    const { user, endpoint } = props;
     
     const [shown, setShown] = useState(false);
 
@@ -16,19 +19,27 @@ const WasmEndpoint = () => {
         setSelectedFile(event.target.files[0]);
     }
 
-    const onFileUpload = async () => {
-        const formData = new FormData();
-        formData.append(
-            "wasmFile",
-            selectedFile,
-            selectedFile.name
-        );
+    const applyChanges = async () => {
+        // const formData = new FormData();
+        // formData.append(
+        //     "wasmFile",
+        //     selectedFile,
+        //     selectedFile.name
+        // );
 
-        console.log('Begin upload...');
+        // console.log('Begin upload...');
 
-        await fetch('http://127.0.0.1:3001/upload', {
-            method: 'POST',
-            body: formData
+        // await fetch('http://127.0.0.1:3001/upload', {
+        //     method: 'POST',
+        //     body: formData
+        // });
+
+        console.log("DO STUFF!");
+
+        await create_action(user, {
+            filename: "hello-cgi.wasm",
+            owner: user.username,
+            params: {}
         });
 
         console.log('Uploaded!');
@@ -36,7 +47,7 @@ const WasmEndpoint = () => {
 
     return (
         <div>
-          <h2>[Example endpoint] <button onClick={handleToggleShown}>Toggle</button></h2>
+          <h2>{endpoint.filename} <button onClick={handleToggleShown}>Toggle</button></h2>
 
           { shown ?
             <div>
@@ -67,7 +78,7 @@ const WasmEndpoint = () => {
 
               <div class="endpoint-management-buttons">
                 <button style={{backgroundColor: "red"}}>Delete</button>
-                <button onClick={onFileUpload} style={{backgroundColor: "green"}}>Apply</button>
+                <button onClick={applyChanges} style={{backgroundColor: "green"}}>Apply</button>
               </div>
             </div>
             : <div></div> }
