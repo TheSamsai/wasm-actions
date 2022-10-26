@@ -141,6 +141,44 @@ app.post('/actions', verifiedUser, async (req, res) => {
     res.json(actions);
 })
 
+app.put('/actions/:actionId', verifiedUser, async (req, res) => {
+    const oldAction = await db.get_action(req.params.actionId);
+
+    if (oldAction.owner === req.user.username) {
+        await db.update_action(req.body);
+
+        const actions = await (await db.get_all_actions(req.user.username)).toArray();
+        console.log(actions);
+
+        res.json(actions);
+    } else {
+        res.status(403).json({
+            "error": "this resource is not owned by you"
+        })
+    }
+})
+
+app.delete('/actions/:actionId', verifiedUser, async (req, res) => {
+    console.log(req.params.actionId);
+    
+    const oldAction = await db.get_action(req.params.actionId);
+
+    console.log(oldAction);
+
+    if (oldAction.owner === req.user.username) {
+        await db.delete_action(req.params.actionId);
+
+        const actions = await (await db.get_all_actions(req.user.username)).toArray();
+        console.log(actions);
+
+        res.json(actions);
+    } else {
+        res.status(403).json({
+            "error": "this resource is not owned by you"
+        })
+    }
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })

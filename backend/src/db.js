@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const config = require('./config');
 
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 const client = new MongoClient(config.MONGODB);
 
@@ -95,9 +95,11 @@ const get_all_actions = async (username) => {
 }
 
 const get_action = async (id) => {
+    const oid = ObjectId(id);
+
     const actions = db.collection("actions");
 
-    return await actions.findOne({ _id: id });
+    return await actions.findOne({ _id: oid });
 }
 
 const update_action = async (action) => {
@@ -107,11 +109,15 @@ const update_action = async (action) => {
 }
 
 const delete_action = async (id) => {
+    const oid = ObjectId(id);
+
     const actions = db.collection("actions");
 
-    await actions.deleteOne({
-        _id: id
+    const result = await actions.deleteOne({
+        _id: oid
     });
+
+    console.log(result);
 }
 
 module.exports = {

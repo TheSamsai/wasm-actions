@@ -173,6 +173,7 @@ CLOCK: [2022-10-16 su 15:05]--[2022-10-16 su 17:11] =>  2:06
 :END:
 ** STRT Create endpoints to access Actions
 :LOGBOOK:
+CLOCK: [2022-10-26 Wed 11:02]--[2022-10-26 Wed 11:49] =>  0:47
 CLOCK: [2022-10-21 Fri 14:05]--[2022-10-21 Fri 14:46] =>  0:41
 :END:
 ** DONE Create a proper form for uploading Actions

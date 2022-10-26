@@ -26,7 +26,21 @@ const create_action = async (user, action) => {
     return await res.json()
 }
 
+const delete_action = async (user, action) => {
+    const res = await fetch(`${BASE_URL}/actions/${action._id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`
+        },
+        // body: JSON.stringify(action)
+    });
+
+    return await res.json()
+}
+
 export {
     get_actions,
-    create_action
+    create_action,
+    delete_action
 }

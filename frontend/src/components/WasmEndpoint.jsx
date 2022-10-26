@@ -1,10 +1,10 @@
 
 import { useState } from 'react'
 
-import { create_action } from '../services/actions';
+import { delete_action } from '../services/actions';
 
 const WasmEndpoint = (props) => {
-    const { user, endpoint } = props;
+    const { user, endpoint, setEndpoints } = props;
     
     const [shown, setShown] = useState(false);
 
@@ -34,15 +34,21 @@ const WasmEndpoint = (props) => {
         //     body: formData
         // });
 
-        console.log("DO STUFF!");
+    //     console.log("DO STUFF!");
 
-        await create_action(user, {
-            filename: "hello-cgi.wasm",
-            owner: user.username,
-            params: {}
-        });
+    //     await create_action(user, {
+    //         filename: "hello-cgi.wasm",
+    //         owner: user.username,
+    //         params: {}
+    //     });
 
-        console.log('Uploaded!');
+    //     console.log('Uploaded!');
+    }
+
+    const deleteEndpoint = async () => {
+        const endpoints = await delete_action(user, endpoint);
+
+        setEndpoints(endpoints);
     }
 
     return (
@@ -77,7 +83,7 @@ const WasmEndpoint = (props) => {
               </div>
 
               <div class="endpoint-management-buttons">
-                <button style={{backgroundColor: "red"}}>Delete</button>
+                <button onClick={deleteEndpoint} style={{backgroundColor: "red"}}>Delete</button>
                 <button onClick={applyChanges} style={{backgroundColor: "green"}}>Apply</button>
               </div>
             </div>
