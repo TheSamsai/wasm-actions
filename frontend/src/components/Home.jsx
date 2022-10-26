@@ -17,7 +17,7 @@ const Home = (props) => {
     const [createForm, setCreateForm] = useState(null);
 
     const handleClickCreate = () => {
-        setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm}/>);
+        setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm} setEndpoints={setEndpoints}/>);
     }
 
     const closeCreateForm = () => {
@@ -50,7 +50,7 @@ const Home = (props) => {
     console.log(user.username);
 
     return (
-        <div>
+        <div className="App-content">
           <h1>WASM Actions</h1>
 
           <p>Welcome, {user.username}!</p>

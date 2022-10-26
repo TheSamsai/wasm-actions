@@ -13,10 +13,15 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
+  /* padding-left: 20%; */
   /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-content {
+    padding-left: 20%;
 }
 
 .App-link {
@@ -72,10 +77,13 @@
 
 .login-form {
     background-color: gray;
-    padding: 2rem;
+    padding: 1rem;
+    margin-left: 50%;
+    margin-right: auto;
+    margin-top: 10%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align-items: center;
     display: flex;
-    flex-direction: column;
 }
 
 .login-container {
