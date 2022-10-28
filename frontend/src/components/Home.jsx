@@ -37,7 +37,7 @@ const Home = (props) => {
         if (user) {
             fetchEndpoints();
         }
-    }, [])
+    }, [user])
 
     if (!user) {
         return (

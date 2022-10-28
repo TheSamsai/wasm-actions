@@ -176,10 +176,17 @@ CLOCK: [2022-10-16 su 15:05]--[2022-10-16 su 17:11] =>  2:06
 CLOCK: [2022-10-26 Wed 11:02]--[2022-10-26 Wed 11:49] =>  0:47
 CLOCK: [2022-10-21 Fri 14:05]--[2022-10-21 Fri 14:46] =>  0:41
 :END:
+*** TODO When deleting an endpoint, delete the WASM file too
 ** DONE Create a proper form for uploading Actions
 :LOGBOOK:
 CLOCK: [2022-10-26 Wed 10:05]--[2022-10-26 Wed 11:01] =>  0:56
 :END:
 ** TODO Implement user access control
 *** TODO Disallow recreating an account
-** TODO Better sessions management
+** DONE Better sessions management
+:LOGBOOK:
+CLOCK: [2022-10-28 Fri 14:08]--[2022-10-28 Fri 14:58] =>  0:50
+:END:
+
+** TODO Implement a logout button
+** TODO Turn the WASM middleware into a better backend endpoint

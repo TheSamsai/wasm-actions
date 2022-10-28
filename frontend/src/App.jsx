@@ -1,7 +1,8 @@
 import './App.css';
 
 import {
-    useState
+  useState,
+  useEffect
 } from 'react'
 
 import {
@@ -13,24 +14,31 @@ import Nav from './components/Nav'
 import Home from './components/Home'
 import Login from './components/Login'
 
+import { get_user } from './services/user'
+
 function App() {
-    
-    const [user, setUser] = useState(false);
+  const [user, setUser] = useState(false);
 
-    return (
-        <div className="App">
-            <Router>
-              <Nav user={user} />
-              <header className="App-header">
-                <Routes>
-                  <Route path="/login" element={<Login setUser={setUser} />} />
-                  <Route path="/" element={<Home user={user}/>} />
-                </Routes>
-              </header>
-            </Router>
+  useEffect(() => {
+    if (get_user()) {
+      setUser(get_user())
+    }
+  }, [])
 
-        </div>
-    );
+  return (
+    <div className="App">
+      <Router>
+        <Nav user={user} />
+        <header className="App-header">
+          <Routes>
+            <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route path="/" element={<Home user={user}/>} />
+          </Routes>
+        </header>
+      </Router>
+
+    </div>
+  );
 }
 
 export default App;
