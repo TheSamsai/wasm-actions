@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Nav user={user} />
+        <Nav user={user} setUser={setUser}/>
         <header className="App-header">
           <Routes>
             <Route path="/login" element={<Login setUser={setUser} />} />

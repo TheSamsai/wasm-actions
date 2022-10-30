@@ -47,5 +47,6 @@ export {
   register_user,
   login_user,
   save_user,
-  get_user
+  get_user,
+  delete_user
 }

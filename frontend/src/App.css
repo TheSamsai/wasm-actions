@@ -42,6 +42,8 @@
 .topnav {
   background-color: black;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
 }
 
 /* Style the links inside the navigation bar */

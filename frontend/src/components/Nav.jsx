@@ -3,18 +3,34 @@ import {
     Link
 } from 'react-router-dom'
 
-const Nav = (props) => {
-    return (
-        <nav class="topnav">
-          <ul>
-            <Link to="/">Home</Link>
+import {
+  delete_user
+} from '../services/user'
 
-            <Link to="/login" style={{"float": "right"}}>
-              { props.user ? props.user.username : "Login"}
-            </Link>
-          </ul>
-        </nav>
-    )
+const Nav = (props) => {
+
+  const { user, setUser } = props
+
+  const logout = () => {
+    delete_user()
+    setUser(false);
+  }
+
+  return (
+    <nav class="topnav">
+      <Link to="/">Home</Link>
+
+      <div style={{"margin-left": "auto"}}>
+        <Link to="/login" >
+          { user ? user.username : "Login"}
+        </Link>
+
+        <div style={{"float": "right"}}>
+          { user ? (<div><button onClick={logout}>Logout</button></div>) : (<div></div>)}
+        </div>
+      </div>
+    </nav>
+  )
 }
 
 export default Nav;
