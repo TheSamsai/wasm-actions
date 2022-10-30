@@ -188,9 +188,9 @@ CLOCK: [2022-10-26 Wed 10:05]--[2022-10-26 Wed 11:01] =>  0:56
 CLOCK: [2022-10-28 Fri 14:08]--[2022-10-28 Fri 14:58] =>  0:50
 :END:
 
-** STRT Implement a logout button
+** DONE Implement a logout button
 :LOGBOOK:
-CLOCK: [2022-10-30 su 13:57]
+CLOCK: [2022-10-30 su 13:57]--[2022-10-30 su 16:56] =>  2:59
 :END:
 ** TODO Turn the WASM middleware into a better backend endpoint
 ** TODO Make endpoints protectable with a token
