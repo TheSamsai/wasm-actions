@@ -33,3 +33,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZ
 
 GET http://localhost:3001/hidden
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF\ _xSJyQQ
+
+# Test WASM CGI, GET request
+
+GET http://localhost:3001/wasm/hello-cgi.wasm
+
+# Test WASM CGI, GET request with query parameters
+
+GET http://localhost:3001/wasm/hello-cgi.wasm?hello=world
+
+# Test WASM CGI, POST request
+
+POST http://localhost:3001/wasm/hello-cgi.wasm
+Content-Type: application/json
+
+{
+    "hello": "world"
+}
+
+# Test WASM CGI, PUT
+
+PUT http://localhost:3001/wasm/hello-cgi.wasm
+Content-Type: application/json
+
+{
+    "hello": "world"
+}

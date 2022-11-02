@@ -192,5 +192,9 @@ CLOCK: [2022-10-28 Fri 14:08]--[2022-10-28 Fri 14:58] =>  0:50
 :LOGBOOK:
 CLOCK: [2022-10-30 su 13:57]--[2022-10-30 su 16:56] =>  2:59
 :END:
-** TODO Turn the WASM middleware into a better backend endpoint
+** DONE Turn the WASM middleware into a better backend endpoint
+:LOGBOOK:
+CLOCK: [2022-11-02 Wed 10:38]--[2022-11-02 Wed 11:20] =>  0:42
+CLOCK: [2022-11-02 Wed 10:13]--[2022-11-02 Wed 10:38] =>  0:25
+:END:
 ** TODO Make endpoints protectable with a token

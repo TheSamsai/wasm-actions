@@ -20,40 +20,7 @@ app.use(cors());
 
 app.use(fileUpload());
 
-const wasiRunnerMiddleware = function (req, res, next) {
-    console.log(req.path);
-
-    if (req.path.startsWith("/wasm/")) {
-        const regex = /wasm\/(.*)\.wasm/g;
-
-        const matches = req.path.match(regex);
-
-        if (!matches) {
-            res.socket.end(`HTTP/1.1 404 File Not Found\n$`);
-            return;
-        }
-
-        const workload_name = matches[0].replace("wasm/", "");
-
-        console.log(`Running: ${workload_name}`);
-
-        const response = wasi_runner.run_wasi(workload_name, {
-            method: req.method,
-            stdin: JSON.stringify(req.body),
-            path_info: req.path,
-            query_string: querystring.stringify(req.query),
-            args: []
-        });
-
-        res.socket.end(`HTTP/1.1 200 OK\n${response}`);
-
-        return;
-    }
-
-    next();
-}
-
-const verifiedUser = function (req, res, next) {
+const verifiedUser = function(req, res, next) {
     const token = req.headers.authorization.split(" ")[1];
 
     const user = db.verify_token(token);
@@ -63,7 +30,7 @@ const verifiedUser = function (req, res, next) {
     next();
 }
 
-app.use(wasiRunnerMiddleware);
+// app.use(wasiRunnerMiddleware);
 
 app.get('/', (req, res) => {
     res.send("Hello, universe!");
@@ -134,7 +101,7 @@ app.get('/actions', verifiedUser, async (req, res) => {
 
 app.post('/actions', verifiedUser, async (req, res) => {
     await db.create_action(req.user.username, req.body.filename, req.body.params);
-    
+
     const actions = await (await db.get_all_actions(req.user.username)).toArray();
     console.log(actions);
 
@@ -160,7 +127,7 @@ app.put('/actions/:actionId', verifiedUser, async (req, res) => {
 
 app.delete('/actions/:actionId', verifiedUser, async (req, res) => {
     console.log(req.params.actionId);
-    
+
     const oldAction = await db.get_action(req.params.actionId);
 
     console.log(oldAction);
@@ -177,6 +144,31 @@ app.delete('/actions/:actionId', verifiedUser, async (req, res) => {
             "error": "this resource is not owned by you"
         })
     }
+})
+
+app.all('/wasm/*', async (req, res) => {
+    const regex = /wasm\/(.*)\.wasm/g;
+
+    const matches = req.path.match(regex);
+
+    if (!matches) {
+        res.socket.end(`HTTP/1.1 404 File Not Found\n$`);
+        return;
+    }
+
+    const workload_name = matches[0].replace("wasm/", "");
+
+    console.log(`Running: ${workload_name}`);
+
+    const response = wasi_runner.run_wasi(workload_name, {
+        method: req.method,
+        stdin: JSON.stringify(req.body),
+        path_info: req.path,
+        query_string: querystring.stringify(req.query),
+        args: []
+    });
+
+    res.socket.end(`HTTP/1.1 200 OK\n${response}`);
 })
 
 app.listen(port, () => {
