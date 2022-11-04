@@ -14,15 +14,25 @@ import Nav from './components/Nav'
 import Home from './components/Home'
 import Login from './components/Login'
 
-import { get_user } from './services/user'
+import { get_user, check_valid } from './services/user'
 
 function App() {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    if (get_user()) {
-      setUser(get_user())
+    const setIfValid = async () => {
+      const user = get_user()
+
+      if (user) {
+        const valid = await check_valid(user)
+
+        if (valid) {
+          setUser(user)
+        }
+      }
     }
+
+    setIfValid()
   }, [])
 
   return (

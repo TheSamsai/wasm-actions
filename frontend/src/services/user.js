@@ -31,6 +31,18 @@ const login_user = async (username, password) => {
   return await res.json()
 }
 
+const check_valid = async (user) => {
+  const res = await fetch(`${BASE_URL}/hidden`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`
+    }
+  })
+
+  return res.ok
+}
+
 const save_user = (user) => {
   localStorage.setItem("loggedInUser", JSON.stringify(user));
 }
@@ -46,6 +58,7 @@ const delete_user = () => {
 export {
   register_user,
   login_user,
+  check_valid,
   save_user,
   get_user,
   delete_user

@@ -29,9 +29,12 @@ const CreateEndpointForm = (props) => {
 
         console.log('Begin upload...');
 
-        await fetch('http:127.0.0.1:3001/upload', {
-            method: 'POST',
-            body: formData
+        await fetch('http://127.0.0.1:3001/upload', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
         });
 
         console.log("DO STUFF!");

@@ -59,3 +59,13 @@ Content-Type: application/json
 {
     "hello": "world"
 }
+
+
+# Test WASM CGI, POST request, namespaced
+
+POST http://localhost:3001/wasm/samsai/hello-cgi.wasm
+Content-Type: application/json
+
+{
+    "hello": "world"
+}

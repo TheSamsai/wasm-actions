@@ -1,18 +1,20 @@
 
-const express = require('express');
+const express = require('express')
 
 const cors = require('cors')
 
-const fileUpload = require('express-fileupload');
+const fileUpload = require('express-fileupload')
 
 const querystring = require('node:querystring')
 
-const wasi_runner = require('./wasi-runner');
+const fs = require('node:fs')
+
+const wasi_runner = require('./wasi-runner')
 
 const db = require('./db')
 
-const app = express();
-const port = 3001;
+const app = express()
+const port = 3001
 
 app.use(express.json());
 
@@ -20,11 +22,10 @@ app.use(cors());
 
 app.use(fileUpload());
 
-const verifiedUser = function(req, res, next) {
+const verifiedUser = async function(req, res, next) {
     const token = req.headers.authorization.split(" ")[1];
 
-    const user = db.verify_token(token);
-
+    const user = await db.verify_token(token);
     req.user = user;
 
     next();
@@ -37,42 +38,41 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/upload', (req, res) => {
-    let wasmFile;
-    let uploadPath;
+app.post('/upload', verifiedUser, async (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0 || !req.user) {
+    return res.status(400).send('No files were uploaded.')
+  }
 
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('No files were uploaded.');
-    }
+  const wasmFile = req.files.wasmFile
+  const uploadFolder = process.cwd() + '/wasm/' + req.user.username 
+  const uploadPath = uploadFolder + "/" + wasmFile.name
 
-    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    wasmFile = req.files.wasmFile;
-    uploadPath = process.cwd() + '/wasm/' + wasmFile.name;
+  if (!fs.existsSync(uploadFolder)) {
+    fs.mkdirSync(uploadFolder)
+  }
 
-    console.log(wasmFile);
+  console.log(wasmFile)
+  console.log(uploadPath)
 
-    console.log(uploadPath);
+  // Use the mv() method to place the file somewhere on your server
+  wasmFile.mv(uploadPath, function(err) {
+    if (err)
+      return res.status(500).send(err);
 
-    // Use the mv() method to place the file somewhere on your server
-    wasmFile.mv(uploadPath, function(err) {
-        if (err)
-            return res.status(500).send(err);
-
-        res.send('File uploaded!');
-    });
+    res.send('File uploaded!');
+  });
 })
 
 app.get('/hidden', verifiedUser, (req, res) => {
-    if (!req.user) {
-        res.json({
-            "error": "invalid token"
-        });
-    }
-
-
-    res.json({
-        "message": "42"
+  if (!req.user) {
+    res.status(403).json({
+      "error": "invalid token"
     });
+  }
+
+  res.json({
+    "message": "42"
+  });
 })
 
 app.post('/register', async (req, res) => {
@@ -92,11 +92,17 @@ app.post('/login', async (req, res) => {
 })
 
 app.get('/actions', verifiedUser, async (req, res) => {
+  if (!req.user) {
+    res.status(403).json({
+      "error": "user account not valid"
+    })
+  } else {
     const actions = await (await db.get_all_actions(req.user.username)).toArray();
 
     console.log(actions);
 
     res.json(actions);
+  }
 })
 
 app.post('/actions', verifiedUser, async (req, res) => {

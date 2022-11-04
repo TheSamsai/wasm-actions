@@ -60,14 +60,24 @@ const login_user = async (username, password) => {
     return token;
 }
 
-const verify_token = (token) => {
-    try {
-        const decoded_token = jwt.verify(token, config.SECRET_KEY);
+const verify_token = async (token) => {
+  try {
+    const decoded_token = jwt.verify(token, config.SECRET_KEY)
 
-        return decoded_token;
-    } catch (error) {
-        return null;
+    const users = db.collection("users")
+
+    const user = await users.findOne({ username: decoded_token.username })
+
+    console.log(user)
+
+    if (user) {
+      return decoded_token
+    } else {
+      return null
     }
+  } catch (error) {
+    return null;
+  }
 }
 
 const count_users = async () => {

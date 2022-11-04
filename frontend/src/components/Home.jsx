@@ -8,68 +8,71 @@ import WasmEndpoint from './WasmEndpoint';
 import CreateEndpointForm from './CreateEndpointForm';
 
 const Home = (props) => {
-    const { user } = props;
+  const { user } = props;
 
-    const text = "Hello, wasmverse!";
+  const text = "Hello, wasmverse!";
 
-    const [endpoints, setEndpoints] = useState([]);
+  const [endpoints, setEndpoints] = useState([]);
 
-    const [createForm, setCreateForm] = useState(null);
+  const [createForm, setCreateForm] = useState(null);
 
-    const handleClickCreate = () => {
-        setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm} setEndpoints={setEndpoints}/>);
+  const handleClickCreate = () => {
+    setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm} setEndpoints={setEndpoints}/>);
+  }
+
+  const closeCreateForm = () => {
+    console.log("closed");
+    setCreateForm(null);
+  }
+
+  useEffect(() => {
+    const fetchEndpoints = async () => {
+      const newEndpoints = await get_actions(user);
+
+      console.log(newEndpoints);
+
+      if (newEndpoints) {
+        
+        setEndpoints(newEndpoints);
+      }
     }
 
-    const closeCreateForm = () => {
-        console.log("closed");
-        setCreateForm(null);
+    if (user) {
+      fetchEndpoints();
     }
+  }, [user])
 
-    useEffect(() => {
-        const fetchEndpoints = async () => {
-            const newEndpoints = await get_actions(user);
-
-            console.log(newEndpoints);
-
-            setEndpoints(newEndpoints);
-        }
-
-        if (user) {
-            fetchEndpoints();
-        }
-    }, [user])
-
-    if (!user) {
-        return (
-            <div>
-              <h1>Please login first</h1>
-            </div>
-        )
-    }
-
-    console.log(user.username);
-
+  if (!user) {
     return (
-        <div className="App-content">
-          <h1>WASM Actions</h1>
-
-          <p>Welcome, {user.username}!</p>
-
-          <h2>WASM Endpoints</h2>
-
-          <button onClick={handleClickCreate}>Create a new endpoint</button>
-
-          {createForm}
-
-          <ul>
-            { endpoints.map(e => {
-                return (
-                    <li><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints}/></li>
-                )
-            })}
-          </ul>
-        </div> 
+      <div>
+        <h1>Please login first</h1>
+      </div>
     )
+  }
+
+  console.log(user.username);
+
+  return (
+    <div className="App-content">
+      <h1>WASM Actions</h1>
+
+      <p>Welcome, {user.username}!</p>
+
+      <h2>WASM Endpoints</h2>
+
+      <button onClick={handleClickCreate}>Create a new endpoint</button>
+
+      {createForm}
+
+      <ul>
+        { endpoints.map(e => {
+          return (
+            <li><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints}/></li>
+          )
+        })}
+      </ul>
+    </div> 
+  )
 }
 
 export default Home;
