@@ -117,7 +117,7 @@ app.post('/actions', verifiedUser, async (req, res) => {
     res.json(actions)
   } else {
     res.status(400).json({
-      "error": "an action with this name already exists"
+      "error": "An Action with this name already exists"
     })
   }
 
@@ -135,7 +135,7 @@ app.put('/actions/:actionId', verifiedUser, async (req, res) => {
         res.json(actions);
     } else {
         res.status(403).json({
-            "error": "this resource is not owned by you"
+            "error": "This resource is not owned by you"
         })
     }
 })

@@ -14,18 +14,18 @@ const get_actions = async (user) => {
 }
 
 const create_action = async (user, action) => {
-    const res = await fetch(`${BASE_URL}/actions`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${user.token}`
-        },
-        body: JSON.stringify(action)
-    });
+  const res = await fetch(`${BASE_URL}/actions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`
+    },
+    body: JSON.stringify(action)
+  });
 
   return {
     ok: res.ok,
-    json: res.json()
+    response: await res.json()
   }
 }
 

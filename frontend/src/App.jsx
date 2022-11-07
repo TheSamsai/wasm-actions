@@ -13,11 +13,14 @@ import {
 import Nav from './components/Nav'
 import Home from './components/Home'
 import Login from './components/Login'
+import Error from './components/Error'
 
 import { get_user, check_valid } from './services/user'
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(false)
+
+  const [error, setError] = useState("Ink ran out")
 
   useEffect(() => {
     const setIfValid = async () => {
@@ -40,9 +43,10 @@ function App() {
       <Router>
         <Nav user={user} setUser={setUser}/>
         <header className="App-header">
+          <Error error={error} setError={setError}/>
           <Routes>
             <Route path="/login" element={<Login setUser={setUser} />} />
-            <Route path="/" element={<Home user={user}/>} />
+            <Route path="/" element={<Home user={user} setError={setError}/>} />
           </Routes>
         </header>
       </Router>

@@ -9,7 +9,8 @@ const CreateEndpointForm = (props) => {
   const {
     closeForm,
     user,
-    setEndpoints
+    setEndpoints,
+    setError
   } = props;
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -27,6 +28,8 @@ const CreateEndpointForm = (props) => {
       owner: user.username,
       params: {}
     });
+
+    console.log(ok, response)
 
     if (ok) {
       const formData = new FormData();
@@ -49,8 +52,9 @@ const CreateEndpointForm = (props) => {
       console.log('Uploaded!');
 
       setEndpoints(response);
+    } else {
+      setError(response.error)
     }
-
 
     closeForm();
   }

@@ -8,7 +8,7 @@ import WasmEndpoint from './WasmEndpoint';
 import CreateEndpointForm from './CreateEndpointForm';
 
 const Home = (props) => {
-  const { user } = props;
+  const { user, setError } = props;
 
   const text = "Hello, wasmverse!";
 
@@ -17,7 +17,7 @@ const Home = (props) => {
   const [createForm, setCreateForm] = useState(null);
 
   const handleClickCreate = () => {
-    setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm} setEndpoints={setEndpoints}/>);
+    setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm} setEndpoints={setEndpoints} setError={setError}/>);
   }
 
   const closeCreateForm = () => {
