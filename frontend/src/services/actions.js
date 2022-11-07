@@ -23,7 +23,10 @@ const create_action = async (user, action) => {
         body: JSON.stringify(action)
     });
 
-    return await res.json()
+  return {
+    ok: res.ok,
+    json: res.json()
+  }
 }
 
 const delete_action = async (user, action) => {

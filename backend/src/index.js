@@ -106,12 +106,21 @@ app.get('/actions', verifiedUser, async (req, res) => {
 })
 
 app.post('/actions', verifiedUser, async (req, res) => {
-    await db.create_action(req.user.username, req.body.filename, req.body.params);
+  const alreadyExists = await db.get_action_by_name(req.user.username, req.body.filename)
 
-    const actions = await (await db.get_all_actions(req.user.username)).toArray();
-    console.log(actions);
+  if (!alreadyExists) {
+    await db.create_action(req.user.username, req.body.filename, req.body.params)
 
-    res.json(actions);
+    const actions = await (await db.get_all_actions(req.user.username)).toArray()
+    console.log(actions)
+
+    res.json(actions)
+  } else {
+    res.status(400).json({
+      "error": "an action with this name already exists"
+    })
+  }
+
 })
 
 app.put('/actions/:actionId', verifiedUser, async (req, res) => {

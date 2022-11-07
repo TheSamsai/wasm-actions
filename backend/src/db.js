@@ -13,51 +13,51 @@ const db = client.db("wasmActions");
 const user_db_stub = {};
 
 const clear_db = async () => {
-    const users = db.collection("users");
+  const users = db.collection("users");
 
-    await users.deleteMany({});
+  await users.deleteMany({});
 
-    const actions = db.collection("actions");
+  const actions = db.collection("actions");
 
-    await actions.deleteMany({});
+  await actions.deleteMany({});
 }
 
 const disconnect_db = () => {
-    client.close();
+  client.close();
 }
 
 const register_user = async (username, password) => {
-    const users = db.collection("users");
-    
-    const user = await users.insertOne({
-        username: username,
-        password: bcrypt.hashSync(password, 8)
-    });
+  const users = db.collection("users");
+  
+  const user = await users.insertOne({
+    username: username,
+    password: bcrypt.hashSync(password, 8)
+  });
 
-    return user;
+  return user;
 }
 
 const login_user = async (username, password) => {
-    if (!username || !password) {
-        return false;
-    }
+  if (!username || !password) {
+    return false;
+  }
 
-    const users = db.collection("users");
+  const users = db.collection("users");
 
-    const user = await users.findOne({ username: username });
+  const user = await users.findOne({ username: username });
 
-    const validPassword = bcrypt.compareSync(password, user.password);
+  const validPassword = bcrypt.compareSync(password, user.password);
 
-    if (!validPassword) {
-        return false;
-    }
+  if (!validPassword) {
+    return false;
+  }
 
-    const token = jwt.sign({
-        username: username
-    }, config.SECRET_KEY, {
-    });
+  const token = jwt.sign({
+    username: username
+  }, config.SECRET_KEY, {
+  });
 
-    return token;
+  return token;
 }
 
 const verify_token = async (token) => {
@@ -67,8 +67,6 @@ const verify_token = async (token) => {
     const users = db.collection("users")
 
     const user = await users.findOne({ username: decoded_token.username })
-
-    console.log(user)
 
     if (user) {
       return decoded_token
@@ -81,66 +79,71 @@ const verify_token = async (token) => {
 }
 
 const count_users = async () => {
-    const users = db.collection("users");
+  const users = db.collection("users");
 
-    return users.estimatedDocumentCount();
+  return users.estimatedDocumentCount();
 }
 
 const create_action = async (username, filename, params) => {
-    const actions = db.collection("actions");
+  const actions = db.collection("actions");
 
-    const action = await actions.insertOne({
-        owner: username,
-        filename: filename,
-        params
-    });
+  const action = await actions.insertOne({
+    owner: username,
+    filename: filename,
+    params
+  });
 
-    return action;
+  return action;
 }
 
 const get_all_actions = async (username) => {
-    const actions = db.collection("actions");
+  const actions = db.collection("actions");
 
-    return actions.find({ owner: username });
+  return actions.find({ owner: username });
 }
 
 const get_action = async (id) => {
-    const oid = ObjectId(id);
+  const oid = ObjectId(id);
 
-    const actions = db.collection("actions");
+  const actions = db.collection("actions");
 
-    return await actions.findOne({ _id: oid });
+  return await actions.findOne({ _id: oid });
+}
+
+const get_action_by_name = async (username, filename) => {
+  const actions = db.collection("actions");
+
+  return await actions.findOne({ owner: username, filename: filename });
 }
 
 const update_action = async (action) => {
-    const actions = db.collection("actions");
+  const actions = db.collection("actions");
 
-    return await actions.replaceOne({ _id: action._id}, action);
+  return await actions.replaceOne({ _id: action._id}, action);
 }
 
 const delete_action = async (id) => {
-    const oid = ObjectId(id);
+  const oid = ObjectId(id);
 
-    const actions = db.collection("actions");
+  const actions = db.collection("actions");
 
-    const result = await actions.deleteOne({
-        _id: oid
-    });
-
-    console.log(result);
+  const result = await actions.deleteOne({
+    _id: oid
+  });
 }
 
 module.exports = {
-    clear_db,
-    disconnect_db,
-    register_user,
-    login_user,
-    verify_token,
-    count_users,
+  clear_db,
+  disconnect_db,
+  register_user,
+  login_user,
+  verify_token,
+  count_users,
 
-    create_action,
-    get_all_actions,
-    get_action,
-    update_action,
-    delete_action
+  create_action,
+  get_all_actions,
+  get_action,
+  get_action_by_name,
+  update_action,
+  delete_action
 }

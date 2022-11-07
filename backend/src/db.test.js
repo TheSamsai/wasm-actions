@@ -100,6 +100,27 @@ describe("WASM actions DB", () => {
     });
   })
 
+  test("DB action can be fetched by name", async () => {
+    const created_action = await db.create_action("user", "hello-cgi.wasm", {});
+
+    const same_action = await db.get_action_by_name("user", "hello-cgi.wasm");
+
+    expect(same_action).toStrictEqual({
+      _id: created_action.insertedId,
+      filename: "hello-cgi.wasm",
+      owner: "user",
+      params: {}
+    });
+  })
+
+  test("DB action mismatched name does not yield results", async () => {
+    const created_action = await db.create_action("user", "hello-cgi.wasm", {});
+
+    const same_action = await db.get_action_by_name("user", "pong.wasm");
+
+    expect(same_action).toStrictEqual(null);
+  })
+
   test("DB action can be updated", async () => {
     const created_action = await db.create_action("user", "hello-cgi.wasm", {});
 
