@@ -204,7 +204,11 @@ CLOCK: [2022-10-30 su 13:57]--[2022-10-30 su 16:56] =>  2:59
 CLOCK: [2022-11-02 Wed 10:38]--[2022-11-02 Wed 11:20] =>  0:42
 CLOCK: [2022-11-02 Wed 10:13]--[2022-11-02 Wed 10:38] =>  0:25
 :END:
-** TODO Make endpoints protectable with a token
+** DONE Make endpoints protectable with a token
+:LOGBOOK:
+CLOCK: [2022-11-09 ke 13:06]--[2022-11-09 ke 14:27] =>  1:21
+CLOCK: [2022-11-09 ke 10:35]--[2022-11-09 ke 12:43] =>  2:08
+:END:
 ** TODO Allow frontend to modify existing endpoints
 ** DONE Namespace endpoints by username
 :LOGBOOK:

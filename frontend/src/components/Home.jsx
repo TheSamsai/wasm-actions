@@ -67,7 +67,7 @@ const Home = (props) => {
       <ul>
         { endpoints.map(e => {
           return (
-            <li><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints}/></li>
+            <li><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints} setError={setError}/></li>
           )
         })}
       </ul>

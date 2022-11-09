@@ -69,3 +69,24 @@ Content-Type: application/json
 {
     "hello": "world"
 }
+
+
+# Test WASM CGI, POST request, namespaced, token protected
+
+POST http://localhost:3001/wasm/samsai/add-json.wasm
+Content-Type: application/json
+Authorization: Bearer 74873142-4fdd-47db-b6f4-e6016b0558d8
+
+{
+    "numbers": [1, 1]
+}
+
+# Test WASM CGI, POST request, namespaced, token protected, incorrect token
+
+POST http://localhost:3001/wasm/samsai/add-json.wasm
+Content-Type: application/json
+Authorization: Bearer Wrong
+
+{
+    "numbers": [1, 1]
+}

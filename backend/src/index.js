@@ -162,28 +162,55 @@ app.delete('/actions/:actionId', verifiedUser, async (req, res) => {
 })
 
 app.all('/wasm/*', async (req, res) => {
-    const regex = /wasm\/(.*)\.wasm/g;
+  const regex = /wasm\/(.*)\.wasm/g;
 
-    const matches = req.path.match(regex);
+  const matches = req.path.match(regex);
 
-    if (!matches) {
-        res.socket.end(`HTTP/1.1 404 File Not Found\n$`);
-        return;
-    }
+  if (!matches) {
+    res.socket.end(`HTTP/1.1 404 File Not Found\n$`);
+    return;
+  }
 
-    const workload_name = matches[0].replace("wasm/", "");
+  const workload_name = matches[0].replace("wasm/", "");
 
-    console.log(`Running: ${workload_name}`);
+  const action_owner = workload_name.split("/")[0]
+  const action_name = workload_name.split("/")[1]
 
-    const response = wasi_runner.run_wasi(workload_name, {
+  const action_details = await db.get_action_by_name(action_owner, action_name)
+
+  if (action_details.params.protectionToken) {
+    const token = req.headers.authorization.split(" ")[1];
+
+    if (token === action_details.params.protectionToken) {
+      console.log(`Running protected workload: ${workload_name}`)
+      console.log(action_details)
+
+      const response = wasi_runner.run_wasi(workload_name, {
         method: req.method,
         stdin: JSON.stringify(req.body),
         path_info: req.path,
         query_string: querystring.stringify(req.query),
         args: []
-    });
+      });
 
-    res.socket.end(`HTTP/1.1 200 OK\n${response}`);
+      res.socket.end(`HTTP/1.1 200 OK\n${response}`)
+    } else {
+      res.status(401).json({ error: "Unauthorized" })
+    }
+  }
+
+  console.log(`Running: ${workload_name}`)
+  console.log(action_details)
+
+  const response = wasi_runner.run_wasi(workload_name, {
+    method: req.method,
+    stdin: JSON.stringify(req.body),
+    path_info: req.path,
+    query_string: querystring.stringify(req.query),
+    args: []
+  });
+
+  res.socket.end(`HTTP/1.1 200 OK\n${response}`);
 })
 
 app.listen(port, () => {
