@@ -10,8 +10,6 @@ import CreateEndpointForm from './CreateEndpointForm';
 const Home = (props) => {
   const { user, setError } = props;
 
-  const text = "Hello, wasmverse!";
-
   const [endpoints, setEndpoints] = useState([]);
 
   const [createForm, setCreateForm] = useState(null);

@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { create_action, delete_action } from '../services/actions';
 
+import { BACKEND_URL } from '../services/config'
+
 
 const WasmEndpoint = (props) => {
   const { user, endpoint, setEndpoints, setError, closeForm } = props;
@@ -12,6 +14,8 @@ const WasmEndpoint = (props) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   console.log(endpoint)
+
+  console.log(user)
 
   const [usingProtectionToken, setUsingProtectionToken] = useState(endpoint ? endpoint.params.hasOwnProperty("protectionToken") : false)
   const [protectionToken, setProtectionToken] = useState(endpoint ? (endpoint.params.protectionToken ? endpoint.params.protectionToken : "") : "")
@@ -27,8 +31,10 @@ const WasmEndpoint = (props) => {
     setProtectionToken(uuidv4())
   }
 
-  const createEndpoint = async () => {
-    console.log("DO STUFF!");
+  const applyChange = async () => {
+    if (endpoint) {
+      deleteEndpoint()
+    }
 
     let params = {}
 
@@ -78,12 +84,17 @@ const WasmEndpoint = (props) => {
     setEndpoints(endpoints);
   }
 
+  const endpointUrl = endpoint ? `${BACKEND_URL}/wasm/${user.username}/${endpoint.filename}` : ''
+
   return (
     <div>
-      {/* <h2>{endpoint.filename}</h2> */}
+      <h2>{endpoint ? endpoint.filename : "Create a new endpoint"}</h2>
 
         <div>
-          <p>Endpoint URL: <a href="http://127.0.0.1/wasm/example-endpoint">http://127.0.0.1/wasm/example-endpoint</a></p>
+          { endpoint ?
+            <p>Endpoint URL: <a href={endpointUrl}>{endpointUrl}</a></p>
+            : <div></div>
+          }
 
           <div class="capability-options">
             <label for="wasm-module">Update WASM:</label>
@@ -124,8 +135,8 @@ const WasmEndpoint = (props) => {
           </div>
 
           <div class="endpoint-management-buttons">
-            <button onClick={closeForm} style={{backgroundColor: "red"}}>Cancel</button>
-            <button onClick={createEndpoint} style={{backgroundColor: "green"}}>Create</button>
+            <button onClick={endpoint ? deleteEndpoint : closeForm} style={{backgroundColor: "red"}}>{ endpoint ? "Delete" : "Cancel"}</button>
+            <button onClick={applyChange} style={{backgroundColor: "green"}}>{ endpoint ? "Apply" : "Create"}</button>
           </div>
         </div>
     </div>

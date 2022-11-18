@@ -14,10 +14,12 @@ const CreateEndpointForm = (props) => {
     setError
   } = props;
 
+  console.log(user)
+
   return (
     <div class="create-endpoint-background">
       <div class="create-endpoint-form">
-        <WasmEndpoint uset={user} setEndpoints={setEndpoints} setError={setError} closeForm={closeForm}/>
+        <WasmEndpoint user={user} setEndpoints={setEndpoints} setError={setError} closeForm={closeForm}/>
       </div>
     </div>
   )
