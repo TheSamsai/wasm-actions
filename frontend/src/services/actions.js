@@ -1,8 +1,8 @@
 
-const BASE_URL = "http://localhost:3001"
+import { BACKEND_URL } from './config'
 
 const get_actions = async (user) => {
-    const res = await fetch(`${BASE_URL}/actions`, {
+    const res = await fetch(`${BACKEND_URL}/actions`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ const get_actions = async (user) => {
 }
 
 const create_action = async (user, action) => {
-  const res = await fetch(`${BASE_URL}/actions`, {
+  const res = await fetch(`${BACKEND_URL}/actions`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const create_action = async (user, action) => {
 }
 
 const delete_action = async (user, action) => {
-    const res = await fetch(`${BASE_URL}/actions/${action._id}`, {
+    const res = await fetch(`${BACKEND_URL}/actions/${action._id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

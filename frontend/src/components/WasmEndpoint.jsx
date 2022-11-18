@@ -60,7 +60,7 @@ const WasmEndpoint = (props) => {
 
       console.log('Begin upload...');
 
-      await fetch('http://127.0.0.1:3001/upload', {
+      await fetch(`${BACKEND_URL}/upload`, {
         method: 'POST',
         body: formData,
         headers: {

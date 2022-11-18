@@ -1,8 +1,8 @@
 
-const BASE_URL = "http://localhost:3001"
+import { BACKEND_URL } from './config'
 
 const register_user = async (username, password) => {
-  const res = await fetch(`${BASE_URL}/register`, {
+  const res = await fetch(`${BACKEND_URL}/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ const register_user = async (username, password) => {
 }
 
 const login_user = async (username, password) => {
-  const res = await fetch(`${BASE_URL}/login`, {
+  const res = await fetch(`${BACKEND_URL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const login_user = async (username, password) => {
 }
 
 const check_valid = async (user) => {
-  const res = await fetch(`${BASE_URL}/hidden`, {
+  const res = await fetch(`${BACKEND_URL}/hidden`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
