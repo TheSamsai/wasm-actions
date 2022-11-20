@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { get_actions } from '../services/actions';
+import { get_actions, get_logs } from '../services/actions';
 
 import WasmEndpoint from './WasmEndpoint';
 import CreateEndpointForm from './CreateEndpointForm';
@@ -27,10 +27,14 @@ const Home = (props) => {
     const fetchEndpoints = async () => {
       const newEndpoints = await get_actions(user);
 
+      for (let endpoint of newEndpoints) {
+        console.log(endpoint)
+        endpoint.logs = await get_logs(user, endpoint)
+      }
+
       console.log(newEndpoints);
 
       if (newEndpoints) {
-        
         setEndpoints(newEndpoints);
       }
     }

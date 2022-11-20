@@ -145,3 +145,34 @@ describe("WASM actions DB", () => {
     expect((await actions.toArray()).length).toEqual(0);
   })
 })
+
+describe("WASM actions logs DB", () => {
+  beforeAll(async () => {
+    await db.register_user("user", "password");
+  });
+
+  test("Log messages can be created", async () => {
+    const created_action = await db.create_action("user", "hello-cgi.wasm", {});
+
+    await db.add_log(created_action.insertedId, { stdout: "hello, world"})
+
+    const log_messages = await db.get_logs(created_action.insertedId)
+
+    expect(log_messages.length).toBe(1)
+
+    expect(log_messages[0].message).toStrictEqual({ stdout: "hello, world"})
+  })
+
+  test("Only 10 log messages are retained", async () => {
+    const created_action = await db.create_action("user", "hello-cgi.wasm", {});
+
+    for (let i = 0; i < 20; i++) {
+      await db.add_log(created_action.insertedId, { stdout: "hello, world"})
+    }
+
+    const log_messages = await db.get_logs(created_action.insertedId)
+
+    expect(log_messages.length).toBe(10)
+  })
+
+})

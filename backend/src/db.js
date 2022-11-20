@@ -132,6 +132,37 @@ const delete_action = async (id) => {
   });
 }
 
+const add_log = async (id, message) => {
+  const oid = ObjectId(id)
+
+  const logs = db.collection("actions-logs")
+
+  const session = client.startSession()
+
+  await session.withTransaction(async () => {
+    const action_logs = await logs.find({ action: oid }).sort({ created_at: -1}).toArray()
+
+    while (action_logs.length > 9) {
+      const log = action_logs.pop()
+
+      await logs.deleteOne({ _id: log._id })
+    }
+
+    await logs.insertOne({
+      action: oid,
+      message
+    })
+  })
+}
+
+const get_logs = async (id) => {
+  const oid = ObjectId(id)
+
+  const logs = db.collection("actions-logs")
+
+  return await logs.find({ action: oid }).sort({ created_at: 1}).toArray()
+}
+
 module.exports = {
   clear_db,
   disconnect_db,
@@ -145,5 +176,8 @@ module.exports = {
   get_action,
   get_action_by_name,
   update_action,
-  delete_action
+  delete_action,
+
+  add_log,
+  get_logs,
 }

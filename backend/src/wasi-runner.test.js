@@ -7,7 +7,7 @@ test('Running add.wasm with parameters [1, 1] adds to 2', () => {
                                     method: "GET",
                                     stdin: "",
                                     args: [1,1]
-                                })).toEqual("2\n");
+                                }).stdout).toEqual("2\n");
 });
 
 test('Running add.wasm with parameters [1, 1, 1] adds to 3', () => {
@@ -16,7 +16,7 @@ test('Running add.wasm with parameters [1, 1, 1] adds to 3', () => {
                                     method: "GET",
                                     stdin: "",
                                     args: [1,1,1]
-                                })).toEqual("3\n");
+                                }).stdout).toEqual("3\n");
 });
 
 test('Running pong.wasm returns HTTP response', () => {
@@ -24,7 +24,7 @@ test('Running pong.wasm returns HTTP response', () => {
         method: "GET",
         stdin: "",
         args: []
-    })).toEqual("Content-Type: text/plain\n\npong\n");
+    }).stdout).toEqual("Content-Type: text/plain\n\npong\n");
 });
 
 test('Running add-json.wasm with JSON body returns correct sum', () => {
@@ -37,9 +37,21 @@ test('Running add-json.wasm with JSON body returns correct sum', () => {
                                     method: "GET",
                                     stdin: stdin,
                                     args: []
-                                })).toContain('{"result":2}');
+                                }).stdout).toContain('{"result":2}');
 });
 
+test('Running add-json.wasm with invalid JSON body results in an error', () => {
+    const stdin = JSON.stringify({
+        numbers: ["hello", "world"]
+    });
+
+    expect(wasi_runner.run_wasi("add-json.wasm",
+                                {
+                                    method: "GET",
+                                    stdin: stdin,
+                                    args: []
+                                }).stderr).toContain('Err');
+});
 
 test('Running hello-cgi.wasm returns HTTP response', () => {
     expect(wasi_runner.run_wasi("hello-cgi.wasm",
@@ -47,7 +59,7 @@ test('Running hello-cgi.wasm returns HTTP response', () => {
                                     method: "GET",
                                     stdin: "",
                                     args: []
-                                })).toContain("Content-type: text/plain");
+                                }).stdout).toContain("Content-type: text/plain");
 });
 
 test('Running hello-cgi.wasm accepts BODY', () => {
@@ -56,7 +68,7 @@ test('Running hello-cgi.wasm accepts BODY', () => {
                                     method: "GET",
                                     stdin: "hello",
                                     args: []
-                                })).toContain('BODY: "hello"');
+                                }).stdout).toContain('BODY: "hello"');
 });
 
 test('Running hello-cgi.wasm receives METHOD', () => {
@@ -65,7 +77,7 @@ test('Running hello-cgi.wasm receives METHOD', () => {
                                     method: "GET",
                                     stdin: "hello",
                                     args: []
-                                })).toContain('METHOD: Some("GET")');
+                                }).stdout).toContain('METHOD: Some("GET")');
 });
 
 test('Running hello-cgi.wasm receives PATH_INFO', () => {
@@ -75,7 +87,7 @@ test('Running hello-cgi.wasm receives PATH_INFO', () => {
                                     path_info: "/hello/",
                                     stdin: "hello",
                                     args: []
-                                })).toContain('PATH_INFO: Some("/hello/")');
+                                }).stdout).toContain('PATH_INFO: Some("/hello/")');
 });
 
 
@@ -86,7 +98,7 @@ test('Running hello-cgi.wasm receives QUERY_STRING', () => {
                                     query_string: "?msg=hello",
                                     stdin: "hello",
                                     args: []
-                                })).toContain('QUERY_STRING: Some("?msg=hello")');
+                                }).stdout).toContain('QUERY_STRING: Some("?msg=hello")');
 });
 
 
@@ -97,5 +109,5 @@ test('Running hello-cgi.wasm parses QUERY_STRING', () => {
                                     query_string: "?msg=hello",
                                     stdin: "hello",
                                     args: []
-                                })).toContain('msg: hello');
+                                }).stdout).toContain('msg: hello');
 });

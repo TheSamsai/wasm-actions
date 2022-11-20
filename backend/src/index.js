@@ -161,6 +161,28 @@ app.delete('/actions/:actionId', verifiedUser, async (req, res) => {
     }
 })
 
+app.get('/logs/:actionId', verifiedUser, async (req, res) => {
+  if (!req.user) {
+    res.status(403).json({
+      "error": "user account not valid"
+    })
+  } else {
+    const action = await db.get_action(req.params.actionId)
+
+    if (action.owner === req.user.username) {
+      const logs = await db.get_logs(action._id)
+
+      console.log(logs)
+
+      return res.json(logs)
+    } else {
+      res.status(403).json({
+        "error": "this resource is not owned by you"
+      })
+    }
+  }
+})
+
 app.all('/wasm/*', async (req, res) => {
   const regex = /wasm\/(.*)\.wasm/g;
 
@@ -210,7 +232,11 @@ app.all('/wasm/*', async (req, res) => {
     args: []
   });
 
-  res.socket.end(`HTTP/1.1 200 OK\n${response}`);
+  console.log(response)
+
+  await db.add_log(action_details._id, { stdout: response.stdout, stderr: response.stderr })
+
+  res.socket.end(`HTTP/1.1 200 OK\n${response.stdout}`);
 })
 
 app.listen(port, () => {

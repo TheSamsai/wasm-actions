@@ -235,3 +235,11 @@ CLOCK: [2022-11-07 Mon 15:04]--[2022-11-07 Mon 15:44] =>  0:40
 :LOGBOOK:
 CLOCK: [2022-11-18 Fri 14:25]--[2022-11-18 Fri 14:39] =>  0:14
 :END:
+
+** DONE Save logging information on endpoints
+:LOGBOOK:
+CLOCK: [2022-11-20 su 15:10]--[2022-11-20 su 17:39] =>  2:29
+:END:
+
+** TODO Show logs on frontend
+** TODO Indicate a succesfully registered account somehow
