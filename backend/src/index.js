@@ -141,24 +141,36 @@ app.put('/actions/:actionId', verifiedUser, async (req, res) => {
 })
 
 app.delete('/actions/:actionId', verifiedUser, async (req, res) => {
-    console.log(req.params.actionId);
+  console.log(req.params.actionId);
 
-    const oldAction = await db.get_action(req.params.actionId);
+  const oldAction = await db.get_action(req.params.actionId);
 
-    console.log(oldAction);
+  if (!oldAction) {
+    res.status(404).json({ error: "Action not found"})
+    return
+  }
 
-    if (oldAction.owner === req.user.username) {
-        await db.delete_action(req.params.actionId);
+  console.log(oldAction);
 
-        const actions = await (await db.get_all_actions(req.user.username)).toArray();
-        console.log(actions);
+  if (oldAction.owner === req.user.username) {
+    await db.delete_action(req.params.actionId);
 
-        res.json(actions);
-    } else {
-        res.status(403).json({
-            "error": "this resource is not owned by you"
-        })
+    const wasmFolder = process.cwd() + '/wasm/' + req.user.username 
+    const wasmFilePath = wasmFolder + "/" + oldAction.filename
+
+    if (fs.existsSync(wasmFilePath)) {
+      fs.rmSync(wasmFilePath)
     }
+
+    const actions = await (await db.get_all_actions(req.user.username)).toArray();
+    console.log(actions);
+
+    res.json(actions);
+  } else {
+    res.status(403).json({
+      "error": "this resource is not owned by you"
+    })
+  }
 })
 
 app.get('/logs/:actionId', verifiedUser, async (req, res) => {
@@ -193,12 +205,21 @@ app.all('/wasm/*', async (req, res) => {
     return;
   }
 
-  const workload_name = matches[0].replace("wasm/", "");
+  const workload_name = decodeURI(matches[0].replace("wasm/", ""));
 
   const action_owner = workload_name.split("/")[0]
   const action_name = workload_name.split("/")[1]
 
+  console.log(action_owner)
+
+  console.log(action_name)
+
   const action_details = await db.get_action_by_name(action_owner, action_name)
+
+  if (!action_details) {
+    res.status(404).json({ error : "WASM workload not found"})
+    return
+  }
 
   if (action_details.params.protectionToken) {
     const token = req.headers.authorization.split(" ")[1];
@@ -219,6 +240,8 @@ app.all('/wasm/*', async (req, res) => {
     } else {
       res.status(401).json({ error: "Unauthorized" })
     }
+
+    return
   }
 
   console.log(`Running: ${workload_name}`)

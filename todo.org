@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-11-18 Fri 13:23]
+#+CAPTION: Clock summary at [2022-11-27 su 15:02]
 | Headline                                     | Time       |      |
 |----------------------------------------------+------------+------|
-| *Total time*                                 | *2d 12:14* |      |
+| *Total time*                                 | *2d 17:50* |      |
 |----------------------------------------------+------------+------|
-| WASM Actions                                 | 2d 12:14   |      |
+| WASM Actions                                 | 2d 17:50   |      |
 | \_  Set up development environment           |            | 0:56 |
 | \_  Define project goals                     |            | 0:49 |
 | \_  Set up testing frameworks                |            | 0:17 |
@@ -34,15 +34,21 @@
 | \_  Implement ability to select the WASM...  |            | 1:17 |
 | \_  Pass all CGI details to the WASM...      |            | 7:45 |
 | \_  Manage WASM Actions in the database      |            | 3:35 |
-| \_  Create endpoints to access Actions       |            | 1:28 |
+| \_  Create endpoints to access Actions       |            | 1:45 |
 | \_  Create a proper form for uploading...    |            | 0:56 |
+| \_  Implement user access control            |            | 0:08 |
 | \_  Better sessions management               |            | 0:50 |
 | \_  Implement a logout button                |            | 2:59 |
 | \_  Turn the WASM middleware into a...       |            | 1:07 |
 | \_  Make endpoints protectable with a token  |            | 3:29 |
+| \_  Allow frontend to modify existing...     |            | 1:54 |
 | \_  Namespace endpoints by username          |            | 1:23 |
 | \_  Make sure same name cannot be reused...  |            | 1:57 |
 | \_  Create a notification area in...         |            | 0:40 |
+| \_  Fix all hardcoded URLs                   |            | 0:14 |
+| \_  Save logging information on endpoints    |            | 2:29 |
+| \_  Show logs on frontend                    |            | 0:18 |
+| \_  Various small visual touches             |            | 0:16 |
 #+END:
 
 ** DONE Set up development environment
@@ -181,18 +187,22 @@ CLOCK: [2022-10-09 su 14:20]--[2022-10-09 su 16:39] =>  2:19
 CLOCK: [2022-10-21 Fri 12:29]--[2022-10-21 Fri 13:58] =>  1:29
 CLOCK: [2022-10-16 su 15:05]--[2022-10-16 su 17:11] =>  2:06
 :END:
-** STRT Create endpoints to access Actions
+** DONE Create endpoints to access Actions
 :LOGBOOK:
+CLOCK: [2022-11-27 su 13:47]--[2022-11-27 su 14:04] =>  0:17
 CLOCK: [2022-10-26 Wed 11:02]--[2022-10-26 Wed 11:49] =>  0:47
 CLOCK: [2022-10-21 Fri 14:05]--[2022-10-21 Fri 14:46] =>  0:41
 :END:
-*** TODO When deleting an endpoint, delete the WASM file too
+*** DONE When deleting an endpoint, delete the WASM file too
 ** DONE Create a proper form for uploading Actions
 :LOGBOOK:
 CLOCK: [2022-10-26 Wed 10:05]--[2022-10-26 Wed 11:01] =>  0:56
 :END:
-** TODO Implement user access control
-*** TODO Disallow recreating an account
+** DONE Implement user access control
+*** DONE Disallow recreating an account
+:LOGBOOK:
+CLOCK: [2022-11-27 su 13:39]--[2022-11-27 su 13:47] =>  0:08
+:END:
 ** DONE Better sessions management
 :LOGBOOK:
 CLOCK: [2022-10-28 Fri 14:08]--[2022-10-28 Fri 14:58] =>  0:50
@@ -241,5 +251,15 @@ CLOCK: [2022-11-18 Fri 14:25]--[2022-11-18 Fri 14:39] =>  0:14
 CLOCK: [2022-11-20 su 15:10]--[2022-11-20 su 17:39] =>  2:29
 :END:
 
-** TODO Show logs on frontend
+** DONE Show logs on frontend
+:LOGBOOK:
+CLOCK: [2022-11-27 su 14:26]--[2022-11-27 su 14:44] =>  0:18
+:END:
 ** TODO Indicate a succesfully registered account somehow
+** DONE Various small visual touches
+:LOGBOOK:
+CLOCK: [2022-11-27 su 14:46]--[2022-11-27 su 15:02] =>  0:16
+:END:
+** TODO Bug hunting
+** TODO Implement ability to update an endpoint's metadata
+** TODO Implement filesystem access capability

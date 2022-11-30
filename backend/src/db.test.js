@@ -21,6 +21,13 @@ describe("User DB", () => {
     expect(await db.count_users()).toBe(1);
   });
 
+  test("DB cannot register an already registered user", async () => {
+    await db.register_user("username", "password");
+    await db.register_user("username", "password");
+
+    expect(await db.count_users()).toBe(1);
+  });
+
   test("DB can login registered user", async () => {
     await db.register_user("username", "password");
 

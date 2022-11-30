@@ -13,13 +13,17 @@ const db = client.db("wasmActions");
 const user_db_stub = {};
 
 const clear_db = async () => {
-  const users = db.collection("users");
+  const users = db.collection("users")
 
-  await users.deleteMany({});
+  await users.deleteMany({})
 
-  const actions = db.collection("actions");
+  const actions = db.collection("actions")
 
-  await actions.deleteMany({});
+  await actions.deleteMany({})
+
+  const logs = db.collection("actions-logs")
+
+  await logs.deleteMany({})
 }
 
 const disconnect_db = () => {
@@ -27,14 +31,18 @@ const disconnect_db = () => {
 }
 
 const register_user = async (username, password) => {
-  const users = db.collection("users");
+  const users = db.collection("users")
   
+  if (await users.findOne({ username: username })) {
+    return false
+  }
+
   const user = await users.insertOne({
     username: username,
     password: bcrypt.hashSync(password, 8)
-  });
+  })
 
-  return user;
+  return user
 }
 
 const login_user = async (username, password) => {
