@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-11-27 su 15:02]
+#+CAPTION: Clock summary at [2022-12-02 Fri 14:32]
 | Headline                                     | Time       |      |
 |----------------------------------------------+------------+------|
-| *Total time*                                 | *2d 17:50* |      |
+| *Total time*                                 | *2d 19:47* |      |
 |----------------------------------------------+------------+------|
-| WASM Actions                                 | 2d 17:50   |      |
+| WASM Actions                                 | 2d 19:47   |      |
 | \_  Set up development environment           |            | 0:56 |
 | \_  Define project goals                     |            | 0:49 |
 | \_  Set up testing frameworks                |            | 0:17 |
@@ -48,7 +48,11 @@
 | \_  Fix all hardcoded URLs                   |            | 0:14 |
 | \_  Save logging information on endpoints    |            | 2:29 |
 | \_  Show logs on frontend                    |            | 0:18 |
+| \_  Indicate a succesfully registered...     |            | 0:28 |
 | \_  Various small visual touches             |            | 0:16 |
+| \_  Bug hunting                              |            | 0:09 |
+| \_  Implement ability to update an...        |            | 1:07 |
+| \_  Always show the top nav                  |            | 0:13 |
 #+END:
 
 ** DONE Set up development environment
@@ -268,7 +272,7 @@ CLOCK: [2022-11-27 su 14:46]--[2022-11-27 su 15:02] =>  0:16
 :LOGBOOK:
 CLOCK: [2022-12-02 Fri 14:22]--[2022-12-02 Fri 14:31] =>  0:09
 :END:
-*** TODO Failed login should raise an error on frontend
+*** DONE Failed login should raise an error on frontend
 ** DONE Implement ability to update an endpoint's metadata
 :LOGBOOK:
 CLOCK: [2022-12-02 Fri 10:59]--[2022-12-02 Fri 12:06] =>  1:07
