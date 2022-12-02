@@ -54,6 +54,10 @@ const login_user = async (username, password) => {
 
   const user = await users.findOne({ username: username });
 
+  if (!user) {
+    return false
+  }
+
   const validPassword = bcrypt.compareSync(password, user.password);
 
   if (!validPassword) {

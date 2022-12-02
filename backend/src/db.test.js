@@ -40,6 +40,10 @@ describe("User DB", () => {
     expect(await db.login_user("username", "not_password")).toBeFalsy();
   });
 
+  test("DB login to nonexistent user fails", async () => {
+    expect(await db.login_user("username", "not_password")).toBeFalsy();
+  });
+
   test("DB null password fails login", async () => {
     await db.register_user("username", "password");
 
@@ -135,7 +139,7 @@ describe("WASM actions DB", () => {
 
     same_action.params = { fsPaths: ["/tmp"]};
 
-    await db.update_action(same_action);
+    await db.update_action(same_action._id, same_action);
 
     const updated_action = await db.get_action(same_action._id);
 

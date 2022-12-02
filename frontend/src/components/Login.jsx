@@ -50,6 +50,11 @@ const Login = ({ setUser, setNotification, setError }) => {
     console.log(password)
 
     login_user(username, password).then(res => {
+      if (res.error) {
+        setError(res.error)
+        return
+      }
+
       const user = {
         username: username,
         token: res.token

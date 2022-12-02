@@ -263,8 +263,11 @@ CLOCK: [2022-12-02 Fri 10:30]--[2022-12-02 Fri 10:58] =>  0:28
 :LOGBOOK:
 CLOCK: [2022-11-27 su 14:46]--[2022-11-27 su 15:02] =>  0:16
 :END:
-** TODO Bug hunting
-*** TODO Fix attempting to log into a non-existent user crashing backend
+** STRT Bug hunting
+*** DONE Fix attempting to log into a non-existent user crashing backend
+:LOGBOOK:
+CLOCK: [2022-12-02 Fri 14:22]--[2022-12-02 Fri 14:31] =>  0:09
+:END:
 *** TODO Failed login should raise an error on frontend
 ** DONE Implement ability to update an endpoint's metadata
 :LOGBOOK:

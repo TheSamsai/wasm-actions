@@ -84,11 +84,18 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
-    const token = await db.login_user(req.body.username, req.body.password);
+  const token = await db.login_user(req.body.username, req.body.password);
 
-    res.json({
-        "token": token
-    });
+  if (!token) {
+    res.status(404).json({
+      "error": "couldn't find the user"
+    })
+    return
+  }
+
+  res.json({
+    "token": token
+  });
 })
 
 app.get('/actions', verifiedUser, async (req, res) => {
