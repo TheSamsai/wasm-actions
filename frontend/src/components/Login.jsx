@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { register_user, login_user, save_user } from '../services/user'
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setNotification, setError }) => {
   const navigate = useNavigate()
 
   const [username, setUsername] = useState("")
@@ -24,13 +24,23 @@ const Login = ({ setUser }) => {
     setPassword(event.target.value)
   }
 
-  const handleClickRegister = (event) => {
+  const handleClickRegister = async (event) => {
     event.preventDefault()
 
     console.log(username)
     console.log(password)
 
-    register_user(username, password).then(res => console.log(res))
+    const [ok, res] = await register_user(username, password)
+
+    if (ok) {
+      setNotification("User registered!")
+
+      setUsername("")
+      setPassword("")
+    } else {
+      setError("Couldn't register user")
+      console.log(res)
+    }
   }
 
   const handleClickLogin = (event) => {
@@ -58,11 +68,11 @@ const Login = ({ setUser }) => {
       <form>
         <div class="login-container">
           <label>Username:</label>
-          <input type="text" onChange={handleUsernameChange}/>
+          <input value={username} type="text" onChange={handleUsernameChange}/>
         </div>
         <div class="login-container">
           <label>Password:</label>
-          <input type="password" onChange={handlePasswordChange}/>
+          <input value={password} type="password" onChange={handlePasswordChange}/>
         </div>
         <div class="login-buttons">
           <button onClick={handleClickRegister}>Register</button>

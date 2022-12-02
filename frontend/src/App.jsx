@@ -14,13 +14,16 @@ import Nav from './components/Nav'
 import Home from './components/Home'
 import Login from './components/Login'
 import Error from './components/Error'
+import Notification from './components/Notification'
 
 import { get_user, check_valid } from './services/user'
 
 function App() {
   const [user, setUser] = useState(false)
 
-  const [error, setError] = useState("Ink ran out")
+  const [error, setError] = useState(null)
+
+  const [notification, setNotification] = useState("Hello, world!")
 
   useEffect(() => {
     const setIfValid = async () => {
@@ -44,8 +47,9 @@ function App() {
         <Nav user={user} setUser={setUser}/>
         <header className="App-header">
           <Error error={error} setError={setError}/>
+          <Notification notification={notification} setNotification={setNotification}/>
           <Routes>
-            <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route path="/login" element={<Login setUser={setUser} setNotification={setNotification} setError={setError}/>} />
             <Route path="/" element={<Home user={user} setError={setError}/>} />
           </Routes>
         </header>

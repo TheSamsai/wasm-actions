@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
 
-import { create_action, delete_action } from '../services/actions';
+import { create_action, modify_action, delete_action } from '../services/actions';
 
 import { BACKEND_URL } from '../services/config'
 
@@ -32,47 +32,69 @@ const WasmEndpoint = (props) => {
   }
 
   const applyChange = async () => {
-    if (endpoint) {
-      await delete_action(user, endpoint);
-    }
-
     let params = {}
 
     if (usingProtectionToken) {
       params = {...params, protectionToken}
     }
 
-    const {ok, response} = await create_action(user, {
-      filename: selectedFile.name,
-      owner: user.username,
-      params
-    });
+    if (!endpoint && !selectedFile) {
+      setError("Action must contain a valid WASM payload!")
+      return
+    }
 
-    console.log(ok, response)
+    let canProceed = false
+    let jsonResponse = null
 
-    if (ok) {
-      const formData = new FormData();
-      formData.append(
-        "wasmFile",
-        selectedFile,
-        selectedFile.name
-      );
-
-      console.log('Begin upload...');
-
-      await fetch(`${BACKEND_URL}/upload`, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Authorization': `Bearer ${user.token}`
-        }
+    if (endpoint) {
+      const {ok, response} = await modify_action(user, endpoint, {
+        filename: selectedFile ? selectedFile.name : endpoint ? endpoint.filename : "unreachable",
+        owner: user.username,
+        params
       });
 
-      console.log('Uploaded!');
+      console.log(ok, response)
 
-      setEndpoints(response);
+      canProceed = ok
+      jsonResponse = response
     } else {
-      setError(response.error)
+      const {ok, response} = await create_action(user, {
+        filename: selectedFile ? selectedFile.name : endpoint ? endpoint.filename : "unreachable",
+        owner: user.username,
+        params
+      });
+
+      console.log(ok, response)
+
+      canProceed = ok
+      jsonResponse = response
+    }
+
+    if (canProceed) {
+      if (selectedFile) {
+        const formData = new FormData();
+        formData.append(
+          "wasmFile",
+          selectedFile,
+          selectedFile.name
+        );
+
+        console.log('Begin upload...');
+
+        await fetch(`${BACKEND_URL}/upload`, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+
+        console.log('Uploaded!');
+      }
+
+      setEndpoints(jsonResponse)
+    } else {
+      setError(jsonResponse.error)
     }
 
     closeForm();
@@ -106,7 +128,7 @@ const WasmEndpoint = (props) => {
 
             <div class="capability-options">
               <label>Token protection</label>
-              <input type="checkbox" checked={usingProtectionToken} onClick={(e) => setUsingProtectionToken(e.target.value)}></input>
+              <input type="checkbox" checked={usingProtectionToken} onClick={(e) => setUsingProtectionToken(!usingProtectionToken)}></input>
             </div>
 
             <div class="capability-options">

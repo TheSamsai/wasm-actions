@@ -29,6 +29,22 @@ const create_action = async (user, action) => {
   }
 }
 
+const modify_action = async (user, action, newAction) => {
+  const res = await fetch(`${BACKEND_URL}/actions/${action._id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`
+    },
+    body: JSON.stringify(newAction)
+  });
+
+  return {
+    ok: res.ok,
+    response: await res.json()
+  }
+}
+
 const delete_action = async (user, action) => {
   const res = await fetch(`${BACKEND_URL}/actions/${action._id}`, {
     method: 'DELETE',
@@ -59,6 +75,7 @@ const get_logs = async (user, action) => {
 export {
   get_actions,
   create_action,
+  modify_action,
   delete_action,
   get_logs
 }

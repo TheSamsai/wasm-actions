@@ -13,7 +13,7 @@ const register_user = async (username, password) => {
     })
   })
 
-  return await res.json()
+  return [res.ok, await res.json()]
 }
 
 const login_user = async (username, password) => {

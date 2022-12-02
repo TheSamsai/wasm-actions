@@ -255,11 +255,19 @@ CLOCK: [2022-11-20 su 15:10]--[2022-11-20 su 17:39] =>  2:29
 :LOGBOOK:
 CLOCK: [2022-11-27 su 14:26]--[2022-11-27 su 14:44] =>  0:18
 :END:
-** TODO Indicate a succesfully registered account somehow
+** DONE Indicate a succesfully registered account somehow
+:LOGBOOK:
+CLOCK: [2022-12-02 Fri 10:30]--[2022-12-02 Fri 10:58] =>  0:28
+:END:
 ** DONE Various small visual touches
 :LOGBOOK:
 CLOCK: [2022-11-27 su 14:46]--[2022-11-27 su 15:02] =>  0:16
 :END:
 ** TODO Bug hunting
-** TODO Implement ability to update an endpoint's metadata
+** DONE Implement ability to update an endpoint's metadata
+:LOGBOOK:
+CLOCK: [2022-12-02 Fri 10:59]--[2022-12-02 Fri 12:06] =>  1:07
+:END:
+** TODO Always show the top nav
 ** TODO Implement filesystem access capability
+** TODO Refactoring

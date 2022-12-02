@@ -124,20 +124,21 @@ app.post('/actions', verifiedUser, async (req, res) => {
 })
 
 app.put('/actions/:actionId', verifiedUser, async (req, res) => {
-    const oldAction = await db.get_action(req.params.actionId);
+  const oldAction = await db.get_action(req.params.actionId);
 
-    if (oldAction.owner === req.user.username) {
-        await db.update_action(req.body);
+  if (oldAction.owner === req.user.username) {
+    console.log(req.body)
+    await db.update_action(req.params.actionId, req.body);
 
-        const actions = await (await db.get_all_actions(req.user.username)).toArray();
-        console.log(actions);
+    const actions = await (await db.get_all_actions(req.user.username)).toArray();
+    console.log(actions);
 
-        res.json(actions);
-    } else {
-        res.status(403).json({
-            "error": "This resource is not owned by you"
-        })
-    }
+    res.json(actions);
+  } else {
+    res.status(403).json({
+      "error": "This resource is not owned by you"
+    })
+  }
 })
 
 app.delete('/actions/:actionId', verifiedUser, async (req, res) => {

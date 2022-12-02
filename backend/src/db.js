@@ -124,10 +124,12 @@ const get_action_by_name = async (username, filename) => {
   return await actions.findOne({ owner: username, filename: filename });
 }
 
-const update_action = async (action) => {
+const update_action = async (id, action) => {
+  const oid = ObjectId(id);
+
   const actions = db.collection("actions");
 
-  return await actions.replaceOne({ _id: action._id}, action);
+  return await actions.replaceOne({ _id: oid}, action);
 }
 
 const delete_action = async (id) => {
