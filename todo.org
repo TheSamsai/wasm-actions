@@ -264,10 +264,15 @@ CLOCK: [2022-12-02 Fri 10:30]--[2022-12-02 Fri 10:58] =>  0:28
 CLOCK: [2022-11-27 su 14:46]--[2022-11-27 su 15:02] =>  0:16
 :END:
 ** TODO Bug hunting
+*** TODO Fix attempting to log into a non-existent user crashing backend
+*** TODO Failed login should raise an error on frontend
 ** DONE Implement ability to update an endpoint's metadata
 :LOGBOOK:
 CLOCK: [2022-12-02 Fri 10:59]--[2022-12-02 Fri 12:06] =>  1:07
 :END:
-** TODO Always show the top nav
+** DONE Always show the top nav
+:LOGBOOK:
+CLOCK: [2022-12-02 Fri 13:32]--[2022-12-02 Fri 13:45] =>  0:13
+:END:
 ** TODO Implement filesystem access capability
 ** TODO Refactoring

@@ -44,14 +44,18 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Nav user={user} setUser={setUser}/>
         <header className="App-header">
-          <Error error={error} setError={setError}/>
-          <Notification notification={notification} setNotification={setNotification}/>
-          <Routes>
-            <Route path="/login" element={<Login setUser={setUser} setNotification={setNotification} setError={setError}/>} />
-            <Route path="/" element={<Home user={user} setError={setError}/>} />
-          </Routes>
+          <div style={{position: "fixed", width: "100%"}}>
+            <Nav user={user} setUser={setUser}/>
+            <Error error={error} setError={setError}/>
+            <Notification notification={notification} setNotification={setNotification}/>
+          </div>
+          <div style={{marginTop: "5%"}}>
+            <Routes>
+              <Route path="/login" element={<Login setUser={setUser} setNotification={setNotification} setError={setError}/>} />
+              <Route path="/" element={<Home user={user} setError={setError}/>} />
+            </Routes>
+          </div>
         </header>
       </Router>
 

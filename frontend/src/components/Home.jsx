@@ -46,7 +46,7 @@ const Home = (props) => {
 
   if (!user) {
     return (
-      <div>
+      <div style={{ display: "flex", justifyContent: "center"}}>
         <h1>Please login first</h1>
       </div>
     )
