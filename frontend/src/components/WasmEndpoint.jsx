@@ -20,7 +20,8 @@ const WasmEndpoint = (props) => {
   const [usingProtectionToken, setUsingProtectionToken] = useState(endpoint ? endpoint.params.hasOwnProperty("protectionToken") : false)
   const [protectionToken, setProtectionToken] = useState(endpoint ? (endpoint.params.protectionToken ? endpoint.params.protectionToken : "") : "")
 
-  console.log(usingProtectionToken)
+  const [usingFilesystem, setUsingFilesystem] = useState(endpoint ? endpoint.params.hasOwnProperty("filesystem") : false)
+  const [filesystemPrefix, setFilesystemPrefix] = useState(endpoint ? (endpoint.params.fs_path ? endpoint.params.fs_path : "") : "")
 
   const onFileChange = (event) => {
     console.log(event.target.files[0])
@@ -36,6 +37,10 @@ const WasmEndpoint = (props) => {
 
     if (usingProtectionToken) {
       params = {...params, protectionToken}
+    }
+
+    if (usingFilesystem) {
+      params = {...params, fs_path: filesystemPrefix}
     }
 
     if (!endpoint && !selectedFile) {
@@ -144,12 +149,12 @@ const WasmEndpoint = (props) => {
             <h3>Capabilities</h3>
             <div class="capability-options">
               <label>Filesystem access</label>
-              <input type="checkbox"></input>
+              <input type="checkbox" checked={usingFilesystem} onClick={(e) => setUsingFilesystem(!usingFilesystem)}></input>
             </div>
 
             <div class="capability-options">
               <label>Filesystem prefix</label>
-              <input type="text"></input>
+              <input type="text" value={filesystemPrefix} onChange={(e) => setFilesystemPrefix(e.target.value)}></input>
             </div>
 
             <div class="capability-options">

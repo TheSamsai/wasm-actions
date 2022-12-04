@@ -1,7 +1,5 @@
 const { spawnSync } = require("child_process");
 
-const execSync = require("child_process").spawnSync;
-    
 const PATH_PREFIX = "wasm"
 
 const run_wasi = (file, params) => {
@@ -20,6 +18,11 @@ const run_wasi = (file, params) => {
   }).flat();
 
   const options = ["--time-limit", "5000"]
+
+  if (params.fs_path) {
+    options.push("--dir")
+    options.push(`.:${params.fs_path}`)
+  }
 
   const result = spawnSync(
     "wasmedge", options.concat(env_list).concat([`${PATH_PREFIX}/${file}`]).concat(params.args.map(v => v.toString())),

@@ -111,3 +111,39 @@ test('Running hello-cgi.wasm parses QUERY_STRING', () => {
                                     args: []
                                 }).stdout).toContain('msg: hello');
 });
+
+test('Running file-test.wasm without filesystem permissions', () => {
+  expect(wasi_runner.run_wasi("file-test.wasm",
+                              {
+                                method: "GET",
+                                query_string: "",
+                                stdin: "",
+                                args: []
+                              }
+                             ).stdout).not.toContain("file-test.wasm")
+})
+
+
+test('Running file-test.wasm with filesystem permissions', () => {
+  expect(wasi_runner.run_wasi("file-test.wasm",
+                              {
+                                method: "GET",
+                                query_string: "",
+                                stdin: "",
+                                args: [],
+                                fs_path: "./wasm"
+                              }
+                             ).stdout).toContain("file-test.wasm")
+})
+
+test('Running file-test.wasm with filesystem permissions, cannot pass ..', () => {
+  expect(wasi_runner.run_wasi("file-test.wasm",
+                              {
+                                method: "GET",
+                                query_string: "",
+                                stdin: "",
+                                args: [],
+                                fs_path: "../"
+                              }
+                             ).stdout).toContain("error")
+})

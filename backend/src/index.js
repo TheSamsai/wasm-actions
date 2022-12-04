@@ -229,6 +229,15 @@ app.all('/wasm/*', async (req, res) => {
     return
   }
 
+  const params = {
+    method: req.method,
+    stdin: JSON.stringify(req.body),
+    path_info: req.path,
+    query_string: querystring.stringify(req.query),
+    args: [],
+    fs_path: action_details.params.fs_path
+  }
+
   if (action_details.params.protectionToken) {
     const token = req.headers.authorization.split(" ")[1];
 
@@ -236,13 +245,7 @@ app.all('/wasm/*', async (req, res) => {
       console.log(`Running protected workload: ${workload_name}`)
       console.log(action_details)
 
-      const response = wasi_runner.run_wasi(workload_name, {
-        method: req.method,
-        stdin: JSON.stringify(req.body),
-        path_info: req.path,
-        query_string: querystring.stringify(req.query),
-        args: []
-      });
+      const response = wasi_runner.run_wasi(workload_name, params);
 
       res.socket.end(`HTTP/1.1 200 OK\n${response}`)
     } else {
@@ -255,16 +258,11 @@ app.all('/wasm/*', async (req, res) => {
   console.log(`Running: ${workload_name}`)
   console.log(action_details)
 
-  const response = wasi_runner.run_wasi(workload_name, {
-    method: req.method,
-    stdin: JSON.stringify(req.body),
-    path_info: req.path,
-    query_string: querystring.stringify(req.query),
-    args: []
-  });
+  const response = wasi_runner.run_wasi(workload_name, params);
 
   console.log(response)
 
+  // TODO: This needs to be done for protected endpoints too
   await db.add_log(action_details._id, { stdout: response.stdout, stderr: response.stderr })
 
   res.socket.end(`HTTP/1.1 200 OK\n${response.stdout}`);

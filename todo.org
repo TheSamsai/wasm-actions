@@ -281,5 +281,9 @@ CLOCK: [2022-12-02 Fri 10:59]--[2022-12-02 Fri 12:06] =>  1:07
 :LOGBOOK:
 CLOCK: [2022-12-02 Fri 13:32]--[2022-12-02 Fri 13:45] =>  0:13
 :END:
-** TODO Implement filesystem access capability
+** DONE Implement filesystem access capability
+:LOGBOOK:
+CLOCK: [2022-12-04 su 12:06]--[2022-12-04 su 15:51] =>  3:45
+:END:
+** TODO Make sure that WASM actions can only access user-specific folders
 ** TODO Refactoring
