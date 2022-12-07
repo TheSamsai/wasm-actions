@@ -214,6 +214,52 @@ app.get('/logs/:actionId', verifiedUser, async (req, res) => {
   }
 })
 
+app.get('/virtual-filesystems', verifiedUser, async (req, res) => {
+  if (!req.user) {
+    res.status(403).json({
+      "error": "user account not valid"
+    })
+  } else {
+    const virtual_filesystems = await db.get_virtual_filesystems(req.user.username)
+
+    console.log(virtual_filesystems)
+
+    return res.json(virtual_filesystems)
+  }
+})
+
+app.post('/virtual-filesystems', verifiedUser, async (req, res) => {
+  if (!req.user) {
+    res.status(403).json({
+      "error": "user account not valid"
+    })
+  } else {
+    await db.create_virtual_filesystem(req.user.username, req.body.name)
+
+    const virtual_filesystems = await db.get_virtual_filesystems(req.user.username)
+
+    console.log(virtual_filesystems)
+
+    return res.json(virtual_filesystems)
+  }
+})
+
+app.delete('/virtual-filesystems', verifiedUser, async (req, res) => {
+  if (!req.user) {
+    res.status(403).json({
+      "error": "user account not valid"
+    })
+  } else {
+    await db.delete_virtual_filesystem(req.user.username, req.body.name)
+
+    const virtual_filesystems = await db.get_virtual_filesystems(req.user.username)
+
+    console.log(virtual_filesystems)
+
+    return res.json(virtual_filesystems)
+  }
+})
+
 app.all('/wasm/*', async (req, res) => {
   const regex = /wasm\/(.*)\.wasm/g;
 

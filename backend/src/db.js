@@ -24,6 +24,10 @@ const clear_db = async () => {
   const logs = db.collection("actions-logs")
 
   await logs.deleteMany({})
+
+  const virtual_filesystems = db.collection("virtual-fs")
+
+  await virtual_filesystems.deleteMany({})
 }
 
 const disconnect_db = () => {
@@ -177,6 +181,30 @@ const get_logs = async (id) => {
   return await logs.find({ action: oid }).sort({ created_at: 1}).toArray()
 }
 
+const create_virtual_filesystem = async (user, fs_name) => {
+  const virtual_filesystems = db.collection("virtual-fs")
+
+  return virtual_filesystems.insertOne({
+    name: fs_name,
+    owner: user
+  })
+}
+
+const delete_virtual_filesystem = async (user, fs_name) => {
+  const virtual_filesystems = db.collection("virtual-fs")
+
+  virtual_filesystems.deleteOne({
+    name: fs_name,
+    owner: user
+  })
+}
+
+const get_virtual_filesystems = async (user) => {
+  const virtual_filesystems = db.collection("virtual-fs")
+
+  return await virtual_filesystems.find({ owner: user }).sort().toArray()
+}
+
 module.exports = {
   clear_db,
   disconnect_db,
@@ -194,4 +222,8 @@ module.exports = {
 
   add_log,
   get_logs,
+
+  create_virtual_filesystem,
+  delete_virtual_filesystem,
+  get_virtual_filesystems
 }

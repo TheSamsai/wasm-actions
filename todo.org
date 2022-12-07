@@ -289,6 +289,10 @@ CLOCK: [2022-12-04 su 12:06]--[2022-12-04 su 15:51] =>  3:45
 :LOGBOOK:
 CLOCK: [2022-12-07 Wed 10:06]--[2022-12-07 Wed 11:15] =>  1:09
 :END:
+** STRT Implement "Virtual filesystems" that store the directory prefixes
+:LOGBOOK:
+CLOCK: [2022-12-07 Wed 14:09]--[2022-12-07 Wed 14:58] =>  0:49
+:END:
 ** TODO Expose storage directory management on frontend
 ** TODO Write a user manual
 ** TODO Write a setup manual

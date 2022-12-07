@@ -60,6 +60,16 @@ const Home = (props) => {
 
       <p>Welcome, {user.username}!</p>
 
+      <h2>Virtual filesystems</h2>
+
+      <ul>
+        <li>
+          <h3>Test filesystem</h3>
+
+          <p>Description: Test filesystem used for the file-test.wasm endpoint</p>
+        </li>
+      </ul>
+
       <h2>WASM Endpoints</h2>
 
       <button onClick={handleClickCreate}>Create a new endpoint</button>
