@@ -285,5 +285,12 @@ CLOCK: [2022-12-02 Fri 13:32]--[2022-12-02 Fri 13:45] =>  0:13
 :LOGBOOK:
 CLOCK: [2022-12-04 su 12:06]--[2022-12-04 su 15:51] =>  3:45
 :END:
-** TODO Make sure that WASM actions can only access user-specific folders
+** DONE Make sure that WASM actions can only access user-specific folders
+:LOGBOOK:
+CLOCK: [2022-12-07 Wed 10:06]--[2022-12-07 Wed 11:15] =>  1:09
+:END:
+** TODO Expose storage directory management on frontend
+** TODO Write a user manual
+** TODO Write a setup manual
 ** TODO Refactoring
+** TODO Deploy!

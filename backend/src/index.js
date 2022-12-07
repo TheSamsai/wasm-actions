@@ -76,11 +76,22 @@ app.get('/hidden', verifiedUser, (req, res) => {
 })
 
 app.post('/register', async (req, res) => {
-    await db.register_user(req.body.username, req.body.password);
+  const wasmFolder = process.cwd() + '/wasm/' + req.body.username 
+  const runtimeFolder = process.cwd() + '/storage/' + req.body.username 
 
-    res.json({
-        "message": `Registered user ${req.body.username}`
-    });
+  if (!fs.existsSync(wasmFolder)) {
+    fs.mkdirSync(wasmFolder, { recursive: true })
+  }
+
+  if (!fs.existsSync(runtimeFolder)) {
+    fs.mkdirSync(runtimeFolder, { recursive: true })
+  }
+
+  await db.register_user(req.body.username, req.body.password);
+
+  res.json({
+    "message": `Registered user ${req.body.username}`
+  });
 })
 
 app.post('/login', async (req, res) => {
@@ -229,13 +240,15 @@ app.all('/wasm/*', async (req, res) => {
     return
   }
 
+  const runtimeFolder = process.cwd() + '/storage/' + action_owner
+
   const params = {
     method: req.method,
     stdin: JSON.stringify(req.body),
     path_info: req.path,
     query_string: querystring.stringify(req.query),
     args: [],
-    fs_path: action_details.params.fs_path
+    fs_path: `${runtimeFolder}/${action_details.params.fs_path}`
   }
 
   if (action_details.params.protectionToken) {
