@@ -1,58 +1,61 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-02 Fri 14:32]
-| Headline                                     | Time       |      |
-|----------------------------------------------+------------+------|
-| *Total time*                                 | *2d 19:47* |      |
-|----------------------------------------------+------------+------|
-| WASM Actions                                 | 2d 19:47   |      |
-| \_  Set up development environment           |            | 0:56 |
-| \_  Define project goals                     |            | 0:49 |
-| \_  Set up testing frameworks                |            | 0:17 |
-| \_  Create initial README                    |            | 0:12 |
-| \_  Investigate WASM support in Node         |            | 1:37 |
-| \_  Create a basic WASI application in Rust  |            | 0:41 |
-| \_  Create a test WASM program and run it... |            | 1:37 |
-| \_  Set up a CI system that runs frontend... |            | 0:19 |
-| \_  Studied WebAssembly fundamentals         |            | 3:26 |
-| \_  Process a single HTTP request inside...  |            | 0:53 |
-| \_  Implement basic JWT authentication       |            | 1:28 |
-| \_  Add endpoints for register and login     |            | 0:24 |
-| \_  Select and set up a database             |            | 2:35 |
-| \_  Find a way to run DB tests in CI         |            | 0:05 |
-| \_  Implement login on frontend              |            | 1:38 |
-| \_  Set up a podman-compose file to help...  |            | 1:07 |
-| \_  Fix CI                                   |            | 0:10 |
-| \_  Prototype frontend dashboard             |            | 4:15 |
-| \_  Clear frontend tests                     |            | 0:02 |
-| \_  Fix null issue in backend login check    |            | 0:28 |
-| \_  Development environment and tool...      |            | 1:13 |
-| \_  Implement uploading a WASM module        |            | 1:23 |
-| \_  Investigate WasmEdge                     |            | 2:02 |
-| \_  Replace Node WASI runner with WasmEdge   |            | 4:59 |
-| \_  Fix CI tests                             |            | 0:12 |
-| \_  Implement ability to select the WASM...  |            | 1:17 |
-| \_  Pass all CGI details to the WASM...      |            | 7:45 |
-| \_  Manage WASM Actions in the database      |            | 3:35 |
-| \_  Create endpoints to access Actions       |            | 1:45 |
-| \_  Create a proper form for uploading...    |            | 0:56 |
-| \_  Implement user access control            |            | 0:08 |
-| \_  Better sessions management               |            | 0:50 |
-| \_  Implement a logout button                |            | 2:59 |
-| \_  Turn the WASM middleware into a...       |            | 1:07 |
-| \_  Make endpoints protectable with a token  |            | 3:29 |
-| \_  Allow frontend to modify existing...     |            | 1:54 |
-| \_  Namespace endpoints by username          |            | 1:23 |
-| \_  Make sure same name cannot be reused...  |            | 1:57 |
-| \_  Create a notification area in...         |            | 0:40 |
-| \_  Fix all hardcoded URLs                   |            | 0:14 |
-| \_  Save logging information on endpoints    |            | 2:29 |
-| \_  Show logs on frontend                    |            | 0:18 |
-| \_  Indicate a succesfully registered...     |            | 0:28 |
-| \_  Various small visual touches             |            | 0:16 |
-| \_  Bug hunting                              |            | 0:09 |
-| \_  Implement ability to update an...        |            | 1:07 |
-| \_  Always show the top nav                  |            | 0:13 |
+#+CAPTION: Clock summary at [2022-12-08 Thu 12:53]
+| Headline                                     | Time      |      |
+|----------------------------------------------+-----------+------|
+| *Total time*                                 | *3d 2:37* |      |
+|----------------------------------------------+-----------+------|
+| WASM Actions                                 | 3d 2:37   |      |
+| \_  Set up development environment           |           | 0:56 |
+| \_  Define project goals                     |           | 0:49 |
+| \_  Set up testing frameworks                |           | 0:17 |
+| \_  Create initial README                    |           | 0:12 |
+| \_  Investigate WASM support in Node         |           | 1:37 |
+| \_  Create a basic WASI application in Rust  |           | 0:41 |
+| \_  Create a test WASM program and run it... |           | 1:37 |
+| \_  Set up a CI system that runs frontend... |           | 0:19 |
+| \_  Studied WebAssembly fundamentals         |           | 3:26 |
+| \_  Process a single HTTP request inside...  |           | 0:53 |
+| \_  Implement basic JWT authentication       |           | 1:28 |
+| \_  Add endpoints for register and login     |           | 0:24 |
+| \_  Select and set up a database             |           | 2:35 |
+| \_  Find a way to run DB tests in CI         |           | 0:05 |
+| \_  Implement login on frontend              |           | 1:38 |
+| \_  Set up a podman-compose file to help...  |           | 1:07 |
+| \_  Fix CI                                   |           | 0:10 |
+| \_  Prototype frontend dashboard             |           | 4:15 |
+| \_  Clear frontend tests                     |           | 0:02 |
+| \_  Fix null issue in backend login check    |           | 0:28 |
+| \_  Development environment and tool...      |           | 1:13 |
+| \_  Implement uploading a WASM module        |           | 1:23 |
+| \_  Investigate WasmEdge                     |           | 2:02 |
+| \_  Replace Node WASI runner with WasmEdge   |           | 4:59 |
+| \_  Fix CI tests                             |           | 0:12 |
+| \_  Implement ability to select the WASM...  |           | 1:17 |
+| \_  Pass all CGI details to the WASM...      |           | 7:45 |
+| \_  Manage WASM Actions in the database      |           | 3:35 |
+| \_  Create endpoints to access Actions       |           | 1:45 |
+| \_  Create a proper form for uploading...    |           | 0:56 |
+| \_  Implement user access control            |           | 0:08 |
+| \_  Better sessions management               |           | 0:50 |
+| \_  Implement a logout button                |           | 2:59 |
+| \_  Turn the WASM middleware into a...       |           | 1:07 |
+| \_  Make endpoints protectable with a token  |           | 3:29 |
+| \_  Allow frontend to modify existing...     |           | 1:54 |
+| \_  Namespace endpoints by username          |           | 1:23 |
+| \_  Make sure same name cannot be reused...  |           | 1:57 |
+| \_  Create a notification area in...         |           | 0:40 |
+| \_  Fix all hardcoded URLs                   |           | 0:14 |
+| \_  Save logging information on endpoints    |           | 2:29 |
+| \_  Show logs on frontend                    |           | 0:18 |
+| \_  Indicate a succesfully registered...     |           | 0:28 |
+| \_  Various small visual touches             |           | 0:16 |
+| \_  Bug hunting                              |           | 0:09 |
+| \_  Implement ability to update an...        |           | 1:07 |
+| \_  Always show the top nav                  |           | 0:13 |
+| \_  Implement filesystem access capability   |           | 3:45 |
+| \_  Make sure that WASM actions can only...  |           | 1:09 |
+| \_  Implement "Virtual filesystems"...       |           | 1:56 |
 #+END:
 
 ** DONE Set up development environment
@@ -289,11 +292,12 @@ CLOCK: [2022-12-04 su 12:06]--[2022-12-04 su 15:51] =>  3:45
 :LOGBOOK:
 CLOCK: [2022-12-07 Wed 10:06]--[2022-12-07 Wed 11:15] =>  1:09
 :END:
-** STRT Implement "Virtual filesystems" that store the directory prefixes
+** STRT Implement "Virtual filesystems" directory management
 :LOGBOOK:
+CLOCK: [2022-12-08 Thu 12:53]--[2022-12-08 Thu 13:40] =>  0:47
+CLOCK: [2022-12-08 Thu 10:58]--[2022-12-08 Thu 12:05] =>  1:07
 CLOCK: [2022-12-07 Wed 14:09]--[2022-12-07 Wed 14:58] =>  0:49
 :END:
-** TODO Expose storage directory management on frontend
 ** TODO Write a user manual
 ** TODO Write a setup manual
 ** TODO Refactoring

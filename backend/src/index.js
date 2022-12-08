@@ -234,6 +234,10 @@ app.post('/virtual-filesystems', verifiedUser, async (req, res) => {
       "error": "user account not valid"
     })
   } else {
+    const filesystemDir = `${process.cwd()}/storage/${req.user.username}/${req.body.name}`
+
+    fs.mkdirSync(filesystemDir)
+
     await db.create_virtual_filesystem(req.user.username, req.body.name)
 
     const virtual_filesystems = await db.get_virtual_filesystems(req.user.username)

@@ -188,25 +188,3 @@ describe("WASM actions logs DB", () => {
 
 })
 
-describe("WASM actions virtual filesystems DB", () => {
-  beforeAll(async () => {
-    await db.register_user("user", "password");
-  });
-
-  test("Can create a virtual filesystem", async () => {
-    await db.create_virtual_filesystem("user", "test_fs")
-
-    expect(await db.get_virtual_filesystems("user")).toHaveLength(1)
-  })
-
-  test("Can delete a virtual filesystem", async () => {
-    await db.create_virtual_filesystem("user", "test_fs")
-
-    expect(await db.get_virtual_filesystems("user")).toHaveLength(1)
-
-    await db.delete_virtual_filesystem("user", "test_fs")
-
-    expect(await db.get_virtual_filesystems("user")).toHaveLength(0)
-  })
-
-})

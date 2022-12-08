@@ -9,7 +9,7 @@ import { BACKEND_URL } from '../services/config'
 
 
 const WasmEndpoint = (props) => {
-  const { user, endpoint, setEndpoints, setError, closeForm } = props;
+  const { user, endpoint, setEndpoints, virtualFilesystems, setError, closeForm } = props;
   
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -114,7 +114,7 @@ const WasmEndpoint = (props) => {
   const endpointUrl = endpoint ? encodeURI(`${BACKEND_URL}/wasm/${user.username}/${endpoint.filename}`) : ''
 
   return (
-    <div>
+    <div style={{ width: "100%"}}>
       <h2>{endpoint ? endpoint.filename : "Create a new endpoint"}</h2>
 
         <div>
@@ -153,8 +153,13 @@ const WasmEndpoint = (props) => {
             </div>
 
             <div class="capability-options">
-              <label>Filesystem prefix</label>
-              <input type="text" value={filesystemPrefix} onChange={(e) => setFilesystemPrefix(e.target.value)}></input>
+              <label>Virtual filesystem</label>
+              {/* <input type="text" value={filesystemPrefix} onChange={(e) => setFilesystemPrefix(e.target.value)}></input> */}
+              <select>
+                { virtualFilesystems.map(fs => (
+                  <option value={fs}>{fs.name}</option>
+                ))}
+              </select>
             </div>
 
             <div class="capability-options">

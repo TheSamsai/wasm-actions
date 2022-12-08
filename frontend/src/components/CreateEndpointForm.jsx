@@ -11,6 +11,7 @@ const CreateEndpointForm = (props) => {
     closeForm,
     user,
     setEndpoints,
+    virtualFilesystems,
     setError
   } = props;
 
@@ -19,7 +20,9 @@ const CreateEndpointForm = (props) => {
   return (
     <div class="create-endpoint-background">
       <div class="create-endpoint-form">
-        <WasmEndpoint user={user} setEndpoints={setEndpoints} setError={setError} closeForm={closeForm}/>
+        <div style={{ margin: "15px", width: "100%"}}>
+          <WasmEndpoint user={user} setEndpoints={setEndpoints} virtualFilesystems={virtualFilesystems} setError={setError} closeForm={closeForm}/>
+        </div>
       </div>
     </div>
   )
