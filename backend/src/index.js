@@ -236,7 +236,11 @@ app.post('/virtual-filesystems', verifiedUser, async (req, res) => {
   } else {
     const filesystemDir = `${process.cwd()}/storage/${req.user.username}/${req.body.name}`
 
-    fs.mkdirSync(filesystemDir)
+    try {
+      fs.mkdirSync(filesystemDir)
+    } catch {
+      return res.status(500).json({ error: "Failed to create the directory"})
+    }
 
     await db.create_virtual_filesystem(req.user.username, req.body.name)
 
@@ -298,7 +302,7 @@ app.all('/wasm/*', async (req, res) => {
     path_info: req.path,
     query_string: querystring.stringify(req.query),
     args: [],
-    fs_path: `${runtimeFolder}/${action_details.params.fs_path}`
+    fs_path: `${runtimeFolder}/${action_details.params.fs_name}`
   }
 
   if (action_details.params.protectionToken) {

@@ -39,9 +39,17 @@ a developer-specific key-value storage system may be a good option. Different wo
 the same key-value storage with read/write permissions. With this capability, already quite complex systems
 could be developed, such as forums or basic micro-blogging services.
 
+**Note**: For Wasm Actions, persistance is handled via WASI and the concept of virtual filesystems that allow
+directories to be mapped into the running WASM program. To save time, it was decided that providing this would
+allow enough persistence for Actions without needing a specific KV-store capability.
+
 Advanced capabilities may include the ability to access the file system in a controlled manner and execute
 HTTP requests or chain calls through multiple WASM modules. With these features the platform would be able to
 match the basic feature set of serverless platforms.
+
+**Note**: Due to time constraints the networking/HTTP capability was left out due to WASM runtimes generally not
+splitting it off into a separate module/capability. The underlying runtime (WasmEdge) supports TCP sockets,
+but since this is included in WASI, it cannot be controllably enabled or disabled. 
 
 ## Developer dashboard
 

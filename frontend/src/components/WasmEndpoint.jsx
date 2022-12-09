@@ -20,8 +20,8 @@ const WasmEndpoint = (props) => {
   const [usingProtectionToken, setUsingProtectionToken] = useState(endpoint ? endpoint.params.hasOwnProperty("protectionToken") : false)
   const [protectionToken, setProtectionToken] = useState(endpoint ? (endpoint.params.protectionToken ? endpoint.params.protectionToken : "") : "")
 
-  const [usingFilesystem, setUsingFilesystem] = useState(endpoint ? endpoint.params.hasOwnProperty("filesystem") : false)
-  const [filesystemPrefix, setFilesystemPrefix] = useState(endpoint ? (endpoint.params.fs_path ? endpoint.params.fs_path : "") : "")
+  const [usingFilesystem, setUsingFilesystem] = useState(endpoint ? endpoint.params.hasOwnProperty("fs_name") : false)
+  const [filesystemName, setFilesystemName] = useState(endpoint ? (endpoint.params.fs_name ? endpoint.params.fs_name : null) : null)
 
   const onFileChange = (event) => {
     console.log(event.target.files[0])
@@ -40,7 +40,7 @@ const WasmEndpoint = (props) => {
     }
 
     if (usingFilesystem) {
-      params = {...params, fs_path: filesystemPrefix}
+      params = {...params, fs_name: filesystemName}
     }
 
     if (!endpoint && !selectedFile) {
@@ -155,17 +155,14 @@ const WasmEndpoint = (props) => {
             <div class="capability-options">
               <label>Virtual filesystem</label>
               {/* <input type="text" value={filesystemPrefix} onChange={(e) => setFilesystemPrefix(e.target.value)}></input> */}
-              <select>
+              <select onChange={(e) => setFilesystemName(e.target.value)} value={filesystemName}>
+                <option value="None">None</option>
                 { virtualFilesystems.map(fs => (
-                  <option value={fs}>{fs.name}</option>
+                  <option value={fs.name}>{fs.name}</option>
                 ))}
               </select>
             </div>
 
-            <div class="capability-options">
-              <label>HTTP requests</label>
-              <input type="checkbox"></input>
-            </div>
           </div>
 
           { endpoint && endpoint.logs ?
