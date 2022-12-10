@@ -12,7 +12,7 @@ import CreateVirtualFS from './CreateVirtualFS';
 import { get_virtual_filesystems } from '../services/virtual-fs';
 
 const Home = (props) => {
-  const { user, setError } = props;
+  const { user, setError, setNotification } = props;
 
   const [endpoints, setEndpoints] = useState([]);
 
@@ -85,12 +85,12 @@ const Home = (props) => {
 
       <h2>Virtual filesystems</h2>
 
-      <CreateVirtualFS user={user} setVirtualFilesystems={setVirtualFilesystems}/>
+      <CreateVirtualFS user={user} setVirtualFilesystems={setVirtualFilesystems} setNotification={setNotification}/>
 
       <ul>
         { virtualFilesystems.map(fs => (
           <li key={fs._id}>
-            <VirtualFS virtualFilesystem={fs}/>
+            <VirtualFS user={user} virtualFilesystem={fs} setVirtualFilesystems={setVirtualFilesystems}/>
           </li>
         ))}
       </ul>

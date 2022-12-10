@@ -124,7 +124,7 @@ const WasmEndpoint = (props) => {
           }
 
           <div class="capability-options">
-            <label for="wasm-module">Update WASM:</label>
+            <label for="wasm-module">WASM file:</label>
             <input type="file" id="wasmFile" name="wasmFile" onChange={onFileChange}></input> 
           </div>
 

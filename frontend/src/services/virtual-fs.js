@@ -29,7 +29,24 @@ const create_virtual_filesystem = async (user, virtual_fs) => {
   }
 }
 
+const delete_virtual_filesystem = async (user, virtual_fs) => {
+  const res = await fetch(`${BACKEND_URL}/virtual-filesystems`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`
+    },
+    body: JSON.stringify(virtual_fs)
+  });
+
+  return {
+    ok: res.ok,
+    response: await res.json()
+  }
+}
+
 export {
   get_virtual_filesystems,
-  create_virtual_filesystem
+  create_virtual_filesystem,
+  delete_virtual_filesystem
 }

@@ -53,7 +53,7 @@ function App() {
           <div style={{marginTop: "5%"}}>
             <Routes>
               <Route path="/login" element={<Login setUser={setUser} setNotification={setNotification} setError={setError}/>} />
-              <Route path="/" element={<Home user={user} setError={setError}/>} />
+              <Route path="/" element={<Home user={user} setError={setError} setNotification={setNotification}/>} />
             </Routes>
           </div>
         </header>

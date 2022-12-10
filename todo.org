@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-08 Thu 12:53]
+#+CAPTION: Clock summary at [2022-12-10 la 11:35]
 | Headline                                     | Time      |      |
 |----------------------------------------------+-----------+------|
-| *Total time*                                 | *3d 2:37* |      |
+| *Total time*                                 | *3d 5:33* |      |
 |----------------------------------------------+-----------+------|
-| WASM Actions                                 | 3d 2:37   |      |
+| WASM Actions                                 | 3d 5:33   |      |
 | \_  Set up development environment           |           | 0:56 |
 | \_  Define project goals                     |           | 0:49 |
 | \_  Set up testing frameworks                |           | 0:17 |
@@ -55,7 +55,9 @@
 | \_  Always show the top nav                  |           | 0:13 |
 | \_  Implement filesystem access capability   |           | 3:45 |
 | \_  Make sure that WASM actions can only...  |           | 1:09 |
-| \_  Implement "Virtual filesystems"...       |           | 1:56 |
+| \_  Implement "Virtual filesystems"...       |           | 3:20 |
+| \_  Implement Virtual Filesystem deletion... |           | 0:37 |
+| \_  Write a user manual                      |           | 0:55 |
 #+END:
 
 ** DONE Set up development environment
@@ -299,8 +301,14 @@ CLOCK: [2022-12-08 Thu 12:53]--[2022-12-08 Thu 13:40] =>  0:47
 CLOCK: [2022-12-08 Thu 10:58]--[2022-12-08 Thu 12:05] =>  1:07
 CLOCK: [2022-12-07 Wed 14:09]--[2022-12-07 Wed 14:58] =>  0:49
 :END:
-** TODO Implement Virtual Filesystem deletion and cleanup
-** TODO Write a user manual
+** DONE Implement Virtual Filesystem deletion and cleanup
+:LOGBOOK:
+CLOCK: [2022-12-10 la 09:59]--[2022-12-10 la 10:36] =>  0:37
+:END:
+** DONE Write a user manual
+:LOGBOOK:
+CLOCK: [2022-12-10 la 10:40]--[2022-12-10 la 11:35] =>  0:55
+:END:
 ** TODO Write a setup manual
 ** TODO Refactoring
 ** TODO Deploy!
