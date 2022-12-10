@@ -306,34 +306,29 @@ app.all('/wasm/*', async (req, res) => {
     path_info: req.path,
     query_string: querystring.stringify(req.query),
     args: [],
-    fs_path: `${runtimeFolder}/${action_details.params.fs_name}`
+    fs_path: action_details.fs_name ? `${runtimeFolder}/${action_details.params.fs_name}` : null
   }
 
+  let response = ''
+
   if (action_details.params.protectionToken) {
-    const token = req.headers.authorization.split(" ")[1];
+    const token = req.headers.authorization ? req.headers.authorization.split(" ")[1] : null
 
     if (token === action_details.params.protectionToken) {
       console.log(`Running protected workload: ${workload_name}`)
       console.log(action_details)
 
-      const response = wasi_runner.run_wasi(workload_name, params);
-
-      res.socket.end(`HTTP/1.1 200 OK\n${response}`)
+      response = wasi_runner.run_wasi(workload_name, params);
     } else {
-      res.status(401).json({ error: "Unauthorized" })
+      return res.status(401).json({ error: "Unauthorized" })
     }
+  } else {
+    console.log(`Running: ${workload_name}`)
+    console.log(action_details)
 
-    return
+    response = wasi_runner.run_wasi(workload_name, params);
   }
 
-  console.log(`Running: ${workload_name}`)
-  console.log(action_details)
-
-  const response = wasi_runner.run_wasi(workload_name, params);
-
-  console.log(response)
-
-  // TODO: This needs to be done for protected endpoints too
   await db.add_log(action_details._id, { stdout: response.stdout, stderr: response.stderr })
 
   res.socket.end(`HTTP/1.1 200 OK\n${response.stdout}`);

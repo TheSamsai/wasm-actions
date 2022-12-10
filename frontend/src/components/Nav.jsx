@@ -17,15 +17,15 @@ const Nav = (props) => {
   }
 
   return (
-    <nav class="topnav">
+    <nav className="topnav">
       <Link to="/">Home</Link>
 
-      <div style={{"margin-left": "auto"}}>
+      <div style={{marginLeft: "auto"}}>
         <Link to="/login" >
           { user ? user.username : "Login"}
         </Link>
 
-        <div style={{"float": "right"}}>
+        <div style={{float: "right"}}>
           { user ? (<div><button onClick={logout}>Logout</button></div>) : (<div></div>)}
         </div>
       </div>

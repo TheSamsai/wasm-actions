@@ -23,7 +23,7 @@ function App() {
 
   const [error, setError] = useState(null)
 
-  const [notification, setNotification] = useState("Hello, world!")
+  const [notification, setNotification] = useState(null)
 
   useEffect(() => {
     const setIfValid = async () => {

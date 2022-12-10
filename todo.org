@@ -1,6 +1,6 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-10 la 11:35]
+#+CAPTION: Clock summary at [2022-12-10 la 14:39]
 | Headline                                     | Time      |      |
 |----------------------------------------------+-----------+------|
 | *Total time*                                 | *3d 5:33* |      |
@@ -310,5 +310,8 @@ CLOCK: [2022-12-10 la 09:59]--[2022-12-10 la 10:36] =>  0:37
 CLOCK: [2022-12-10 la 10:40]--[2022-12-10 la 11:35] =>  0:55
 :END:
 ** TODO Write a setup manual
-** TODO Refactoring
+** DONE Refactoring
+:LOGBOOK:
+CLOCK: [2022-12-10 la 15:09]--[2022-12-10 la 16:05] =>  0:56
+:END:
 ** TODO Deploy!

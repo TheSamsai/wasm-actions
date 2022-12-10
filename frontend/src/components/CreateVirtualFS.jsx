@@ -22,7 +22,7 @@ const CreateVirtualFS = ({ user, setVirtualFilesystems, setNotification, setErro
             </div>
 
 
-          <div class="endpoint-management-buttons">
+          <div className="endpoint-management-buttons">
             <button onClick={create} style={{backgroundColor: "green", color: "white"}}>{ "Create"}</button>
           </div>
          </div>

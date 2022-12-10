@@ -65,6 +65,7 @@ Content-Type: application/json
 
 POST http://localhost:3001/wasm/samsai/hello-cgi.wasm
 Content-Type: application/json
+Authorization: Bearer ac11f286-885e-4f0e-8a9d-ff7c51486379
 
 {
     "hello": "world"
@@ -75,7 +76,7 @@ Content-Type: application/json
 
 POST http://localhost:3001/wasm/samsai/add-json.wasm
 Content-Type: application/json
-Authorization: Bearer 74873142-4fdd-47db-b6f4-e6016b0558d8
+# Authorization: Bearer 74873142-4fdd-47db-b6f4-e6016b0558d8
 
 {
     "numbers": [1, "2"]

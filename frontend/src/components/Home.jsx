@@ -16,6 +16,8 @@ const Home = (props) => {
 
   const [endpoints, setEndpoints] = useState([]);
 
+  const [shouldUpdateLogs, setShouldUpdateLogs] = useState(true)
+
   const [virtualFilesystems, setVirtualFilesystems] = useState([])
 
   const [createForm, setCreateForm] = useState(null);
@@ -32,13 +34,6 @@ const Home = (props) => {
   useEffect(() => {
     const fetchEndpoints = async () => {
       const newEndpoints = await get_actions(user);
-
-      for (let endpoint of newEndpoints) {
-        console.log(endpoint)
-        endpoint.logs = await get_logs(user, endpoint)
-      }
-
-      console.log(newEndpoints);
 
       if (newEndpoints) {
         setEndpoints(newEndpoints);
@@ -64,6 +59,26 @@ const Home = (props) => {
       fetchUserData()
     }
   }, [user])
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      const modifiedEndpoints = await Promise.all(endpoints.map(async endpoint => {
+        return {...endpoint, logs: await get_logs(user, endpoint)}
+      }))
+
+      setEndpoints(modifiedEndpoints)
+    }
+    
+    // Since we know this effect with trigger itself, we do this to avoid a loop
+    if (shouldUpdateLogs) {
+      fetchLogs()
+      setShouldUpdateLogs(false)
+    } else {
+      // On next execution we can clear the sentinel
+      setShouldUpdateLogs(true)
+    }
+    
+  }, [endpoints])
 
   if (!user) {
     return (

@@ -69,17 +69,17 @@ const Login = ({ setUser, setNotification, setError }) => {
   }
 
   return (
-    <div class="login-form">
+    <div className="login-form">
       <form>
-        <div class="login-container">
+        <div className="login-container">
           <label>Username:</label>
           <input value={username} type="text" onChange={handleUsernameChange}/>
         </div>
-        <div class="login-container">
+        <div className="login-container">
           <label>Password:</label>
           <input value={password} type="password" onChange={handlePasswordChange}/>
         </div>
-        <div class="login-buttons">
+        <div className="login-buttons">
           <button onClick={handleClickRegister}>Register</button>
           <button onClick={handleClickLogin}>Login</button>
         </div>

@@ -14,19 +14,15 @@ const user_db_stub = {};
 
 const clear_db = async () => {
   const users = db.collection("users")
-
   await users.deleteMany({})
 
   const actions = db.collection("actions")
-
   await actions.deleteMany({})
 
   const logs = db.collection("actions-logs")
-
   await logs.deleteMany({})
 
   const virtual_filesystems = db.collection("virtual-fs")
-
   await virtual_filesystems.deleteMany({})
 }
 

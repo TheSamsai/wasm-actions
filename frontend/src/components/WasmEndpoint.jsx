@@ -21,7 +21,7 @@ const WasmEndpoint = (props) => {
   const [protectionToken, setProtectionToken] = useState(endpoint ? (endpoint.params.protectionToken ? endpoint.params.protectionToken : "") : "")
 
   const [usingFilesystem, setUsingFilesystem] = useState(endpoint ? endpoint.params.hasOwnProperty("fs_name") : false)
-  const [filesystemName, setFilesystemName] = useState(endpoint ? (endpoint.params.fs_name ? endpoint.params.fs_name : null) : null)
+  const [filesystemName, setFilesystemName] = useState(endpoint ? (endpoint.params.fs_name ? endpoint.params.fs_name : "") : "")
 
   const onFileChange = (event) => {
     console.log(event.target.files[0])
@@ -123,20 +123,20 @@ const WasmEndpoint = (props) => {
             : <div></div>
           }
 
-          <div class="capability-options">
-            <label for="wasm-module">WASM file:</label>
+          <div className="capability-options">
+            <label>WASM file:</label>
             <input type="file" id="wasmFile" name="wasmFile" onChange={onFileChange}></input> 
           </div>
 
           <div>
             <h3>Endpoint security</h3>
 
-            <div class="capability-options">
+            <div className="capability-options">
               <label>Token protection</label>
-              <input type="checkbox" checked={usingProtectionToken} onClick={(e) => setUsingProtectionToken(!usingProtectionToken)}></input>
+              <input type="checkbox" checked={usingProtectionToken} onChange={(e) => setUsingProtectionToken(!usingProtectionToken)}></input>
             </div>
 
-            <div class="capability-options">
+            <div className="capability-options">
               <label>Token</label>
               <div style={{ gap: "10px"}}>
                 <input type="text" value={protectionToken} onChange={(e) => setProtectionToken(e.target.value)}></input>
@@ -147,18 +147,18 @@ const WasmEndpoint = (props) => {
 
           <div>
             <h3>Capabilities</h3>
-            <div class="capability-options">
+            <div className="capability-options">
               <label>Filesystem access</label>
-              <input type="checkbox" checked={usingFilesystem} onClick={(e) => setUsingFilesystem(!usingFilesystem)}></input>
+              <input type="checkbox" checked={usingFilesystem} onChange={(e) => setUsingFilesystem(!usingFilesystem)}></input>
             </div>
 
-            <div class="capability-options">
+            <div className="capability-options">
               <label>Virtual filesystem</label>
               {/* <input type="text" value={filesystemPrefix} onChange={(e) => setFilesystemPrefix(e.target.value)}></input> */}
               <select onChange={(e) => setFilesystemName(e.target.value)} value={filesystemName}>
                 <option value="None">None</option>
                 { virtualFilesystems.map(fs => (
-                  <option value={fs.name}>{fs.name}</option>
+                  <option key={fs._id} value={fs.name}>{fs.name}</option>
                 ))}
               </select>
             </div>
@@ -171,13 +171,13 @@ const WasmEndpoint = (props) => {
 
               <ul style={{ backgroundColor: "black", listStyleType: "none", marginRight: "25%"}}>
                 { endpoint.logs.filter(log => log.message.stderr !== "").map(log => {
-                  return <li>{log.message.stderr}</li>
+                  return <li key={log._id}>{log.message.stderr}</li>
                 })}
               </ul>
             </div>
             : <div></div>}
 
-          <div class="endpoint-management-buttons">
+          <div className="endpoint-management-buttons">
             <button onClick={endpoint ? deleteEndpoint : closeForm} style={{backgroundColor: "red", color: "white"}}>{ endpoint ? "Delete" : "Cancel"}</button>
             <button onClick={applyChange} style={{backgroundColor: "green", color: "white"}}>{ endpoint ? "Apply" : "Create"}</button>
           </div>
