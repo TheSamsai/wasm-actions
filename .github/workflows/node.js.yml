@@ -66,6 +66,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:backend"
+          file: "{context}/Containerfile"
           push: true
           tags: thesamsai/wasm-actions-back:latest
 
@@ -90,5 +91,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:frontend"
+          file: "{context}/Containerfile"
           push: true
           tags: thesamsai/wasm-actions-front:latest
