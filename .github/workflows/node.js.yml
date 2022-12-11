@@ -67,7 +67,7 @@ jobs:
         with:
           context: "{{defaultContext}}:backend"
           push: true
-          tags: /wasm-actions-back:latest
+          tags: thesamsai/wasm-actions-back:latest
 
   frontend-build:
     needs: tests
@@ -91,4 +91,4 @@ jobs:
         with:
           context: "{{defaultContext}}:frontend"
           push: true
-          tags: /wasm-actions-front:latest
+          tags: thesamsai/wasm-actions-front:latest
