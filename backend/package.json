@@ -17,6 +17,7 @@
   },
   "scripts": {
     "start": "nodemon src/index.js",
+    "start-prod": "node src/index.js",
     "test": "jest"
   },
   "devDependencies": {
