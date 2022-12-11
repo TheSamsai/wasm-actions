@@ -320,5 +320,8 @@ CLOCK: [2022-12-10 la 15:09]--[2022-12-10 la 16:05] =>  0:56
 :LOGBOOK:
 CLOCK: [2022-12-11 su 12:48]--[2022-12-11 su 13:17] =>  0:29
 :END:
-** TODO Optimize production images
+** DONE Optimize production images
+:LOGBOOK:
+CLOCK: [2022-12-11 su 14:30]--[2022-12-11 su 14:56] =>  0:26
+:END:
 ** TODO Deploy!
