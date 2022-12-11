@@ -2,7 +2,7 @@
 FROM node:18-alpine as builder
 COPY . /app
 WORKDIR /app
-RUN yarn build
+RUN yarn && yarn build
 
 FROM node:18-alpine
 COPY --from=builder /app/build /app
