@@ -41,6 +41,10 @@ jobs:
 
     - name: Test frontend
       run: |
+        cd backend
+        yarn
+        yarn start &
+        cd ..
         cd frontend
         yarn
         yarn test

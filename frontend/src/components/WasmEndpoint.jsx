@@ -9,7 +9,7 @@ import { BACKEND_URL } from '../services/config'
 
 
 const WasmEndpoint = (props) => {
-  const { user, endpoint, setEndpoints, virtualFilesystems, setError, closeForm } = props;
+  const { user, endpoint, setEndpoints, virtualFilesystems, setError, setNotification, closeForm } = props;
   
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -108,6 +108,8 @@ const WasmEndpoint = (props) => {
   const deleteEndpoint = async () => {
     const endpoints = await delete_action(user, endpoint);
 
+    setNotification("Endpoint deleted!")
+
     setEndpoints(endpoints);
   }
 
@@ -124,7 +126,7 @@ const WasmEndpoint = (props) => {
           }
 
           <div className="capability-options">
-            <label>WASM file:</label>
+            <label for="wasmFile">WASM file:</label>
             <input type="file" id="wasmFile" name="wasmFile" onChange={onFileChange}></input> 
           </div>
 

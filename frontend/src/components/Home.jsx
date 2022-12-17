@@ -105,7 +105,7 @@ const Home = (props) => {
       <ul>
         { virtualFilesystems.map(fs => (
           <li key={fs._id}>
-            <VirtualFS user={user} virtualFilesystem={fs} setVirtualFilesystems={setVirtualFilesystems}/>
+            <VirtualFS user={user} virtualFilesystem={fs} setVirtualFilesystems={setVirtualFilesystems} setNotification={setNotification}/>
           </li>
         ))}
       </ul>
@@ -119,7 +119,7 @@ const Home = (props) => {
       <ul>
         { endpoints.map(e => {
           return (
-            <li key={e._id}><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints} virtualFilesystems={virtualFilesystems} setError={setError} closeForm={() => 0}/></li>
+            <li key={e._id}><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints} virtualFilesystems={virtualFilesystems} setError={setError} setNotification={setNotification} closeForm={() => 0}/></li>
           )
         })}
       </ul>

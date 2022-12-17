@@ -72,12 +72,12 @@ const Login = ({ setUser, setNotification, setError }) => {
     <div className="login-form">
       <form>
         <div className="login-container">
-          <label>Username:</label>
-          <input value={username} type="text" onChange={handleUsernameChange}/>
+          <label for="username-input">Username:</label>
+          <input id="username-input" value={username} type="text" onChange={handleUsernameChange}/>
         </div>
         <div className="login-container">
-          <label>Password:</label>
-          <input value={password} type="password" onChange={handlePasswordChange}/>
+          <label for="password-input">Password:</label>
+          <input id="password-input" value={password} type="password" onChange={handlePasswordChange}/>
         </div>
         <div className="login-buttons">
           <button onClick={handleClickRegister}>Register</button>

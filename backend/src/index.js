@@ -87,11 +87,15 @@ app.post('/register', async (req, res) => {
     fs.mkdirSync(runtimeFolder, { recursive: true })
   }
 
-  await db.register_user(req.body.username, req.body.password);
+  const result = await db.register_user(req.body.username, req.body.password);
 
-  res.json({
-    "message": `Registered user ${req.body.username}`
-  });
+  if (!result) {
+    return res.status(403).json({ error: `Couldn't register user ${req.body.username}`})
+  } else {
+    res.json({
+      "message": `Registered user ${req.body.username}`
+    });
+  }
 })
 
 app.post('/login', async (req, res) => {
@@ -199,6 +203,10 @@ app.get('/logs/:actionId', verifiedUser, async (req, res) => {
     })
   } else {
     const action = await db.get_action(req.params.actionId)
+
+    if (!action) {
+      return res.status(404).json({ error: "no such endpoint exists"})
+    }
 
     if (action.owner === req.user.username) {
       const logs = await db.get_logs(action._id)
