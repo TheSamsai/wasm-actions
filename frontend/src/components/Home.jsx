@@ -65,6 +65,8 @@ const Home = (props) => {
       const modifiedEndpoints = await Promise.all(endpoints.map(async endpoint => {
         const [ok, res] = await get_logs(user, endpoint)
 
+        console.log(res)
+
         if (ok) {
           return {...endpoint, logs: res}
         } else {

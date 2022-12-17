@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-17 la 15:31]
+#+CAPTION: Clock summary at [2022-12-17 la 15:43]
 | Headline                                     | Time       |      |
 |----------------------------------------------+------------+------|
-| *Total time*                                 | *3d 10:37* |      |
+| *Total time*                                 | *3d 10:45* |      |
 |----------------------------------------------+------------+------|
-| WASM Actions                                 | 3d 10:37   |      |
+| WASM Actions                                 | 3d 10:45   |      |
 | \_  Set up development environment           |            | 0:56 |
 | \_  Define project goals                     |            | 0:49 |
 | \_  Set up testing frameworks                |            | 0:17 |
@@ -63,6 +63,7 @@
 | \_  Set up a CI/CD pipeline that builds...   |            | 0:29 |
 | \_  Optimize production images               |            | 0:26 |
 | \_  Initial deployment                       |            | 1:05 |
+| \_  Improve frontend test stability          |            | 0:08 |
 #+END:
 
 ** DONE Set up development environment
@@ -333,6 +334,10 @@ CLOCK: [2022-12-11 su 14:30]--[2022-12-11 su 14:56] =>  0:26
 ** DONE Initial deployment
 :LOGBOOK:
 CLOCK: [2022-12-11 su 14:58]--[2022-12-11 su 16:03] =>  1:05
+:END:
+** DONE Improve frontend test stability
+:LOGBOOK:
+CLOCK: [2022-12-17 la 15:34]--[2022-12-17 la 15:42] =>  0:08
 :END:
 ** TODO Test the deployed version
 ** TODO Test updating the deployment (Full CI/CD)

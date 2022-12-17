@@ -69,7 +69,7 @@ const get_logs = async (user, action) => {
     },
   })
 
-  return [res.ok, await res.json]
+  return [res.ok, await res.json()]
 }
 
 export {
