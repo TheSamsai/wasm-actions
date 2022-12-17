@@ -63,7 +63,13 @@ const Home = (props) => {
   useEffect(() => {
     const fetchLogs = async () => {
       const modifiedEndpoints = await Promise.all(endpoints.map(async endpoint => {
-        return {...endpoint, logs: await get_logs(user, endpoint)}
+        const [ok, res] = await get_logs(user, endpoint)
+
+        if (ok) {
+          return {...endpoint, logs: res}
+        } else {
+          return {...endpoint, logs: [] }
+        }
       }))
 
       setEndpoints(modifiedEndpoints)
