@@ -1,6 +1,6 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-17 la 15:43]
+#+CAPTION: Clock summary at [2022-12-22 to 14:06]
 | Headline                                     | Time       |      |
 |----------------------------------------------+------------+------|
 | *Total time*                                 | *3d 10:45* |      |
@@ -287,6 +287,11 @@ CLOCK: [2022-11-27 su 14:46]--[2022-11-27 su 15:02] =>  0:16
 CLOCK: [2022-12-02 Fri 14:22]--[2022-12-02 Fri 14:31] =>  0:09
 :END:
 *** DONE Failed login should raise an error on frontend
+*** DONE Executing a WASM endpoint which has had its virtual filesystem removed
+*** DONE When logged in, pressing the top right button can cause the page to get stuck
+:LOGBOOK:
+CLOCK: [2022-12-22 to 14:30]--[2022-12-22 to 15:02] =>  0:32
+:END:
 ** DONE Implement ability to update an endpoint's metadata
 :LOGBOOK:
 CLOCK: [2022-12-02 Fri 10:59]--[2022-12-02 Fri 12:06] =>  1:07
@@ -339,6 +344,10 @@ CLOCK: [2022-12-11 su 14:58]--[2022-12-11 su 16:03] =>  1:05
 :LOGBOOK:
 CLOCK: [2022-12-17 la 15:34]--[2022-12-17 la 15:42] =>  0:08
 :END:
+** TODO Create a quick and simple logo to be loaded as app icon
+** TODO Create a more comprehensive "landing page"
+** TODO Make error messages and notifications automatically disappear after a while
+** TODO Improve frontend test isolation
 ** TODO Test the deployed version
 ** TODO Test updating the deployment (Full CI/CD)
 ** TODO Finalize submission

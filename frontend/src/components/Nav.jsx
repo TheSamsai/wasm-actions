@@ -21,9 +21,15 @@ const Nav = (props) => {
       <Link to="/">Home</Link>
 
       <div style={{marginLeft: "auto"}}>
-        <Link to="/login" >
-          { user ? user.username : "Login"}
-        </Link>
+        { user ?
+          <Link to="/" >
+            {user.username}
+          </Link>
+          : 
+          <Link to="/login" >
+            Login
+          </Link>
+        }
 
         <div style={{float: "right"}}>
           { user ? (<div><button onClick={logout}>Logout</button></div>) : (<div></div>)}

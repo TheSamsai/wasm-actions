@@ -16,7 +16,7 @@ const Home = (props) => {
 
   const [endpoints, setEndpoints] = useState([]);
 
-  const [shouldUpdateLogs, setShouldUpdateLogs] = useState(true)
+  const [shouldUpdateLogs, setShouldUpdateLogs] = useState(false)
 
   const [virtualFilesystems, setVirtualFilesystems] = useState([])
 
@@ -37,6 +37,7 @@ const Home = (props) => {
 
       if (newEndpoints) {
         setEndpoints(newEndpoints);
+        setShouldUpdateLogs(true)
       }
     }
 
@@ -45,7 +46,7 @@ const Home = (props) => {
 
       console.log(newVirtualFilesystems);
 
-      if (virtualFilesystems) {
+      if (newVirtualFilesystems) {
         setVirtualFilesystems(newVirtualFilesystems);
       }
     }
@@ -58,6 +59,8 @@ const Home = (props) => {
     if (user) {
       fetchUserData()
     }
+
+    console.log("User fetched")
   }, [user])
 
   useEffect(() => {
@@ -86,6 +89,8 @@ const Home = (props) => {
       setShouldUpdateLogs(true)
     }
     
+    console.log("logs fetched")
+
   }, [endpoints])
 
   if (!user) {
