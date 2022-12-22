@@ -1,6 +1,8 @@
 services:
   frontend:
     build: frontend
+    environment:
+      - REACT_APP_BACKEND_URL="http://localhost:3001"
     ports:
       - "3000:3000"
     depends_on:
@@ -9,11 +11,10 @@ services:
     build: backend
     environment:
       - MONGODB=mongodb://mongodb:27017
+      - SECRET_KEY="supersecret"
     ports:
       - "3001:3001"
     depends_on:
       - mongo
   mongodb:
     image: mongo
-    ports:
-      - "27017:27017"

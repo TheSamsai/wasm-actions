@@ -17,9 +17,11 @@ those workloads.
 The frontend is a React application which provides an SPA (single-page-application)
 dashboard for managing WASM Actions in the browser.
 
-## Testing
+## Documentation
 
-TODO!
+[User Guide](https://github.com/TheSamsai/wasm-actions/blob/main/docs/user-guide.md)
+
+[Setup and developer guide](https://github.com/TheSamsai/wasm-actions/blob/main/docs/setup-guide.md)
 
 ## Try it out
 
