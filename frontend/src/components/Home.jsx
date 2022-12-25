@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 
 import { get_actions, get_logs } from '../services/actions';
 
+import Landing from './Landing'
+
 import WasmEndpoint from './WasmEndpoint';
 import CreateEndpointForm from './CreateEndpointForm';
 
@@ -95,9 +97,7 @@ const Home = (props) => {
 
   if (!user) {
     return (
-      <div style={{ display: "flex", justifyContent: "center"}}>
-        <h1>Please login first</h1>
-      </div>
+      <Landing />
     )
   }
 

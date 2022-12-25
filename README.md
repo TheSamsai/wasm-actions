@@ -23,6 +23,25 @@ dashboard for managing WASM Actions in the browser.
 
 [Setup and developer guide](https://github.com/TheSamsai/wasm-actions/blob/main/docs/setup-guide.md)
 
+## License
+
+![AGPLv3 Logo](https://www.gnu.org/graphics/agplv3-with-text-162x68.png)
+
+This project is licensed under the GNU Affero General Public License
+version 3.0.  You can find the license terms under the LICENSE
+file. But, in a nutshell, you can freely use the software for any
+purpose, study and modify it and share with others. However,
+modified versions must be accompanied with the source code and
+be provided under the same or compatible license.
+
+You must also provide the source code under the same or compatible
+license for users if you deploy modified versions of the software for
+them.
+
+Note that these license terms do not affect any HTTP endpoint handlers
+deployed onto a running instance of the platform. Deployments of WASM
+endpoints are considered separate to the WASM Actions software itself.
+
 ## Try it out
 
 TODO!

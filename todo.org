@@ -1,6 +1,6 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-22 to 16:09]
+#+CAPTION: Clock summary at [2022-12-25 su 12:58]
 | Headline                                     | Time       |      |
 |----------------------------------------------+------------+------|
 | *Total time*                                 | *3d 12:23* |      |
@@ -348,8 +348,14 @@ CLOCK: [2022-12-11 su 14:58]--[2022-12-11 su 16:03] =>  1:05
 :LOGBOOK:
 CLOCK: [2022-12-17 la 15:34]--[2022-12-17 la 15:42] =>  0:08
 :END:
-** TODO Create a quick and simple logo to be loaded as app icon
-** TODO Create a more comprehensive "landing page"
+** DONE Create a quick and simple logo to be loaded as app icon
+:LOGBOOK:
+CLOCK: [2022-12-25 su 13:16]--[2022-12-25 su 13:32] =>  0:16
+:END:
+** DONE Create a more comprehensive "landing page"
+:LOGBOOK:
+CLOCK: [2022-12-25 su 13:32]--[2022-12-25 su 15:00] =>  1:28
+:END:
 ** TODO Make error messages and notifications automatically disappear after a while
 ** TODO Improve frontend test isolation
 ** TODO Test the deployed version
