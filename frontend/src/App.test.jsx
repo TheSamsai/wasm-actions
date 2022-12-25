@@ -9,7 +9,7 @@ test('test suite runs', () => {
 
 test('app asks for login', () => {
   render(<App />);
-  expect(screen.getByText("Please login first")).toBeInTheDocument()
+  expect(screen.getByText('You can register and log into the platform from the top-right corner of the page (under "Login").')).toBeInTheDocument()
 });
 
 test('app contains a login link', () => {
@@ -107,5 +107,5 @@ test('can logout', async () => {
 
   fireEvent.click(screen.getByText("Logout"))
 
-  await waitFor(() => screen.getByText("Please login first"))
+  await waitFor(() => screen.getByText('You can register and log into the platform from the top-right corner of the page (under "Login").'))
 });
