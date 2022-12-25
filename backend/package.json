@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "repository": "https://github.com/TheSamsai/wasm-actions",
   "author": "Sami Lahtinen",
-  "license": "AGPLv3",
+  "license": "AGPL-3.0-only",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
