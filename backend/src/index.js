@@ -314,7 +314,7 @@ app.all('/wasm/*', async (req, res) => {
     path_info: req.path,
     query_string: querystring.stringify(req.query),
     args: [],
-    fs_path: action_details.fs_name ? `${runtimeFolder}/${action_details.params.fs_name}` : null
+    fs_path: action_details.params.fs_name ? `${runtimeFolder}/${action_details.params.fs_name}` : null
   }
 
   let response = ''

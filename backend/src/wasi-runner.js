@@ -19,6 +19,8 @@ const run_wasi = (file, params) => {
 
   const options = ["--time-limit", "5000"]
 
+  console.log(params)
+
   if (params.fs_path) {
     options.push("--dir")
     options.push(`.:${params.fs_path}`)
