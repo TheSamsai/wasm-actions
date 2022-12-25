@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-25 su 12:58]
+#+CAPTION: Clock summary at [2022-12-25 su 16:08]
 | Headline                                     | Time       |      |
 |----------------------------------------------+------------+------|
-| *Total time*                                 | *3d 12:23* |      |
+| *Total time*                                 | *3d 14:46* |      |
 |----------------------------------------------+------------+------|
-| WASM Actions                                 | 3d 12:23   |      |
+| WASM Actions                                 | 3d 14:46   |      |
 | \_  Set up development environment           |            | 0:56 |
 | \_  Define project goals                     |            | 0:49 |
 | \_  Set up testing frameworks                |            | 0:17 |
@@ -65,6 +65,9 @@
 | \_  Optimize production images               |            | 0:26 |
 | \_  Initial deployment                       |            | 1:05 |
 | \_  Improve frontend test stability          |            | 0:08 |
+| \_  Create a quick and simple logo to be...  |            | 0:16 |
+| \_  Create a more comprehensive "landing...  |            | 1:28 |
+| \_  Make error messages and notifications... |            | 0:39 |
 #+END:
 
 ** DONE Set up development environment
@@ -356,7 +359,11 @@ CLOCK: [2022-12-25 su 13:16]--[2022-12-25 su 13:32] =>  0:16
 :LOGBOOK:
 CLOCK: [2022-12-25 su 13:32]--[2022-12-25 su 15:00] =>  1:28
 :END:
-** TODO Make error messages and notifications automatically disappear after a while
+** DONE Make error messages and notifications automatically disappear after a while
+:LOGBOOK:
+CLOCK: [2022-12-25 su 15:28]--[2022-12-25 su 16:07] =>  0:39
+:END:
+** DONE Fix a bug with the virtual filesystems not appearing deleted
 ** TODO Improve frontend test isolation
 ** TODO Test the deployed version
 ** TODO Test updating the deployment (Full CI/CD)

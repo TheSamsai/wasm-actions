@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { register_user, login_user, save_user } from '../services/user'
 
-const Login = ({ setUser, setNotification, setError }) => {
+const Login = ({ setUser, showNotification, showError }) => {
   const navigate = useNavigate()
 
   const [username, setUsername] = useState("")
@@ -33,12 +33,12 @@ const Login = ({ setUser, setNotification, setError }) => {
     const [ok, res] = await register_user(username, password)
 
     if (ok) {
-      setNotification("User registered!")
+      showNotification("User registered!")
 
       setUsername("")
       setPassword("")
     } else {
-      setError("Couldn't register user")
+      showError("Couldn't register user")
       console.log(res)
     }
   }
@@ -51,7 +51,7 @@ const Login = ({ setUser, setNotification, setError }) => {
 
     login_user(username, password).then(res => {
       if (res.error) {
-        setError(res.error)
+        showError(res.error)
         return
       }
 

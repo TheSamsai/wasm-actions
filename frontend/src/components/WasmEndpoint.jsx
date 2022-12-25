@@ -9,7 +9,7 @@ import { BACKEND_URL } from '../services/config'
 
 
 const WasmEndpoint = (props) => {
-  const { user, endpoint, setEndpoints, virtualFilesystems, setError, setNotification, closeForm } = props;
+  const { user, endpoint, setEndpoints, virtualFilesystems, showError, showNotification, closeForm } = props;
   
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -44,7 +44,7 @@ const WasmEndpoint = (props) => {
     }
 
     if (!endpoint && !selectedFile) {
-      setError("Action must contain a valid WASM payload!")
+      showError("Action must contain a valid WASM payload!")
       return
     }
 
@@ -99,7 +99,7 @@ const WasmEndpoint = (props) => {
 
       setEndpoints(jsonResponse)
     } else {
-      setError(jsonResponse.error)
+      showError(jsonResponse.error)
     }
 
     closeForm();
@@ -108,7 +108,7 @@ const WasmEndpoint = (props) => {
   const deleteEndpoint = async () => {
     const endpoints = await delete_action(user, endpoint);
 
-    setNotification("Endpoint deleted!")
+    showNotification("Endpoint deleted!")
 
     setEndpoints(endpoints);
   }

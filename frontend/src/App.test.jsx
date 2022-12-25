@@ -1,4 +1,4 @@
-import { render, fireEvent, screen, act, getByRole, waitFor } from '@testing-library/react';
+import { render, fireEvent, screen, act, getByRole, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import App from './App';
 
 test('test suite runs', () => {
@@ -39,6 +39,24 @@ test('can register an account and login', async () => {
 
   expect(screen.getByLabelText("Username:").value).toBe("")
   expect(screen.getByLabelText("Password:").value).toBe("")
+});
+
+test('registering same account causes an error', async () => {
+  render(<App />);
+
+  fireEvent.change(screen.getByLabelText("Username:"), { target: { value: random_username }})
+  fireEvent.change(screen.getByLabelText("Password:"), { target: { value: 'test_user_password' }})
+  fireEvent.click(screen.getByText("Register"))
+
+  await waitFor(() => screen.getByText("Couldn't register user"))
+
+  const notification = screen.getByText("Couldn't register user")
+
+  await waitForElementToBeRemoved(notification, { timeout: 6*1000}) // Wait up to 6 seconds for notification to clear
+})
+
+test('can login', async () => {
+  render(<App />);
 
   fireEvent.change(screen.getByLabelText("Username:"), { target: { value: random_username }})
   fireEvent.change(screen.getByLabelText("Password:"), { target: { value: 'test_user_password' }})
@@ -47,7 +65,7 @@ test('can register an account and login', async () => {
   await waitFor(() => screen.getByText("WASM Endpoints"))
 
   expect(screen.getByText("WASM Endpoints")).toBeInTheDocument()
-});
+})
 
 test('can create a virtual filesystem', async () => {
   render(<App />);
@@ -68,9 +86,13 @@ test('can destroy a virtual filesystem', async () => {
 
   await waitFor(() => screen.getByText("test_fs"))
 
+  const virtualfs = screen.getByText("test_fs")
+
   fireEvent.click(screen.getByText("Delete"))
 
-  await waitFor(() => screen.getByText("Virtual filesystem deleted!"))
+  await waitForElementToBeRemoved(virtualfs, { timeout: 6*1000}) // Wait up to 6 seconds for notification to clear
+
+  expect(screen.getByText("Virtual filesystem deleted!")).toBeInTheDocument()
 });
 
 test('can create an endpoint', async () => {

@@ -14,7 +14,7 @@ import CreateVirtualFS from './CreateVirtualFS';
 import { get_virtual_filesystems } from '../services/virtual-fs';
 
 const Home = (props) => {
-  const { user, setError, setNotification } = props;
+  const { user, showError, showNotification } = props;
 
   const [endpoints, setEndpoints] = useState([]);
 
@@ -25,7 +25,7 @@ const Home = (props) => {
   const [createForm, setCreateForm] = useState(null);
 
   const handleClickCreate = () => {
-    setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm} virtualFilesystems={virtualFilesystems} setEndpoints={setEndpoints} setError={setError}/>);
+    setCreateForm(<CreateEndpointForm user={user} closeForm={closeCreateForm} virtualFilesystems={virtualFilesystems} setEndpoints={setEndpoints} showError={showError}/>);
   }
 
   const closeCreateForm = () => {
@@ -113,12 +113,12 @@ const Home = (props) => {
 
       <h2>Virtual filesystems</h2>
 
-      <CreateVirtualFS user={user} setVirtualFilesystems={setVirtualFilesystems} setNotification={setNotification}/>
+      <CreateVirtualFS user={user} setVirtualFilesystems={setVirtualFilesystems} showNotification={showNotification}/>
 
       <ul>
         { virtualFilesystems.map(fs => (
           <li key={fs._id}>
-            <VirtualFS user={user} virtualFilesystem={fs} setVirtualFilesystems={setVirtualFilesystems} setNotification={setNotification}/>
+            <VirtualFS user={user} virtualFilesystem={fs} setVirtualFilesystems={setVirtualFilesystems} showNotification={showNotification}/>
           </li>
         ))}
       </ul>
@@ -132,7 +132,7 @@ const Home = (props) => {
       <ul>
         { endpoints.map(e => {
           return (
-            <li key={e._id}><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints} virtualFilesystems={virtualFilesystems} setError={setError} setNotification={setNotification} closeForm={() => 0}/></li>
+            <li key={e._id}><WasmEndpoint endpoint={e} user={user} setEndpoints={setEndpoints} virtualFilesystems={virtualFilesystems} showError={showError} showNotification={showNotification} closeForm={() => 0}/></li>
           )
         })}
       </ul>

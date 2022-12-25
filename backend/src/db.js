@@ -141,7 +141,7 @@ const delete_action = async (id) => {
 
   const actions = db.collection("actions");
 
-  const result = await actions.deleteOne({
+  await actions.deleteOne({
     _id: oid
   });
 }
@@ -189,7 +189,7 @@ const create_virtual_filesystem = async (user, fs_name) => {
 const delete_virtual_filesystem = async (user, fs_name) => {
   const virtual_filesystems = db.collection("virtual-fs")
 
-  virtual_filesystems.deleteOne({
+  await virtual_filesystems.deleteOne({
     name: fs_name,
     owner: user
   })

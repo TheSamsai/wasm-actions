@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { create_virtual_filesystem } from '../services/virtual-fs'
 
-const CreateVirtualFS = ({ user, setVirtualFilesystems, setNotification, setError }) => {
+const CreateVirtualFS = ({ user, setVirtualFilesystems, showNotification, showError }) => {
   const [name, setName] = useState('')
 
   const create = async () => {
@@ -11,7 +11,9 @@ const CreateVirtualFS = ({ user, setVirtualFilesystems, setNotification, setErro
 
     if (ok) {
       setVirtualFilesystems(response)
-      setNotification("Created a Virtual Filesystem")
+      showNotification("Created a Virtual Filesystem")
+    } else {
+      showError(response.error)
     }
   }
 

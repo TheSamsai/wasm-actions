@@ -1,7 +1,7 @@
 
 import { delete_virtual_filesystem } from '../services/virtual-fs'
 
-const VirtualFS = ({ virtualFilesystem, setVirtualFilesystems, setNotification, user }) => {
+const VirtualFS = ({ virtualFilesystem, setVirtualFilesystems, showNotification, user }) => {
 
   const deleteFilesystem = async () => {
     console.log("deleting filesystem")
@@ -10,7 +10,7 @@ const VirtualFS = ({ virtualFilesystem, setVirtualFilesystems, setNotification, 
 
     if (ok) {
       setVirtualFilesystems(response)
-      setNotification("Virtual filesystem deleted!")
+      showNotification("Virtual filesystem deleted!")
     }
   }
 
