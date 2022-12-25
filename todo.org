@@ -1,11 +1,11 @@
 * WASM Actions
 #+BEGIN: clocktable :scope subtree :maxlevel 2
-#+CAPTION: Clock summary at [2022-12-25 su 16:08]
+#+CAPTION: Clock summary at [2022-12-25 su 18:18]
 | Headline                                     | Time       |      |
 |----------------------------------------------+------------+------|
-| *Total time*                                 | *3d 14:46* |      |
+| *Total time*                                 | *3d 16:52* |      |
 |----------------------------------------------+------------+------|
-| WASM Actions                                 | 3d 14:46   |      |
+| WASM Actions                                 | 3d 16:52   |      |
 | \_  Set up development environment           |            | 0:56 |
 | \_  Define project goals                     |            | 0:49 |
 | \_  Set up testing frameworks                |            | 0:17 |
@@ -28,7 +28,6 @@
 | \_  Fix null issue in backend login check    |            | 0:28 |
 | \_  Development environment and tool...      |            | 1:13 |
 | \_  Implement uploading a WASM module        |            | 1:23 |
-| \_  Write frontend tests                     |            | 2:08 |
 | \_  Investigate WasmEdge                     |            | 2:02 |
 | \_  Replace Node WASI runner with WasmEdge   |            | 4:59 |
 | \_  Fix CI tests                             |            | 0:12 |
@@ -59,15 +58,18 @@
 | \_  Implement "Virtual filesystems"...       |            | 3:20 |
 | \_  Implement Virtual Filesystem deletion... |            | 0:37 |
 | \_  Write a user manual                      |            | 0:55 |
-| \_  Write a setup/developer manual           |            | 1:06 |
 | \_  Refactoring                              |            | 0:56 |
 | \_  Set up a CI/CD pipeline that builds...   |            | 0:29 |
 | \_  Optimize production images               |            | 0:26 |
 | \_  Initial deployment                       |            | 1:05 |
+| \_  Write frontend tests                     |            | 2:08 |
 | \_  Improve frontend test stability          |            | 0:08 |
+| \_  Write a setup/developer manual           |            | 1:06 |
 | \_  Create a quick and simple logo to be...  |            | 0:16 |
 | \_  Create a more comprehensive "landing...  |            | 1:28 |
 | \_  Make error messages and notifications... |            | 0:39 |
+| \_  Test the deployed version                |            | 1:29 |
+| \_  Finalize submission                      |            | 0:37 |
 #+END:
 
 ** DONE Set up development environment
@@ -109,7 +111,7 @@ CLOCK: [2022-09-10 la 17:12]--[2022-09-10 la 18:49] =>  1:37
 :LOGBOOK:
 CLOCK: [2022-09-10 la 16:51]--[2022-09-10 la 17:10] =>  0:19
 :END:
-** STRT Studied WebAssembly fundamentals
+** DONE Studied WebAssembly fundamentals
 :LOGBOOK:
 CLOCK: [2022-09-11 su 16:34]--[2022-09-11 su 17:00] =>  0:26
 CLOCK: [2022-09-11 su 10:03]--[2022-09-11 su 13:03] =>  3:00
@@ -168,10 +170,6 @@ CLOCK: [2022-10-02 su 09:57]--[2022-10-02 su 11:10] =>  1:13
 ** DONE Implement uploading a WASM module
 :LOGBOOK:
 CLOCK: [2022-10-02 su 15:39]--[2022-10-02 su 17:02] =>  1:23
-:END:
-** DONE Write frontend tests
-:LOGBOOK:
-CLOCK: [2022-12-17 la 13:22]--[2022-12-17 la 15:30] =>  2:08
 :END:
 ** DONE Investigate WasmEdge
 :LOGBOOK:
@@ -327,10 +325,6 @@ CLOCK: [2022-12-10 la 09:59]--[2022-12-10 la 10:36] =>  0:37
 :LOGBOOK:
 CLOCK: [2022-12-10 la 10:40]--[2022-12-10 la 11:35] =>  0:55
 :END:
-** DONE Write a setup/developer manual
-:LOGBOOK:
-CLOCK: [2022-12-22 to 15:03]--[2022-12-22 to 16:09] =>  1:06
-:END:
 ** DONE Refactoring
 :LOGBOOK:
 CLOCK: [2022-12-10 la 15:09]--[2022-12-10 la 16:05] =>  0:56
@@ -347,9 +341,17 @@ CLOCK: [2022-12-11 su 14:30]--[2022-12-11 su 14:56] =>  0:26
 :LOGBOOK:
 CLOCK: [2022-12-11 su 14:58]--[2022-12-11 su 16:03] =>  1:05
 :END:
+** DONE Write frontend tests
+:LOGBOOK:
+CLOCK: [2022-12-17 la 13:22]--[2022-12-17 la 15:30] =>  2:08
+:END:
 ** DONE Improve frontend test stability
 :LOGBOOK:
 CLOCK: [2022-12-17 la 15:34]--[2022-12-17 la 15:42] =>  0:08
+:END:
+** DONE Write a setup/developer manual
+:LOGBOOK:
+CLOCK: [2022-12-22 to 15:03]--[2022-12-22 to 16:09] =>  1:06
 :END:
 ** DONE Create a quick and simple logo to be loaded as app icon
 :LOGBOOK:
@@ -364,7 +366,13 @@ CLOCK: [2022-12-25 su 13:32]--[2022-12-25 su 15:00] =>  1:28
 CLOCK: [2022-12-25 su 15:28]--[2022-12-25 su 16:07] =>  0:39
 :END:
 ** DONE Fix a bug with the virtual filesystems not appearing deleted
-** TODO Improve frontend test isolation
-** TODO Test the deployed version
+** KILL Improve frontend test isolation
+** DONE Test the deployed version
+:LOGBOOK:
+CLOCK: [2022-12-25 su 16:10]--[2022-12-25 su 17:39] =>  1:29
+:END:
 ** TODO Test updating the deployment (Full CI/CD)
-** TODO Finalize submission
+** DONE Finalize submission
+:LOGBOOK:
+CLOCK: [2022-12-25 su 17:40]--[2022-12-25 su 18:17] =>  0:37
+:END:

@@ -23,6 +23,8 @@ dashboard for managing WASM Actions in the browser.
 
 [Setup and developer guide](https://github.com/TheSamsai/wasm-actions/blob/main/docs/setup-guide.md)
 
+[Time keeping](https://github.com/TheSamsai/wasm-actions/blob/main/docs/time-keeping.md)
+
 ## License
 
 ![AGPLv3 Logo](https://www.gnu.org/graphics/agplv3-with-text-162x68.png)
@@ -44,74 +46,7 @@ endpoints are considered separate to the WASM Actions software itself.
 
 ## Try it out
 
-TODO!
+A test instance is available at http://65.109.12.223:3000/
 
-## Timekeeping and TODO
-
-The tasks and timekeeping of this project are tracked in the `todo.org` file.
-However, due to GitHub's exceptionally poor org-mode handling, the timekeeping
-reports will be available in Markdown format.
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption class="t-above"><span class="table-number">Table 1:</span> Clock summary at <span class="timestamp-wrapper"><span class="timestamp">[2022-09-05 ma 19:32]</span></span></caption>
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Headline</th>
-<th scope="col" class="org-right">Time</th>
-<th scope="col" class="org-right">&#xa0;</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="org-left"><b>Total time</b></td>
-<td class="org-right"><b>2:14</b></td>
-<td class="org-right">&#xa0;</td>
-</tr>
-</tbody>
-
-<tbody>
-<tr>
-<td class="org-left">WASM Actions</td>
-<td class="org-right">2:14</td>
-<td class="org-right">&#xa0;</td>
-</tr>
-
-
-<tr>
-<td class="org-left">&ensp;&ensp;Set up development environment</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">0:56</td>
-</tr>
-
-
-<tr>
-<td class="org-left">&ensp;&ensp;Define project goals</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">0:49</td>
-</tr>
-
-
-<tr>
-<td class="org-left">&ensp;&ensp;Set up testing frameworks for&#x2026;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">0:17</td>
-</tr>
-
-
-<tr>
-<td class="org-left">&ensp;&ensp;Create initial README</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">0:12</td>
-</tr>
-</tbody>
-</table>
-
+Note that data stored on the test instance is deleted daily, do not expect your files
+to be there when you return.
